@@ -4,7 +4,7 @@ import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';
 
 /**
- * Get all posts
+ * Get all Events
  * @param req
  * @param res
  * @returns void
@@ -19,7 +19,7 @@ export function getEvents(req, res) {
 }
 
 /**
- * Get a single post
+ * Get a single Events
  * @param req
  * @param res
  * @returns void
@@ -34,7 +34,7 @@ export function getUserEvents(req, res) {
 }
 
 /**
- * Save a post
+ * Save an Event
  * @param req
  * @param res
  * @returns void
@@ -44,7 +44,7 @@ export function addEvent(req, res) {
     res.status(403).end();
   }
 
-  const newEvent = new Event(req.body.post);
+  const newEvent = new Event(req.body.event);
 
   // Let's sanitize inputs
   newEvent.eventName = sanitizeHtml(newEvent.eventName);
@@ -63,7 +63,7 @@ export function addEvent(req, res) {
 }
 
 /**
- * Get a single post
+ * Get a single event
  * @param req
  * @param res
  * @returns void
@@ -78,18 +78,18 @@ export function getEvent(req, res) {
 }
 
 /**
- * Delete a post
+ * Delete an event
  * @param req
  * @param res
  * @returns void
  */
 export function deleteEvent(req, res) {
-  Event.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+  Event.findOne({ cuid: req.params.cuid }).exec((err, event) => {
     if (err) {
       res.status(500).send(err);
     }
 
-    post.remove(() => {
+    event.remove(() => {
       res.status(200).end();
     });
   });
