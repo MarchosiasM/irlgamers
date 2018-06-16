@@ -6,6 +6,13 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
 import { configureStore } from './store';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min.js';
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
+// import MaterialIcon from '@material/react-material-icon';
+
 
 // Initialize store
 const store = configureStore(window.__INITIAL_STATE__);

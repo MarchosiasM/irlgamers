@@ -37,6 +37,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.scss$/,
+        use: [
+            "style-loader", // creates style nodes from JS strings
+            "css-loader", // translates CSS into CommonJS
+            "sass-loader" // compiles Sass to CSS
+        ]
+    },
+      {
         test: /\.s?css$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
@@ -90,6 +98,12 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+        'file-loader'
+        ]
       },
     ],
   },
