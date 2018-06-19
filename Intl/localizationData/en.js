@@ -1,13 +1,16 @@
 export default {
   locale: 'en',
   messages: {
-    siteTitle: 'MERN Starter Blog',
+    siteTitle: 'Tentative Board Game App',
     addPost: 'Add Post',
+    addEvent: 'Add Event',
     switchLanguage: 'Switch Language',
     twitterMessage: 'We are on Twitter',
     by: 'By',
     deletePost: 'Delete Post',
+    deleteEvent: 'Delete Event',
     createNewPost: 'Create new post',
+    createNewEvent: 'Create a new event',
     authorName: 'Author\'s Name',
     postTitle: 'Post Title',
     postContent: 'Post Content',
