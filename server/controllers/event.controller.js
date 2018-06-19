@@ -51,6 +51,7 @@ export function addEvent(req, res) {
   newEvent.game = sanitizeHtml(newEvent.game);
   newEvent.scheduledDate = sanitizeHtml(newEvent.scheduledDate);
   newEvent.slots = sanitizeHtml(newEvent.slots);
+  newEvent.notes = sanitizeHtml(newEvent.notes);
   newEvent.owner = sanitizeHtml(newEvent.owner);
   newEvent.slug = slug(newEvent.eventName.toLowerCase(), { lowercase: true });
   newEvent.cuid = cuid();
