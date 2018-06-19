@@ -1,9 +1,10 @@
 // Import Actions
-import { TOGGLE_ADD_POST } from './AppActions';
+import { TOGGLE_ADD_POST, TOGGLE_ADD_EVENT } from './AppActions';
 
 // Initial State
 const initialState = {
   showAddPost: false,
+  showAddEvent: false,
 };
 
 const AppReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const AppReducer = (state = initialState, action) => {
     case TOGGLE_ADD_POST:
       return {
         showAddPost: !state.showAddPost,
+      };
+
+    case TOGGLE_ADD_EVENT:
+      return {
+        showAddEvent: !state.showAddEvent,
       };
 
     default:
@@ -22,6 +28,9 @@ const AppReducer = (state = initialState, action) => {
 
 // Get showAddPost
 export const getShowAddPost = state => state.app.showAddPost;
+
+// Get showAddEvent
+export const getShowAddEvent = state => state.app.showAddEvent;
 
 // Export Reducer
 export default AppReducer;

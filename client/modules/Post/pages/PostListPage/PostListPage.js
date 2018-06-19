@@ -1,5 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
+
+
 
 // Import Components
 import PostList from '../../components/PostList';
@@ -32,6 +37,8 @@ class PostListPage extends Component {
   render() {
     return (
       <div>
+        
+        
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
         <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>

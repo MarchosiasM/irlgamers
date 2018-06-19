@@ -1,13 +1,16 @@
 export default {
   locale: 'en',
   messages: {
-    siteTitle: 'MERN Starter Blog',
+    siteTitle: 'Tentative Board Game App',
     addPost: 'Add Post',
+    addEvent: 'Add Event',
     switchLanguage: 'Switch Language',
     twitterMessage: 'We are on Twitter',
     by: 'By',
     deletePost: 'Delete Post',
+    deleteEvent: 'Delete Event',
     createNewPost: 'Create new post',
+    createNewEvent: 'Create a new event',
     authorName: 'Author\'s Name',
     postTitle: 'Post Title',
     postContent: 'Post Content',
@@ -26,6 +29,11 @@ export default {
     	  =0 {does not have any comments}
     	  =1 {has # comment}
     	  other {has # comments}
-    	} as of {date}`,
+      } as of {date}`,
+    game: 'Game Type', 
+    eventName: 'Event Name', 
+    selectDate: 'Select Date', 
+    slots: 'Number of Slots',
+    notes: 'Additional Notes',
   },
 };
