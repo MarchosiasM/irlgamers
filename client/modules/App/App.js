@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 // Import Actions
-import { toggleAddPost } from './AppActions';
+import { toggleAddPost, toggleAddEvent } from './AppActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
 
 let DevTools;
@@ -31,6 +31,10 @@ export class App extends Component {
 
   toggleAddPostSection = () => {
     this.props.dispatch(toggleAddPost());
+  };
+
+  toggleAddEventSection = () => {
+    this.props.dispatch(toggleAddEvent());
   };
 
   render() {

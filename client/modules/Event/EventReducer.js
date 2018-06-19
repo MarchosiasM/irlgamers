@@ -3,7 +3,7 @@ import { ADD_EVENT, ADD_EVENTS, DELETE_EVENT } from './EventActions';
 // Initial State
 const initialState = { data: [] };
 
-const PostReducer = (state = initialState, action) => {
+const EventReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT :
       return {

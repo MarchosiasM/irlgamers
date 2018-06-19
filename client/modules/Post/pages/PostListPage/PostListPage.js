@@ -38,8 +38,7 @@ class PostListPage extends Component {
     return (
       <div>
         
-        <a className="btn-floating pulse"><i className="material-icons">menu</i></a>
-        <FontAwesomeIcon icon={faCoffee} />
+        
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
         <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>

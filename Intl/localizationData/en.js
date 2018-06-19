@@ -29,6 +29,11 @@ export default {
     	  =0 {does not have any comments}
     	  =1 {has # comment}
     	  other {has # comments}
-    	} as of {date}`,
+      } as of {date}`,
+    game: 'Game Type', 
+    eventName: 'Event Name', 
+    selectDate: 'Select Date', 
+    slots: 'Number of Slots',
+    notes: 'Additional Notes',
   },
 };

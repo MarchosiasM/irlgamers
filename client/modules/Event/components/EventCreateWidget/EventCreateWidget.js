@@ -4,7 +4,17 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 // Import Style
 import styles from './EventCreateWidget.css';
 
+
 export class EventCreateWidget extends Component {
+  componentDidMount () {
+    // Still needs some work in rendering in mobile but works. 
+    M.AutoInit()
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.datepicker')
+      var instances = M.Datepicker.init(elems, options)
+    })
+  }
+
   addEvent = () => {
     const eventNameRef = this.refs.eventName;
     const gameRef = this.refs.game;
@@ -26,8 +36,8 @@ export class EventCreateWidget extends Component {
           <h2 className={styles['form-title']}><FormattedMessage id="createNewEvent" /></h2>
           <input placeholder={this.props.intl.messages.eventName} className={styles['form-field']} ref="eventName" />
           <input placeholder={this.props.intl.messages.game} className={styles['form-field']} ref="game" />
-          <input type="text" className="datepicker" />
-          <input placeholder='Number of Players'className={styles['form-field']} ref="game" />
+          <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" />
+          <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="game" />
           <textarea placeholder={this.props.intl.messages.notes} className={styles['form-field']} ref="notes" />
           <a className={styles['post-submit-button']} href="#" onClick={this.addEvent}><FormattedMessage id="submit" /></a>
         </div>
