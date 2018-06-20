@@ -20,6 +20,7 @@ export function addEventRequest(event) {
         eventName: event.eventName,
         game: event.game,
         scheduledDate: event.scheduledDate,
+        scheduledTime: event.scheduledTime,
         slots: event.slots, 
         notes: event.notes,
       },

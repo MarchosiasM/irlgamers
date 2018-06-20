@@ -29,9 +29,9 @@ class EventListPage extends Component {
     }
   };
 
-  handleAddEvent = (eventName, game, scheduledDate, slots, notes) => {
+  handleAddEvent = (eventName, game, scheduledDate, scheduledTime, slots, notes) => {
     this.props.dispatch(toggleAddEvent());
-    this.props.dispatch(addEventRequest({ eventName, game, scheduledDate, slots, notes }));
+    this.props.dispatch(addEventRequest({ eventName, game, scheduledDate, scheduledTime, slots, notes }));
   };
 
   render() {
@@ -63,6 +63,7 @@ EventListPage.propTypes = {
     eventName: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
     scheduledDate: PropTypes.string.isRequired,
+    scheduledTime: PropTypes.string.isRequired,
     slots: PropTypes.string.isRequired,
   })).isRequired,
   showAddEvent: PropTypes.bool.isRequired,

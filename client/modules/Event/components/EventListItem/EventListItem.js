@@ -16,6 +16,7 @@ function EventListItem(props) {
       <p className={styles['author-name']}><FormattedMessage id="by" /> {props.user.fullName}</p>
       <p className={styles['post-desc']}>{props.event.game}</p>
       <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
+      <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
       <p className={styles['post-desc']}>0/{props.event.slots}</p>
       <p className={styles['post-desc']}>{props.event.notes}</p>
       <hr className={styles.divider} />
@@ -28,6 +29,7 @@ EventListItem.propTypes = {
     eventName: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
     scheduledDate: PropTypes.string.isRequired,
+    scheduledTime: PropTypes.string.isRequired,
     notes: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
