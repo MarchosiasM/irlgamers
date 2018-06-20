@@ -40,7 +40,7 @@ export function getUserEvents(req, res) {
  * @returns void
  */
 export function addEvent(req, res) {
-  if (!req.body.event.eventName || !req.body.event.game || !req.body.event.scheduledDate || !req.body.event.slots || !req.body.event.owner) {
+  if (!req.body.event.eventName || !req.body.event.game || !req.body.event.scheduledDate || !req.body.event.scheduledTime || !req.body.event.slots || !req.body.event.owner) {
     res.status(403).end();
   }
 
@@ -50,6 +50,7 @@ export function addEvent(req, res) {
   newEvent.eventName = sanitizeHtml(newEvent.eventName);
   newEvent.game = sanitizeHtml(newEvent.game);
   newEvent.scheduledDate = sanitizeHtml(newEvent.scheduledDate);
+  newEvent.scheduledTime = sanitizeHtml(newEvent.scheduledTime);
   newEvent.slots = sanitizeHtml(newEvent.slots);
   newEvent.notes = sanitizeHtml(newEvent.notes);
   newEvent.owner = sanitizeHtml(newEvent.owner);

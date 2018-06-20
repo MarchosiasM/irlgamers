@@ -21,7 +21,8 @@ export function EventDetailPage(props) {
         <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.owner}</p>
         <p className={styles['post-desc']}>{props.event.notes}</p>
         <p className={styles['post-desc']}>0/{props.event.slots}</p>
-        <p className={styles['post-desc']}>0/{props.event.scheduledDate}</p>
+        <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
+        <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
       </div>
     </div>
   );
@@ -44,6 +45,7 @@ EventDetailPage.propTypes = {
     eventName: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
     scheduledDate: PropTypes.string.isRequired,
+    scheduledTime: PropTypes.string.isRequired,
     notes: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,

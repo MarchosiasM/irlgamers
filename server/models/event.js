@@ -5,6 +5,7 @@ const eventSchema = new Schema({
   eventName: { type: 'String', required: true },
   game: { type: 'String', required: true },
   scheduledDate: { type: 'Date', required: true },
+  scheduledTime: { type: 'String', required: true},
   slots: { type: 'Number', required: true },
   notes: { type: 'String', required: false },
   isFull: { type: "Boolean", default: false },
