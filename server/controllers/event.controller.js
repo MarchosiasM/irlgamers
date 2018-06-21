@@ -8,7 +8,7 @@ import sanitizeHtml from 'sanitize-html';
  * @param req
  * @param res
  * @returns void
- */
+ */ 
 export function getEvents(req, res) {
   Event.find().sort('-scheduledDate').exec((err, events) => {
     if (err) {
