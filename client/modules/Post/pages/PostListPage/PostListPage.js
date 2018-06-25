@@ -6,9 +6,11 @@ import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
 
 
 
+
 // Import Components
 import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
+import SignInScreen from '../../../Auth/components/SignInScreen/SignInScreen'
 
 // Import Actions
 import { addPostRequest, fetchPosts, deletePostRequest } from '../../PostActions';
@@ -40,6 +42,7 @@ class PostListPage extends Component {
         
         
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
+        <SignInScreen />
         <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>
     );
