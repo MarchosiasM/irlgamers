@@ -26,7 +26,7 @@ export class EventCreateWidget extends Component {
     const scheduledTimeRef = this.refs.scheduledTime;
     const slotsRef = this.refs.slots;
     const notesRef = this.refs.notes;
-    const ownerRef = this.fers.owner;
+    const ownerRef = this.props.user.uid;
     if (eventNameRef.value && gameRef.value && scheduledDateRef.value && scheduledTimeRef.value && slotsRef.value && ownerRef.value) {
       this.props.addEvent(eventNameRef.value, gameRef.value, scheduledDateRef.value, scheduledTimeRef, slotsRef.value, notesRef.value, ownerRef.value);
       eventNameRef.value = gameRef.value = scheduledDateRef.value = scheduledTimeRef.value = slotsRef.value = notesRed.value = '';
@@ -41,8 +41,8 @@ export class EventCreateWidget extends Component {
           <h2 className={styles['form-title']}><FormattedMessage id="createNewEvent" /></h2>
           <input placeholder={this.props.intl.messages.eventName} className={styles['form-field']} ref="eventName" />
           <input placeholder={this.props.intl.messages.game} className={styles['form-field']} ref="game" />
-          <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" />
-          <input placeholder={this.props.intl.messages.selectTime} type="text" className="timepicker" />
+          <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" ref="scheduledDate" />
+          <input placeholder={this.props.intl.messages.selectTime} type="text" className="timepicker" ref="scheduledTime" />
           <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="game" />
           <textarea placeholder={this.props.intl.messages.notes} className={styles['form-field']} ref="notes" />
           <a className={styles['post-submit-button']} href="#" onClick={this.addEvent}><FormattedMessage id="submit" /></a>

@@ -8,6 +8,7 @@ import app from './modules/App/AppReducer';
 import posts from './modules/Post/PostReducer';
 import intl from './modules/Intl/IntlReducer';
 import events from './modules/Event/EventReducer';
+import user from './modules/Auth/AuthReducer'
 
 // Combine all reducers into one root reducer
 export default combineReducers({
@@ -15,4 +16,5 @@ export default combineReducers({
   posts,
   intl,
   events,
+  user,
 });
