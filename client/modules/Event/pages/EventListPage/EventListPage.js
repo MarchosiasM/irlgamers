@@ -13,14 +13,17 @@ import EventCreateWidget from '../../components/EventCreateWidget/EventCreateWid
 // Import Actions
 import { addEventRequest, fetchEvents, deleteEventRequest } from '../../EventActions';
 import { toggleAddEvent } from '../../../App/AppActions';
+import { fetchUser, fetchUserRequest } from '../../../Auth/AuthActions';
 
 // Import Selectors
 import { getShowAddEvent } from '../../../App/AppReducer';
 import { getEvents } from '../../EventReducer';
+import { getUser } from '../../../Auth/AuthReducer'
 
 class EventListPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchEvents());
+    this.props.dispatch(fetchUserRequest());
   }
 
   handleDeleteEvent = event => {
@@ -29,9 +32,9 @@ class EventListPage extends Component {
     }
   };
 
-  handleAddEvent = (eventName, game, scheduledDate, scheduledTime, slots, notes) => {
+  handleAddEvent = (eventName, game, scheduledDate, scheduledTime, slots, notes, owner) => {
     this.props.dispatch(toggleAddEvent());
-    this.props.dispatch(addEventRequest({ eventName, game, scheduledDate, scheduledTime, slots, notes }));
+    this.props.dispatch(addEventRequest({ eventName, game, scheduledDate, scheduledTime, slots, notes, owner }));
   };
 
   render() {
@@ -40,7 +43,7 @@ class EventListPage extends Component {
         
         
         
-        <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} />
+        <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} user={this.props.user} />
         <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
       </div>
     );
@@ -55,6 +58,7 @@ function mapStateToProps(state) {
   return {
     showAddEvent: getShowAddEvent(state),
     events: getEvents(state),
+    user: getUser(state),
   };
 }
 
@@ -65,6 +69,7 @@ EventListPage.propTypes = {
     scheduledDate: PropTypes.string.isRequired,
     scheduledTime: PropTypes.string.isRequired,
     slots: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
   })).isRequired,
   showAddEvent: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,

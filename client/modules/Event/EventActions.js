@@ -23,6 +23,7 @@ export function addEventRequest(event) {
         scheduledTime: event.scheduledTime,
         slots: event.slots, 
         notes: event.notes,
+        owner: event.owner,
       },
     }).then(res => dispatch(addEvent(res.event)));
   };
