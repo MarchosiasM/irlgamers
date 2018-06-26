@@ -27,9 +27,9 @@ export class EventCreateWidget extends Component {
     const slotsRef = this.refs.slots;
     const notesRef = this.refs.notes;
     const ownerRef = this.props.user.uid;
-    if (eventNameRef.value && gameRef.value && scheduledDateRef.value && scheduledTimeRef.value && slotsRef.value && ownerRef.value) {
-      this.props.addEvent(eventNameRef.value, gameRef.value, scheduledDateRef.value, scheduledTimeRef, slotsRef.value, notesRef.value, ownerRef.value);
-      eventNameRef.value = gameRef.value = scheduledDateRef.value = scheduledTimeRef.value = slotsRef.value = notesRed.value = '';
+    if (eventNameRef.value && gameRef.value && scheduledDateRef.value && scheduledTimeRef.value && slotsRef.value && ownerRef) {
+      this.props.addEvent(eventNameRef.value, gameRef.value, scheduledDateRef.value, scheduledTimeRef.value, slotsRef.value, notesRef.value, ownerRef);
+      eventNameRef.value = gameRef.value = scheduledDateRef.value = scheduledTimeRef.value = slotsRef.value = notesRef.value = '';
     }
   };
 
@@ -43,7 +43,7 @@ export class EventCreateWidget extends Component {
           <input placeholder={this.props.intl.messages.game} className={styles['form-field']} ref="game" />
           <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" ref="scheduledDate" />
           <input placeholder={this.props.intl.messages.selectTime} type="text" className="timepicker" ref="scheduledTime" />
-          <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="game" />
+          <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="slots" />
           <textarea placeholder={this.props.intl.messages.notes} className={styles['form-field']} ref="notes" />
           <a className={styles['post-submit-button']} href="#" onClick={this.addEvent}><FormattedMessage id="submit" /></a>
         </div>
@@ -52,10 +52,10 @@ export class EventCreateWidget extends Component {
   }
 }
 
-EventCreateWidget.propTypes = {
-  addEvent: PropTypes.func.isRequired,
-  showAddEvent: PropTypes.bool.isRequired,
-  intl: intlShape.isRequired,
-};
+// EventCreateWidget.propTypes = {
+//   addEvent: PropTypes.func.isRequired,
+//   showAddEvent: PropTypes.bool.isRequired,
+//   intl: intlShape.isRequired,
+// };
 
 export default injectIntl(EventCreateWidget);
