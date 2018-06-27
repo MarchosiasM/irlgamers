@@ -21,7 +21,7 @@ export function addEventRequest(event) {
         game: event.game,
         scheduledDate: event.scheduledDate,
         scheduledTime: event.scheduledTime,
-        slots: event.slots, 
+        slots: event.slots,
         notes: event.notes,
         owner: event.owner,
       },
@@ -38,7 +38,7 @@ export function addEvents(events) {
 
 export function fetchEvents() {
   return (dispatch) => {
-    return callApi('events').then(res => {
+    return callApi('events').then((res) => {
       dispatch(addEvents(res.events));
     });
   };

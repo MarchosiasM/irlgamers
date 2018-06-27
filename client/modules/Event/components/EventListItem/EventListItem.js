@@ -24,17 +24,19 @@ function EventListItem(props) {
   );
 }
 
-// EventListItem.propTypes = {
-//   event: PropTypes.shape({
-//     eventName: PropTypes.string.isRequired,
-//     game: PropTypes.string.isRequired,
-//     scheduledDate: PropTypes.string.isRequired,
-//     scheduledTime: PropTypes.string.isRequired,
-//     notes: PropTypes.string.isRequired,
-//     slug: PropTypes.string.isRequired,
-//     cuid: PropTypes.string.isRequired,
-//   }).isRequired,
-//   onDelete: PropTypes.func.isRequired, // Not In Use - Rob, will delete after testing.
-// };
+EventListItem.propTypes = {
+  event: PropTypes.shape({
+    eventName: PropTypes.string.isRequired,
+    game: PropTypes.string.isRequired,
+    scheduledDate: PropTypes.string.isRequired,
+    scheduledTime: PropTypes.string.isRequired,
+    notes: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    cuid: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    slots: PropTypes.string.isRequired,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired, // Not In Use - Rob, will delete after testing.
+};
 
 export default EventListItem;
