@@ -18,7 +18,7 @@ const userSchema = new Schema({
   lastName: { type: 'String', required: true },
   fullName: { type: 'String', required: true },
   email: { type: 'String', required: true },
-  preferences: [{ type: 'String', required: true }],
+  preferences: [String],
   eventsSignedUp: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
   slug: { type: 'String', required: true },
   cuid: { type: 'String', required: true },

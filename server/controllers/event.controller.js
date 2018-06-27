@@ -19,13 +19,13 @@ export function getEvents(req, res) {
 }
 
 /**
- * Get a single Events
+ * Get a single Event
  * @param req
  * @param res
  * @returns void
  */
 export function getUserEvents(req, res) {
-  Event.find({ owner: req.params.cuid }).sort('-schduledDate').exec((err, event) => {
+  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec((err, event) => {
     if (err) {
       res.status(500).send(err);
     }

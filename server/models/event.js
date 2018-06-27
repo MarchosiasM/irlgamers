@@ -18,7 +18,7 @@ const eventSchema = new Schema({
   slug: { type: 'String', required: true },
   cuid: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },
-  owner: { type: 'String', required: true },
+  owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   attendees: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 });
 
