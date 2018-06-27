@@ -30,9 +30,9 @@ export default {
     	  =1 {has # comment}
     	  other {has # comments}
       } as of {date}`,
-    game: 'Game Type', 
-    eventName: 'Event Name', 
-    selectDate: 'Select Date', 
+    game: 'Game Type',
+    eventName: 'Event Name',
+    selectDate: 'Select Date',
     slots: 'Number of Slots',
     notes: 'Additional Notes',
   },

@@ -7,9 +7,7 @@ import SearchBar from './SearchBar/';
 import styles from './Header.css';
 
 export function Header(props, context) {
-  const languageNodes = props.intl.enabledLanguages.map(
-    lang => <li key={lang} onClick={() => props.switchLanguage(lang)} className={lang === props.intl.locale ? styles.selected : ''}>{lang}</li>
-  );
+  const languageNodes = props.intl.enabledLanguages.map(lang => <li key={lang} onClick={() => props.switchLanguage(lang)} className={lang === props.intl.locale ? styles.selected : ''}>{lang}</li>);
 
   return (
     <div className={styles.header}>
@@ -27,8 +25,8 @@ export function Header(props, context) {
           context.router.isActive('/', true)
             ?
             <div>
-            <a className={styles['add-post-button']} href="#" onClick={props.toggleAddPost}><FormattedMessage id="addPost" /></a>
-            <Link to="/games/" className={styles['add-post-button']}>Go To Events Page</Link>
+              <a className={styles['add-post-button']} href="#" onClick={props.toggleAddPost}><FormattedMessage id="addPost" /></a>
+              <Link to="/games/" className={styles['add-post-button']}>Go To Events Page</Link>
             </div>
             : null
         }

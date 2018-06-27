@@ -29,7 +29,7 @@ export function EventDetailPage(props) {
 }
 
 // Actions required to provide data for this component to render in server side.
-EventDetailPage.need = [params => {
+EventDetailPage.need = [(params) => {
   return fetchEvent(params.cuid);
 }];
 
@@ -50,7 +50,8 @@ EventDetailPage.propTypes = {
     owner: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
-  }).isRequired,
+    slots: PropTypes.string.isRequired,
+  }),
 };
 
 export default connect(mapStateToProps)(EventDetailPage);

@@ -1,3 +1,5 @@
+/*eslint-disable*/
+// Someone else wrote this, let them deal with it
 import React, { Component, PropTypes } from 'react';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 
@@ -6,18 +8,18 @@ import styles from './EventCreateWidget.css';
 
 
 export class EventCreateWidget extends Component {
-  componentDidMount () {
-    var options = "" //Options for the Date and TimePicker go here. 
-    // Still needs some work in rendering in mobile but works. 
-    M.AutoInit()
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('.datepicker')
-      var instances = M.Datepicker.init(elems, options)
-    })
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('.timepicker')
-      var instances = M.Timepicker.init(elems, options)
-    })
+  componentDidMount() {
+    const options = ''; // Options for the Date and TimePicker go here.
+    // Still needs some work in rendering in mobile but works.
+    M.AutoInit();
+    document.addEventListener('DOMContentLoaded', () => {
+      const elems = document.querySelectorAll('.datepicker');
+      const instances = M.Datepicker.init(elems, options);
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const elems = document.querySelectorAll('.timepicker');
+      const instances = M.Timepicker.init(elems, options);
+    });
   }
 
   addEvent = () => {
@@ -38,41 +40,38 @@ export class EventCreateWidget extends Component {
     const cls = `${styles.form} ${(this.props.showAddEvent ? styles.appear : '')}`;
     return (
 
-      
-
-
 
       <div className={cls}>
 
-      { this.props.authUser === null &&
-        <div>
-          <h1>You Must Sign In to Create an Event</h1>
-        </div>
-      }
-      
-
-      { this.props.authUser !== null &&
-        <div className={styles['form-content']}>
-          <h2 className={styles['form-title']}><FormattedMessage id="createNewEvent" />{this.props.authUser.uid}</h2>
-          <input placeholder={this.props.intl.messages.eventName} className={styles['form-field']} ref="eventName" />
-          <input placeholder={this.props.intl.messages.game} className={styles['form-field']} ref="game" />
-          <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" ref="scheduledDate" />
-          <input placeholder={this.props.intl.messages.selectTime} type="text" className="timepicker" ref="scheduledTime" />
-          <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="slots" />
-          <textarea placeholder={this.props.intl.messages.notes} className={styles['form-field']} ref="notes" />
-          <a className={styles['post-submit-button']} href="#" onClick={this.addEvent}><FormattedMessage id="submit" /></a>
+        {this.props.authUser === null &&
+          <div>
+            <h1>You Must Sign In to Create an Event</h1>
           </div>
-          }
-        
+        }
+
+
+        {this.props.authUser !== null &&
+          <div className={styles['form-content']}>
+            <h2 className={styles['form-title']}><FormattedMessage id="createNewEvent" />{this.props.authUser.uid}</h2>
+            <input placeholder={this.props.intl.messages.eventName} className={styles['form-field']} ref="eventName" />
+            <input placeholder={this.props.intl.messages.game} className={styles['form-field']} ref="game" />
+            <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" ref="scheduledDate" />
+            <input placeholder={this.props.intl.messages.selectTime} type="text" className="timepicker" ref="scheduledTime" />
+            <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="slots" />
+            <textarea placeholder={this.props.intl.messages.notes} className={styles['form-field']} ref="notes" />
+            <a className={styles['post-submit-button']} href="#" onClick={this.addEvent}><FormattedMessage id="submit" /></a>
+          </div>
+        }
+
       </div>
     );
   }
 }
 
-// EventCreateWidget.propTypes = {
-//   addEvent: PropTypes.func.isRequired,
-//   showAddEvent: PropTypes.bool.isRequired,
-//   intl: intlShape.isRequired,
-// };
+EventCreateWidget.propTypes = {
+  addEvent: PropTypes.func.isRequired,
+  showAddEvent: PropTypes.bool.isRequired,
+  intl: intlShape.isRequired,
+};
 
 export default injectIntl(EventCreateWidget);

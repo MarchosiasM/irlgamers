@@ -8,7 +8,7 @@ import app from './modules/App/AppReducer';
 import posts from './modules/Post/PostReducer';
 import intl from './modules/Intl/IntlReducer';
 import events from './modules/Event/EventReducer';
-import authUser from './modules/Auth/AuthReducer'
+import authUser from './modules/Auth/AuthReducer';
 
 // Combine all reducers into one root reducer
 export default combineReducers({

@@ -5,17 +5,17 @@ const initialState = { data: [] };
 
 const EventReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_EVENT :
+    case ADD_EVENT:
       return {
         data: [action.event, ...state.data],
       };
 
-    case ADD_EVENTS :
+    case ADD_EVENTS:
       return {
         data: action.events,
       };
 
-    case DELETE_EVENT :
+    case DELETE_EVENT:
       return {
         data: state.data.filter(event => event.cuid !== action.cuid),
       };

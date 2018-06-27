@@ -17,10 +17,8 @@ const props = {
   intl: intlProp,
 };
 
-test('renders properly', t => {
-  const wrapper = shallow(
-    <App {...props} />
-  );
+test('renders properly', (t) => {
+  const wrapper = shallow(<App {...props} />);
 
   // t.is(wrapper.find('Helmet').length, 1);
   t.is(wrapper.find('Header').length, 1);
@@ -30,7 +28,7 @@ test('renders properly', t => {
   t.truthy(wrapper.find('Header + div').children(), children);
 });
 
-test('calls componentDidMount', t => {
+test('calls componentDidMount', (t) => {
   sinon.spy(App.prototype, 'componentDidMount');
   mount(
     <App {...props} />,
@@ -59,10 +57,8 @@ test('calls componentDidMount', t => {
   App.prototype.componentDidMount.restore();
 });
 
-test('calling toggleAddPostSection dispatches toggleAddPost', t => {
-  const wrapper = shallow(
-    <App {...props} />
-  );
+test('calling toggleAddPostSection dispatches toggleAddPost', (t) => {
+  const wrapper = shallow(<App {...props} />);
 
   wrapper.instance().toggleAddPostSection();
   t.truthy(dispatch.calledOnce);
