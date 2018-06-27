@@ -1,23 +1,23 @@
 import firebase from 'firebase/app'
 
 // Export Constants
-export const FETCH_USER = 'FETCH_USER';
+export const FETCH_AUTH_USER = 'FETCH_AUTH_USER';
 
 // Export Actions
 
-export function fetchUser(user) {
+export function fetchAuthUser(authUser) {
     return {
-        type: FETCH_USER, 
-        user,
+        type: FETCH_AUTH_USER, 
+        authUser,
     }
 }
-export function fetchUserRequest() {
+export function fetchAuthUserRequest() {
     return (dispatch) => {
-        return firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                dispatch(fetchUser(user))
+        return firebase.auth().onAuthStateChanged(authUser => {
+            if (authUser) {
+                dispatch(fetchAuthUser(authUser))
             } else {
-                dispatch(fetchUser(null))
+                dispatch(fetchAuthUser(null))
             }
         })
     }

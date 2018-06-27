@@ -12,6 +12,10 @@ import Footer from './components/Footer/Footer';
 // Import Actions
 import { toggleAddPost, toggleAddEvent } from './AppActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
+import { fetchAuthUserRequest } from '../../modules/Auth/AuthActions'
+
+// Import Selectors
+import { getAuthUser } from '../../modules/Auth/AuthReducer'
 
 let DevTools;
 if (process.env.NODE_ENV === 'development') {
@@ -24,9 +28,13 @@ export class App extends Component {
     super(props);
     this.state = { isMounted: false };
   }
+  componentWillMount() {
+    this.props.dispatch(fetchAuthUserRequest());
+  }
 
   componentDidMount() {
     this.setState({isMounted: true}); // eslint-disable-line
+    
   }
 
   toggleAddPostSection = () => {
@@ -83,6 +91,7 @@ App.propTypes = {
 function mapStateToProps(store) {
   return {
     intl: store.intl,
+    authUser: store.authUser
   };
 }
 

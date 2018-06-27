@@ -1,13 +1,13 @@
-import { FETCH_USER } from './AuthActions';
+import { FETCH_AUTH_USER } from './AuthActions';
 
 // Initial State 
-const initialsState = { data: {}}
+const initialsState = { data: []}
 
 const AuthReducer = (state = initialsState, action) => {
     switch (action.type) {
-        case FETCH_USER :
+        case FETCH_AUTH_USER :
             return {
-                data: action.user, ...state.data || null
+                data: [action.authUser, ...state.data || null]
             };
         default:
         return state;
@@ -16,7 +16,7 @@ const AuthReducer = (state = initialsState, action) => {
 
 /* Selectors */
 
-// Fetch User 
-export const getUser = state => state.user.data;
+// Fetch Auth User 
+export const getAuthUser = state => state.authUser.data[0];
 
 export default AuthReducer;

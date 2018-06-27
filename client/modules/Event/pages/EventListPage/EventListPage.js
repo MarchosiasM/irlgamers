@@ -13,17 +13,17 @@ import EventCreateWidget from '../../components/EventCreateWidget/EventCreateWid
 // Import Actions
 import { addEventRequest, fetchEvents, deleteEventRequest } from '../../EventActions';
 import { toggleAddEvent } from '../../../App/AppActions';
-import { fetchUser, fetchUserRequest } from '../../../Auth/AuthActions';
+import { fetchAuthUser, fetchAuthUserRequest } from '../../../Auth/AuthActions';
 
 // Import Selectors
 import { getShowAddEvent } from '../../../App/AppReducer';
 import { getEvents } from '../../EventReducer';
-import { getUser } from '../../../Auth/AuthReducer'
+import { getAuthUser } from '../../../Auth/AuthReducer'
 
 class EventListPage extends Component {
+
   componentDidMount() {
     this.props.dispatch(fetchEvents());
-    this.props.dispatch(fetchUserRequest());
   }
 
   handleDeleteEvent = event => {
@@ -41,10 +41,22 @@ class EventListPage extends Component {
     return (
       <div>
         
+      { this.props.authUser !== null &&
+      
         
         
-        <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} user={this.props.user} />
+        <div>
+        <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
         <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
+        </div>
+      }
+
+      { this.props.authUser === null &&
+        <div>
+          <h1>You Must Sign In to Create an Event</h1>
+          <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
+        </div>
+      }
       </div>
     );
   }
@@ -58,7 +70,7 @@ function mapStateToProps(state) {
   return {
     showAddEvent: getShowAddEvent(state),
     events: getEvents(state),
-    user: getUser(state),
+    authUser: getAuthUser(state),
   };
 }
 
@@ -68,7 +80,7 @@ EventListPage.propTypes = {
     game: PropTypes.string.isRequired,
     scheduledDate: PropTypes.string.isRequired,
     scheduledTime: PropTypes.string.isRequired,
-    slots: PropTypes.string.isRequired,
+    slots: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,
   })).isRequired,
   showAddEvent: PropTypes.bool.isRequired,
