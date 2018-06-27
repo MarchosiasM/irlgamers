@@ -68,6 +68,7 @@ export default function () {
         console.log('User dummy data seeded....');
       }
     });
+  });
 
   // Event Dummy Data
 
