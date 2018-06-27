@@ -18,5 +18,4 @@ router.route('/signup/:user/:event').post(UserController.signUp);
 router.route('/users/:cuid').delete(UserController.deleteUser);
 
 
-
 export default router;
