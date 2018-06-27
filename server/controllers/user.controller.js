@@ -25,7 +25,7 @@ export function getUsers(req, res) {
  * @returns void
  */
 export function addUser(req, res) {
-  if (!req.body.user.firstName || !req.body.user.lastName || !req.body.user.email  || !req.body.user.preferences) {
+  if (!req.body.user.firstName || !req.body.user.lastName || !req.body.user.email || !req.body.user.preferences) {
     res.status(403).end();
   }
 
@@ -34,10 +34,10 @@ export function addUser(req, res) {
   // Let's sanitize inputs
   newUser.firstName = sanitizeHtml(newUser.firstName);
   newUser.lastName = sanitizeHtml(newUser.firstName);
-  newUser.fullName = sanitizeHtml(newUser.firstName) + ' ' + sanitizeHtml(newUser.lastName);
+  newUser.fullName = `${sanitizeHtml(newUser.firstName)} ${sanitizeHtml(newUser.lastName)}`;
   newUser.email = sanitizeHtml(newUser.email);
   newUser.preferences = sanitizeHtml(newUser.preferences);
-  newUser.slug = slug(sanitizeHtml(newUser.firstName) + ' ' + sanitizeHtml(newUser.lastName), { lowercase: true });
+  newUser.slug = slug(`${sanitizeHtml(newUser.firstName)} ${sanitizeHtml(newUser.lastName)}`, { lowercase: true });
   newUser.cuid = cuid();
   newUser.save((err, saved) => {
     if (err) {
@@ -54,12 +54,12 @@ export function addUser(req, res) {
  * @returns void
  */
 export function signUp(req, res) {
-    User.findOneAndUpdate({ cuid: req.params.user }, { $push: { eventsSignedUp: req.params.event }}, { new: true })
+  User.findOneAndUpdate({ cuid: req.params.user }, { $push: { eventsSignedUp: req.params.event } }, { new: true })
     .exec((err, user) => {
-        if (err) {
-            rest.status(500).send(err);
-        }
-        res.json({ user});
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ user });
     });
 }
 

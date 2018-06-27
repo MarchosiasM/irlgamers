@@ -2,7 +2,7 @@ import { Router } from 'express';
 import * as EventController from '../controllers/event.controller';
 const router = new Router();
 
-// Get all Events 
+// Get all Events
 router.route('/events').get(EventController.getEvents);
 
 // Get all Events for this user only
