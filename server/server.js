@@ -5,6 +5,23 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 
+// React And Redux Setup
+import { configureStore } from '../client/store';
+import { Provider } from 'react-redux';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+import Helmet from 'react-helmet';
+
+// Import required modules
+import routes from '../client/routes';
+import { fetchComponentData } from './util/fetchData';
+import posts from './routes/post.routes';
+import events from './routes/event.routes';
+import users from './routes/user.routes';
+import dummyData from './dummyData';
+import serverConfig from './config';
+
 // Initialize the Express App
 const app = new Express();
 
@@ -33,23 +50,6 @@ if (isDevMode) {
   }));
   app.use(webpackHotMiddleware(compiler));
 }
-
-// React And Redux Setup
-import { configureStore } from '../client/store';
-import { Provider } from 'react-redux';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
-import Helmet from 'react-helmet';
-
-// Import required modules
-import routes from '../client/routes';
-import { fetchComponentData } from './util/fetchData';
-import posts from './routes/post.routes';
-import events from './routes/event.routes';
-import users from './routes/user.routes';
-import dummyData from './dummyData';
-import serverConfig from './config';
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -103,7 +103,7 @@ const renderFullPage = (html, initialState) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           ${isProdMode ?
-          `//<![CDATA[
+    `//<![CDATA[
           window.webpackManifest = ${JSON.stringify(chunkManifest)};
           //]]>` : ''}
         </script>
@@ -114,7 +114,7 @@ const renderFullPage = (html, initialState) => {
   `;
 };
 
-const renderError = err => {
+const renderError = (err) => {
   const softTab = '&#32;&#32;&#32;&#32;';
   const errTrace = isProdMode ?
     `:<br><br><pre style="color:red">${softTab}${err.stack.replace(/\n/g, `<br>${softTab}`)}</pre>` : '';
@@ -140,13 +140,11 @@ app.use((req, res, next) => {
 
     return fetchComponentData(store, renderProps.components, renderProps.params)
       .then(() => {
-        const initialView = renderToString(
-          <Provider store={store}>
-            <IntlWrapper>
-              <RouterContext {...renderProps} />
-            </IntlWrapper>
-          </Provider>
-        );
+        const initialView = renderToString(<Provider store={store}>
+          <IntlWrapper>
+            <RouterContext {...renderProps} />
+          </IntlWrapper>
+                                           </Provider>);
         const finalState = store.getState();
 
         res
@@ -154,7 +152,7 @@ app.use((req, res, next) => {
           .status(200)
           .end(renderFullPage(initialView, finalState));
       })
-      .catch((error) => next(error));
+      .catch(error => next(error));
   });
 });
 

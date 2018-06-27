@@ -28,7 +28,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/Event/pages/EventListPage/EventListPage').default);
         });
       }}
@@ -36,7 +36,7 @@ export default (
     <Route
       path="/games/:slug-:cuid"
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/Event/pages/EventDetailPage/EventDetailPage').default);
         });
       }}
@@ -44,7 +44,7 @@ export default (
     <Route
       path="/posts/"
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
         });
       }}
@@ -52,7 +52,7 @@ export default (
     <Route
       path="/posts/:slug-:cuid"
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
         });
       }}

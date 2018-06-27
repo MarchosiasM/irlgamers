@@ -6,16 +6,16 @@ import styles from './App.css';
 
 // Import Components
 import Helmet from 'react-helmet';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Header from './components/Header/';
+import Footer from './components/Footer/';
 
 // Import Actions
 import { toggleAddPost, toggleAddEvent } from './AppActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
-import { fetchAuthUserRequest } from '../../modules/Auth/AuthActions'
+import { fetchAuthUserRequest } from '../../modules/Auth/AuthActions';
 
 // Import Selectors
-import { getAuthUser } from '../../modules/Auth/AuthReducer'
+// import { getAuthUser } from '../../modules/Auth/AuthReducer';
 
 let DevTools;
 if (process.env.NODE_ENV === 'development') {
@@ -34,7 +34,6 @@ export class App extends Component {
 
   componentDidMount() {
     this.setState({isMounted: true}); // eslint-disable-line
-    
   }
 
   toggleAddPostSection = () => {
@@ -91,7 +90,7 @@ App.propTypes = {
 function mapStateToProps(store) {
   return {
     intl: store.intl,
-    authUser: store.authUser
+    authUser: store.authUser,
   };
 }
 
