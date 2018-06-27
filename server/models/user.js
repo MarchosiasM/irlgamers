@@ -13,14 +13,14 @@ const Schema = mongoose.Schema;
 // }
 
 const userSchema = new Schema({
-    firstName: { type: 'String', required: true },
-    lastName: { type: 'String', required: true },
-    fullName: { type: 'String', required: true },
+    displayName: { type: 'String', required: true },
+    lastName: { type: 'String', required: false },
+    fullName: { type: 'String', required: false },
     email: { type: 'String', required: true },
-    preferences: { type: 'String', required: true },
+    preferences: { type: 'String', required: false },
     eventsSignedUp: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
     slug: { type: 'String', required: true },
-    cuid: { type: 'String', required: true },
+    cuid: { type: 'String', unique : true, required: true },
     dateAdded: { type: 'Date', default: Date.now, required: true },
 });
 

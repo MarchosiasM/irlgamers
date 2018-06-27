@@ -14,6 +14,7 @@ export function fetchAuthUser(authUser) {
 export function fetchAuthUserRequest() {
     return (dispatch) => {
         return firebase.auth().onAuthStateChanged(authUser => {
+            console.log('authUser: ', authUser);
             if (authUser) {
                 dispatch(fetchAuthUser(authUser))
             } else {

@@ -15,7 +15,7 @@ export function addEvent(event) {
 
 export function addEventRequest(event) {
   return (dispatch) => {
-    return callApi('events', 'event', {
+    return callApi('events', 'post', {
       event: {
         eventName: event.eventName,
         game: event.game,

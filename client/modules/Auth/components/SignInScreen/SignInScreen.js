@@ -52,12 +52,17 @@ export class SignInScreen extends Component {
 
     // Listen to the Firebase Auth state and set the local state.
     componentDidMount() {
+        // ui.start('#firebaseui-auth-container', uiConfig);
         this.props.dispatch(fetchAuthUserRequest());
     }
 
     // Make sure we un-register Firebase observers when the component unmounts.
     componentWillUnmount() {
 
+    }
+
+    componentDidUpdate() {
+        this.props.dispatch(fetchAuthUserRequest());
     }
 
     render() {

@@ -25,25 +25,40 @@ export function getUsers(req, res) {
  * @returns void
  */
 export function addUser(req, res) {
-  if (!req.body.user.firstName || !req.body.user.lastName || !req.body.user.email  || !req.body.user.preferences) {
+  if (!req.body.user.displayName || !req.body.user.cuid || !req.body.user.email) {
     res.status(403).end();
   }
 
   const newUser = new User(req.body.user);
 
   // Let's sanitize inputs
-  newUser.firstName = sanitizeHtml(newUser.firstName);
-  newUser.lastName = sanitizeHtml(newUser.firstName);
-  newUser.fullName = sanitizeHtml(newUser.firstName) + ' ' + sanitizeHtml(newUser.lastName);
+  newUser.displayName = sanitizeHtml(newUser.displayName);
   newUser.email = sanitizeHtml(newUser.email);
   newUser.preferences = sanitizeHtml(newUser.preferences);
-  newUser.slug = slug(sanitizeHtml(newUser.firstName) + ' ' + sanitizeHtml(newUser.lastName), { lowercase: true });
-  newUser.cuid = cuid();
+  newUser.slug = slug(sanitizeHtml(newUser.displayName), { lowercase: true });
+  newUser.cuid = sanitizeHtml(newUser.cuid);
   newUser.save((err, saved) => {
     if (err) {
-      res.status(500).send(err);
+      console.log(err)
+      switch(err.code){
+        case 11000:
+          let mongodb_err = {'error':'user already exists'}
+          res.json({ mongodb_err });
+          break;
+        default: 
+          res.status(500).send(err);
+          break;
+      }
+      
+    }else{
+      res.json({ user: saved });
     }
-    res.json({ user: saved });
+
+    if(saved === undefined){
+      saved = {'error': 'user already exists'};
+    }
+    
+    
   });
 }
 
@@ -57,7 +72,7 @@ export function signUp(req, res) {
     User.findOneAndUpdate({ cuid: req.params.user }, { $push: { eventsSignedUp: req.params.event }}, { new: true })
     .exec((err, user) => {
         if (err) {
-            rest.status(500).send(err);
+            res.status(500).send(err);
         }
         res.json({ user});
     });
