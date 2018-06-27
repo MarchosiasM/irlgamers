@@ -21,10 +21,10 @@ var config = {
 const firebaseApp = firebase.initializeApp(config);
 
 // Import Actions
-import { signIn, signOut, fetchUser, fetchUserRequest } from '../../AuthActions'
+import { signIn, signOut, fetchAuthUser, fetchAuthUserRequest } from '../../AuthActions'
 
 //Import Selectors
-import { getUser } from '../../AuthReducer';
+import { getAuthUser } from '../../AuthReducer';
 
 
 
@@ -52,7 +52,7 @@ export class SignInScreen extends Component {
 
     // Listen to the Firebase Auth state and set the local state.
     componentDidMount() {
-        this.props.dispatch(fetchUserRequest());
+        this.props.dispatch(fetchAuthUserRequest());
     }
 
     // Make sure we un-register Firebase observers when the component unmounts.
@@ -70,10 +70,10 @@ export class SignInScreen extends Component {
                 
                 </div>
 
-                {this.props.user ?
+                {this.props.authUser ?
                     <div>        
                         <div className={styles.signedIn}>
-                        Hello {this.props.user.displayName}. You are now signed In!
+                        Hello {this.props.authUser.displayName}. You are now signed In!
                         </div>
                     <a className={styles.button} onClick={() => firebaseApp.auth().signOut()}>Sign-out</a>
                         </div>
@@ -92,9 +92,9 @@ export class SignInScreen extends Component {
 
 function mapStateToProps(state) {
     return {
-        signIn: signIn(state),
-        signOut: signOut(state),
-        user: getUser(state)
+        // signIn: signIn(state),
+        // signOut: signOut(state),
+        authUser: getAuthUser(state)
     };
 }
 
