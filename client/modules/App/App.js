@@ -13,7 +13,7 @@ import SignInScreen from '../Auth/components/SignInScreen/SignInScreen';
 // Import Actions
 import { toggleAddPost, toggleAddEvent } from './AppActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
-import { fetchAuthUserRequest } from '../../modules/Auth/AuthActions'
+import { fetchAuthUserRequest, getUserStatus } from '../../modules/Auth/AuthActions'
 
 // Import Selectors
 import { getAuthUser } from '../../modules/Auth/AuthReducer'
@@ -29,13 +29,11 @@ export class App extends Component {
     super(props);
     this.state = { isMounted: false };
   }
-  componentWillMount() {
-    this.props.dispatch(fetchAuthUserRequest());
-  }
 
-  componentDidMount() {
+ componentDidMount() {
+    let mntDispatcher = this.props.dispatch;
+    mntDispatcher(getUserStatus);
     this.setState({isMounted: true}); // eslint-disable-line
-    
   }
 
   toggleAddPostSection = () => {

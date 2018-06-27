@@ -13,7 +13,7 @@ export function fetchAuthUser(authUser) {
 }
 export function fetchAuthUserRequest() {
     return (dispatch) => {
-        return firebase.auth().onAuthStateChanged(authUser => {
+        return firebase.auth().onAuthStateChanged( authUser => {
             console.log('authUser: ', authUser);
             if (authUser) {
                 dispatch(fetchAuthUser(authUser))
@@ -23,6 +23,21 @@ export function fetchAuthUserRequest() {
         })
     }
 }
+
+export function getUserStatus(dispatch) {
+    dispatch(FETCH_AUTH_USER);
+    return new Promise(function (resolve, reject) {
+      firebaseApp.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          dispatch(fetchAuthUser(authUser));
+          resolve(user.uid);
+        } else {
+          dispatch(fetchAuthUser(null));
+          reject(Error('It broke'));
+        }
+      });
+    });
+  };
 
 export const signIn = () => dispatch => {
     firebase.auth()
