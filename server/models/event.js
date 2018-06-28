@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
   eventName: { type: 'String', required: true },
-  streetAddress: {type: 'String', required: true },
+  address: {type: 'String', required: true },
   city: {type: 'String', required: true },
   state: {type: 'String', required: true },
-  zip: {type: 'Number', required: true },
+  zipcode: {type: 'Number', required: true },
   game: { type: 'String', required: true },
   gameType: { type: 'String', required: true },
   scheduledDate: { type: 'Date', required: true },
@@ -18,8 +18,8 @@ const eventSchema = new Schema({
   slug: { type: 'String', required: true },
   cuid: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },
-  owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  attendees: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  // owner: { type: Schema.Types.ObjectId, ref: 'User', required: true }, // commenting out until relationships can be established
+  // attendees: [{ type: Schema.Types.ObjectId, ref: 'User' }], // commenting out until relationships can be established
 });
 
 export default mongoose.model('Event', eventSchema);

@@ -1,18 +1,20 @@
 import User from './models/user';
 
-export default function () {
-  User.count().exec((err, count) => {
-    if (count > 0) {
-      return;
-    }
+export default function() {
+    console.log("USER SEED FILE TRIGGERED!");
+    User.count().exec((err, count) => {
+        if (count > 0) {
+            console.log("RETURNING OUT OF USER SEED");
+            return;
+        }
 
-    const user1 = new User({
+        const user1 = new User({
             firstName: 'Janet',
             lastName: 'Hwu',
             fullName: 'Janet Hwu',
             email: 'janet@hwu.com',
             preferences: ['board games', 'card games', 'paper and pencil games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'janet-hwu',
             cuid: 'janetisthebestestyay3333'
         });
@@ -22,7 +24,7 @@ export default function () {
             fullName: 'Roberto Perez',
             email: 'roberto@perez.com',
             preferences: ['role-playing games', 'strategy games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'roberto-perez',
             cuid: 'robertrulesamazingyus5555'
         });
@@ -32,7 +34,7 @@ export default function () {
             fullName: 'Kyle Magee',
             email: 'kyle@magee.com',
             preferences: ['role-playing games', 'card games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'kyle-magee',
             cuid: 'kylemaniacmagee3333'
         });
@@ -42,7 +44,7 @@ export default function () {
             fullName: 'Michael Malach',
             email: 'michael@malach.com',
             preferences: ['role-playing games', 'paper and pencil games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'michael-malach',
             cuid: 'michaelismagical1111'
         });
@@ -52,7 +54,7 @@ export default function () {
             fullName: 'Jimbob Jones',
             email: 'jimbob@jones.com',
             preferences: ['role-playing games', 'title-based games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'jimbob-jones',
             cuid: 'jimbobjumpsforjoy3333'
         });
@@ -62,7 +64,7 @@ export default function () {
             fullName: 'Mary Hatta',
             email: 'marry@hatta.com',
             preferences: ['board games', 'dice games', 'card games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'mary-hatta',
             cuid: 'maryhattalittlelamblol7777'
         });
@@ -72,7 +74,7 @@ export default function () {
             fullName: 'William Shakespeare',
             email: 'william@shakespeare.com',
             preferences: ['role-playing games', 'adventure games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'will-shakes',
             cuid: 'willshakeitlikeyoumeanit5678'
         });
@@ -82,7 +84,7 @@ export default function () {
             fullName: 'June Sevin',
             email: 'june@sevin.com',
             preferences: ['adventure games', 'title-based games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'june-sevin',
             cuid: 'junesevinisnotmybday3333'
         });
@@ -92,7 +94,7 @@ export default function () {
             fullName: 'Georgie Porgie',
             email: 'georgie@porgie.com',
             preferences: ['role-playing games', 'dice games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'georgie-porgie',
             cuid: 'puddingandpieyumz2222'
         });
@@ -102,16 +104,17 @@ export default function () {
             fullName: 'Satan Santa',
             email: 'satan@santa.com',
             preferences: ['dice games', 'card games'],
-            eventsSignedUp: [''],
+            // eventsSignedUp: [1, 2, 3],
             slug: 'satan-santa',
             cuid: 'soundsmorelikeabandname3333'
         });
 
         User.create([user1, user2, user3, user4, user5, user6, user7, user8, user9, user10], (error) => {
+            console.log("STARTING SEEDING, BUT ERROR: ", error);
             if (!error) {
-                console.log('User dummy data seeded....');
+                console.log('USER DUMMY DATA SEEDED!');
             }
         });
 
-  });
+    });
 }

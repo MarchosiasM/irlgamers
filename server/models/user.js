@@ -19,7 +19,7 @@ const userSchema = new Schema({
   fullName: { type: 'String', required: true },
   email: { type: 'String', required: true },
   preferences: [String],
-  eventsSignedUp: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+  // eventsSignedUp: [{ type: Schema.Types.ObjectId, ref: 'Event' }], // commenting out until relationship can be made
   slug: { type: 'String', required: true },
   cuid: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },
