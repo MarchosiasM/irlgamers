@@ -1,7 +1,6 @@
 import Post from './models/post';
 
 export default function () {
-  // Post Sample Dummy Data - came with the mern starter
   Post.count().exec((err, count) => {
     if (count > 0) {
       return;
@@ -44,54 +43,8 @@ export default function () {
 
     Post.create([post1, post2], (error) => {
       if (!error) {
-        console.log('Post dummy data seeded....');
+        // console.log('ready to go....');
       }
     });
   });
-
-  // User Dummy Data
-
-  User.count().exec((err, count) => {
-    if (count > 0) {
-      return;
-    }
-
-    const user1 = new User({
-      firstName: 'Janet', lastName: 'Hwu', fullName: 'Janet Hwu', email: 'janet@hwu.com', preferences: ['board games', 'card games', 'paper and pencil games'], eventsSignedUp: [''], slug: 'janet-hwu', cuid: 'janetisthebestestyay3333'
-    });
-    const event2 = new User({
-      firstName: 'Roberto', lastName: 'Perez', fullName: 'Roberto Perez', email: 'roberto@perez.com', preferences: ['role-playing games', 'strategy games'], eventsSignedUp: [''], slug: 'roberto-perez', cuid: 'robertrulesamazingyus5555'
-    });
-
-    Event.create([event1, event2], (error) => {
-      if (!error) {
-        console.log('User dummy data seeded....');
-      }
-    });
-  });
-
-  // Event Dummy Data
-
-  // Event.count().exec((err, count) => {
-  //   if (count > 0) {
-  //     return;
-  //   }
-
-  //   const event1 = new Event({
-  //     eventName: '', streetAddress: '', city: '', state: '', zip: '', game: '', gameType: '', scheduledData:'', scheduledTime: '', slots: , notes: '', slug: 'hello-mern', cuid: 'cikqgkv4q01ck7453ualdn3hd', owner: '', attendees: []
-  //   });
-  //   const event2 = new Event({
-  //     name: 'Admin', title: 'Lorem Ipsum', slug: 'lorem-ipsum', cuid: 'cikqgkv4q01ck7453ualdn3hf', content: content2,
-  //   });
-
-  //   Event.create([event1, event2], (error) => {
-  //     if (!error) {
-  //       console.log('Event dummy data seeded....');
-  //     }
-  //   });
-
-  // });
-
-
-
 }
