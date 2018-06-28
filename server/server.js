@@ -20,7 +20,7 @@ import posts from './routes/post.routes';
 import events from './routes/event.routes';
 import users from './routes/user.routes';
 import dummyData from './dummyData';
-// import dummyEvents from './dummyEvents';
+import dummyEvents from './dummyEvents';
 import dummyUsers from './dummyUsers';
 import serverConfig from './config';
 
@@ -66,7 +66,7 @@ if (process.env.NODE_ENV !== 'test') {
 
     // feed some dummy data in DB.
     dummyData();
-    // dummyEvents();
+    dummyEvents();
     dummyUsers();
   });
 }

@@ -3,6 +3,7 @@ import Post from './models/post';
 export default function () {
   Post.count().exec((err, count) => {
     if (count > 0) {
+      console.log('NO NEED TO SEED SAMPLE POST DATA....');
       return;
     }
 
@@ -43,7 +44,7 @@ export default function () {
 
     Post.create([post1, post2], (error) => {
       if (!error) {
-        console.log('seeding post sample data....');
+        console.log('EVENT DUMMY DATA SEEDED!');
       }
     });
   });

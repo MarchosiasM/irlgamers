@@ -7,7 +7,7 @@ const eventSchema = new Schema({
   address: {type: 'String', required: true },
   city: {type: 'String', required: true },
   state: {type: 'String', required: true },
-  zipcode: {type: 'Number', required: true },
+  zipcode: {type: 'String', required: true },
   game: { type: 'String', required: true },
   gameType: { type: 'String', required: true },
   scheduledDate: { type: 'Date', required: true },

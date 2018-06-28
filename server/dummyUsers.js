@@ -4,7 +4,7 @@ export default function() {
     console.log("USER SEED FILE TRIGGERED!");
     User.count().exec((err, count) => {
         if (count > 0) {
-            console.log("RETURNING OUT OF USER SEED");
+            console.log("NO NEED TO SEED SAMPLE USER DATA....");
             return;
         }
 
@@ -53,7 +53,7 @@ export default function() {
             lastName: 'Jones',
             fullName: 'Jimbob Jones',
             email: 'jimbob@jones.com',
-            preferences: ['role-playing games', 'title-based games'],
+            preferences: ['role-playing games', 'tile-based games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'jimbob-jones',
             cuid: 'jimbobjumpsforjoy3333'
@@ -83,7 +83,7 @@ export default function() {
             lastName: 'Sevin',
             fullName: 'June Sevin',
             email: 'june@sevin.com',
-            preferences: ['adventure games', 'title-based games'],
+            preferences: ['adventure games', 'tile-based games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'june-sevin',
             cuid: 'junesevinisnotmybday3333'
@@ -110,7 +110,7 @@ export default function() {
         });
 
         User.create([user1, user2, user3, user4, user5, user6, user7, user8, user9, user10], (error) => {
-            console.log("STARTING SEEDING, BUT ERROR: ", error);
+            console.log("STARTING SEEDING USERS, BUT ERROR: ", error);
             if (!error) {
                 console.log('USER DUMMY DATA SEEDED!');
             }
