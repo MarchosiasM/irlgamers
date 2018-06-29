@@ -2,6 +2,7 @@
 // Someone else wrote this, let them deal with it
 import React, { Component, PropTypes } from 'react';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import _ from 'lodash';
 
 // Import Style
 import styles from './EventCreateWidget.css';
@@ -50,7 +51,7 @@ export class EventCreateWidget extends Component {
         }
 
 
-        {this.props.authUser !== null &&
+        {_.isObject(this.props.authUser) &&
           <div className={styles['form-content']}>
             <h2 className={styles['form-title']}><FormattedMessage id="createNewEvent" />{this.props.authUser.uid}</h2>
             <input placeholder={this.props.intl.messages.eventName} className={styles['form-field']} ref="eventName" />
