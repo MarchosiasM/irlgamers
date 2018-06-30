@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import SearchBar from './SearchBar/';
+import DateSeach from '../DateSearch/DateSearch';
 
 // Import Style
 import styles from './Header.css';
@@ -38,6 +39,7 @@ export function Header(props, context) {
         }
       </div>
       <SearchBar />
+      <DateSeach />
     </div>
   );
 }

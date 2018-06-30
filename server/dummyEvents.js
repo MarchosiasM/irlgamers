@@ -3,7 +3,7 @@ import Event from './models/event';
 export default function() {
     console.log("EVENT SEED FILE TRIGGERED!");
     Event.count().exec((err, count) => {
-        if (count > 0) {
+        if (count > 3) {
             console.log("NO NEED TO SEED SAMPLE EVENT DATA....");
             return;
         }
