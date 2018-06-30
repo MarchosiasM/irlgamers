@@ -18,8 +18,8 @@ const userSchema = new Schema({
   lastName: { type: 'String', required: true },
   fullName: { type: 'String', required: true },
   email: { type: 'String', required: true },
-  preferences: { type: 'String', required: true },
-  eventsSignedUp: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+  preferences: [String],
+  // eventsSignedUp: [{ type: Schema.Types.ObjectId, ref: 'Event' }], // commenting out until relationship can be made
   slug: { type: 'String', required: true },
   cuid: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },
