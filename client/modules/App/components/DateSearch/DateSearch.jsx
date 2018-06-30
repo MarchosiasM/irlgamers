@@ -15,16 +15,23 @@ class DateSearch extends React.Component {
 
     componentDidMount() {
         this.setState({isMounted: true}); // eslint-disable-line
+        const options = ''; // Options for the Date and TimePicker go here.
+        // Still needs some work in rendering in mobile but works.
+        M.AutoInit();
+        document.addEventListener('DOMContentLoaded', () => {
+            const elems = document.querySelectorAll('.datepicker');
+            const instances = M.Datepicker.init(elems, options);
+        });
     }
 
     handleDateChange(e){
-        
+        console.log(e.target.value);
     }
 
     render(){
         return (
             <div style={this.state.style}>
-                <input className={'datepicker'} type={'text'} value={this.state.value} onChange={this.handleDateChange} />
+                <input className='datepicker' type={'text'} value={this.state.value} onChange={this.handleDateChange} />
             </div>
         )
     }
