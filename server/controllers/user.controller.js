@@ -25,7 +25,7 @@ export function getUsers(req, res) {
  * @returns void
  */
 export function addUser(req, res) {
-  if (!req.body.user.firstName || !req.body.user.lastName || !req.body.user.email || !req.body.user.preferences) {
+  if (!req.body.user.fullName || !req.body.user.email || !req.body.user.firebase_id || !req.body.user.photoUrl) {
     res.status(403).end();
   }
 
@@ -46,6 +46,7 @@ export function addUser(req, res) {
     res.json({ user: saved });
   });
 }
+
 
 /**
  * Update an Event to User

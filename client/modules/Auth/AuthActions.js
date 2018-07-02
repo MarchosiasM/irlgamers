@@ -1,4 +1,6 @@
 import firebase from 'firebase/app';
+import callApi from '../../util/apiCaller';
+
 
 /* eslint-disable */
 
@@ -13,11 +15,20 @@ export function fetchAuthUser(authUser) {
     authUser,
   };
 }
+
 export function fetchAuthUserRequest() {
   return (dispatch) => {
     return firebase.auth().onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch(fetchAuthUser(authUser));
+        callApi('users', 'post', {
+          user: { 
+            fullName: authUser.displayName,
+            email: authUser.email, 
+            photoUrl: authUser.photoURL,
+            firebase_id: authUser.uid,
+          }
+        })
       } else {
         dispatch(fetchAuthUser(null));
       }

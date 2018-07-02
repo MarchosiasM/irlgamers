@@ -22,8 +22,8 @@ export default function() {
             notes: 'BYOB, and bring pizza money too.',
             slug: 'catan-tournament',
             cuid: 'catanyanyanyan',
-            // owner: '',
-            // attendees: ['']
+            owner: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
+            attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2', 'j59i2RAn6HVkwqHzcErWdU3xEzN2']
         });
         const event2 = new Event({
             eventName: 'Texas Holdem in Bama',
@@ -39,8 +39,8 @@ export default function() {
             notes: 'no plus ones please',
             slug: 'texas-holdem-in-bama',
             cuid: 'holdemupandkeepemup',
-            // owner: '',
-            // attendees: ['']
+            owner: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
+            attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2' ]
         });
         const event3 = new Event({
             eventName: 'Chess and Cheese',
@@ -56,8 +56,8 @@ export default function() {
             notes: 'Just looking for a good chess partner. Advanced players only please.',
             slug: 'chess-and-cheese',
             cuid: 'chessmaster1234',
-            // owner: '',
-            // attendees: ['']
+            owner: 'q5zH280ek3S0A8XSvb6XEyiPzJ73',
+            attendees: ['']
         });
         const event4 = new Event({
             eventName: 'Mahjong Madness',
@@ -73,8 +73,8 @@ export default function() {
             notes: 'You better like Tropic Thunder, because we will be watching it while we play.',
             slug: 'mahjong-madness',
             cuid: 'amammamamaamammaaaaahjong',
-            // owner: '',
-            // attendees: ['']
+            owner: 'q5zH280ek3S0A8XSvb6XEyiPzJ73',
+            attendees: ['']
         });
         const event5 = new Event({
             eventName: 'Boys Night Out Woooo',
@@ -90,8 +90,8 @@ export default function() {
             notes: 'Come party with me over a game of Cthulu! What what?',
             slug: 'boys-night-out-woooo',
             cuid: 'boysboysboysboys1234',
-            // owner: '',
-            // attendees: ['']
+            owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
+            attendees: ['']
         });
         const event6 = new Event({
             eventName: 'Dudes & Dungeons & Dragons',
@@ -107,8 +107,8 @@ export default function() {
             notes: 'Please bring your own 20-sided die.',
             slug: 'dudes-&-dungeons-&-dragons',
             cuid: 'dndndndndnd1111',
-            // owner: '',
-            // attendees: ['']
+            owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
+            attendees: ['']
         });
         const event7 = new Event({
             eventName: 'Tzolkin Night',
@@ -124,8 +124,8 @@ export default function() {
             notes: 'Experienced players only please. I do not want to explain the rules',
             slug: 'tzolkin-night',
             cuid: 'mayancalendargearhead1234',
-            // owner: '',
-            // attendees: ['']
+            owner: 'Zu00nK1j3jQliNiUnGTQqMNgkEZ2',
+            attendees: ['']
         });
         const event8 = new Event({
             eventName: 'Malifaux',
@@ -141,8 +141,8 @@ export default function() {
             notes: 'Bring something delicious to share.',
             slug: 'malifaux',
             cuid: 'malmalmalmalamallaa9999',
-            // owner: '',
-            // attendees: ['']
+            owner: 'Zu00nK1j3jQliNiUnGTQqMNgkEZ2',
+            attendees: ['']
         });
         const event9 = new Event({
             eventName: 'Casual Cards',
@@ -158,8 +158,8 @@ export default function() {
             notes: 'Join us for some Cards Against Humanity, Codenames, and The Resistance',
             slug: 'casual-cards',
             cuid: 'casualgamerswelcomeherethanks3333',
-            // owner: '',
-            // attendees: ['']
+            owner: 'OJuBVH8XO1OuBWuOI86K2VpdQLb2',
+            attendees: ['']
         });
         const event10 = new Event({
             eventName: 'Ultimate Werewolf Party',
@@ -175,8 +175,8 @@ export default function() {
             notes: 'Let us play some werewolf.',
             slug: 'ultimate-werewolf-party',
             cuid: 'arooooooooo0000',
-            // owner: '',
-            // attendees: ['']
+            owner: 'OJuBVH8XO1OuBWuOI86K2VpdQLb2',
+            attendees: ['']
         });
         
         Event.create([event1, event2, event3, event4, event5, event6, event7, event8, event9, event10], (error) => {
