@@ -44,6 +44,14 @@ export function fetchEvents() {
   };
 }
 
+export function setEvents(cuid_events) {
+  return (dispatch) => {
+    return callApi('events').then((res) => {
+      dispatch(addEvents(res.events));
+    });
+  };
+}
+
 export function fetchEvent(cuid) {
   return (dispatch) => {
     return callApi(`events/${cuid}`).then(res => dispatch(addEvent(res.event)));
