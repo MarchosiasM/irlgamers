@@ -27,4 +27,16 @@ const userSchema = new Schema({
   dateAdded: { type: 'Date', default: Date.now, required: true },
 });
 
+userSchema.pre('save', function(next) {
+  const newUser = this
+  mongoose.model('User').find({firebase_id: newUser.firebase_id})
+  .exec((err, docs) => {
+    if (err) return console.log(err, "error")
+    console.log(docs, "docs")
+    if (docs.length === 0) next()
+    next (new Error("User already Exists"))
+  }) 
+
+})
+
 export default mongoose.model('User', userSchema);
