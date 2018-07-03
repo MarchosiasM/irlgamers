@@ -44,9 +44,9 @@ export function fetchEvents() {
   };
 }
 
-export function setEvents(cuid_events) {
+export function findEventsByDate(date) {
   return (dispatch) => {
-    return callApi('events').then((res) => {
+    return callApi(`events/search/${date}`).then((res) => {
       dispatch(addEvents(res.events));
     });
   };

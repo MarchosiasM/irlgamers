@@ -9,6 +9,9 @@ router.route('/events').get(EventController.getEvents);
 // Get all Events for this user only
 router.route('/myevents/:cuid').get(EventController.getUserEvents);
 
+// Search endpoints one Event by cuid
+router.route('/events/search/:date').get(EventController.findEventsByDate);
+
 // Get one Event by cuid
 router.route('/events/:cuid').get(EventController.getEvent);
 

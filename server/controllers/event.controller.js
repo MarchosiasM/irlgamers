@@ -2,6 +2,7 @@ import Event from '../models/event';
 import cuid from 'cuid';
 import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';
+import moment from 'moment';
 
 /**
  * Get all Events
@@ -19,17 +20,35 @@ export function getEvents(req, res) {
 }
 
 /**
- * Get a single Event
+ * Get a Users Events
  * @param req
  * @param res
  * @returns void
  */
 export function getUserEvents(req, res) {
-  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec((err, event) => {
+  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec(( err, event) => {
     if (err) {
       res.status(500).send(err);
     }
     res.json({ event });
+  });
+}
+
+/**
+ * Search events by date
+ * @param req
+ * @param res
+ * @returns void
+ */
+export function findEventsByDate(req, res) {  
+  let search_date = moment( decodeURI( req.params.date ), 'MMM DD, YYYY' ).format('YYYY-MM-DD');;
+
+  Event.find({ scheduledDate: new Date(search_date) }).sort('-scheduledDate').exec((err, events) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    // res.send(search_date);
+    res.json({ events });
   });
 }
 
