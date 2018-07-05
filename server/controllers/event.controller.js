@@ -25,11 +25,11 @@ export function getEvents(req, res) {
  * @returns void
  */
 export function getUserEvents(req, res) {
-  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec((err, event) => {
+  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ event });
+    res.json({ events });
   });
 }
 

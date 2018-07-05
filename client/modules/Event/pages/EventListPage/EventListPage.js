@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 // import fontawesome from '@fortawesome/fontawesome';
 // import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 // import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee';
@@ -12,16 +13,18 @@ import EventCreateWidget from '../../components/EventCreateWidget/EventCreateWid
 // Import Actions
 import { addEventRequest, fetchEvents, deleteEventRequest } from '../../EventActions';
 import { toggleAddEvent } from '../../../App/AppActions';
-// import { fetchAuthUser, fetchAuthUserRequest } from '../../../Auth/AuthActions';
+import { fetchAuthUserEventsRequest } from '../../../Event/UserEventsActions'
 
 // Import Selectors
 import { getShowAddEvent } from '../../../App/AppReducer';
 import { getEvents } from '../../EventReducer';
 import { getAuthUser } from '../../../Auth/AuthReducer';
+import { getUserEvents } from '../../../Event/UserEventsReducer';
 
 class EventListPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchEvents());
+    this.props.dispatch(fetchAuthUserEventsRequest());
   }
 
   handleDeleteEvent = (event) => {
@@ -38,14 +41,17 @@ class EventListPage extends Component {
   };
 
   render() {
+   
     return (
       <div>
 
-        {this.props.authUser !== null &&
-
-
+        {_.isObject(this.props.authUser) &&
           <div>
             <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
+            <h3>User Hosted Events Start Here - Robs note for Janet</h3>
+            {/* The below EventList component is being passed the Events that the current logged in user is hosting */}
+            <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.userEvents} />
+            <h3>User Hosted Events Start Here - Robs note for Janet</h3>
             <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
           </div>
         }
@@ -65,11 +71,12 @@ class EventListPage extends Component {
 EventListPage.need = [() => { return fetchEvents(); }];
 
 // Retrieve data from store as props
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return {
     showAddEvent: getShowAddEvent(state),
     events: getEvents(state),
     authUser: getAuthUser(state),
+    userEvents: getUserEvents(state),
   };
 }
 
@@ -86,6 +93,7 @@ EventListPage.propTypes = {
   showAddEvent: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   authUser: PropTypes.string,
+  userEvents: PropTypes.string,
 };
 
 EventListPage.contextTypes = {
