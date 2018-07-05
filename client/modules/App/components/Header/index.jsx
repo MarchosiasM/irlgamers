@@ -21,7 +21,7 @@ export function Header(props, context) {
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
           <Link to="/" ><FormattedMessage id="siteTitle" /></Link>
-          <div className="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div>
+
 
         </h1>
         {
