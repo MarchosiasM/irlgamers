@@ -21,6 +21,7 @@ export function EventDetailPage(props) {
         <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.owner}</p>
         <p className={styles['post-desc']}>{props.event.notes}</p>
         <p className={styles['post-desc']}>0/{props.event.slots}</p>
+        <p className={styles['post-desc']}>{props.event.address}{props.event.city}{props.event.state}{props.event.zipcode}</p>
         <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
         <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
       </div>
@@ -44,6 +45,11 @@ EventDetailPage.propTypes = {
   event: PropTypes.shape({
     eventName: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
+    gameType: PropTypes.string, 
+    address: PropTypes.string, 
+    city: PropTypes.string, 
+    state: PropTypes.string, 
+    zipcode: PropTypes.string,
     scheduledDate: PropTypes.string.isRequired,
     scheduledTime: PropTypes.string.isRequired,
     notes: PropTypes.string.isRequired,

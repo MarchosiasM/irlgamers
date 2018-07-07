@@ -40,17 +40,7 @@ export function getUserEvents(req, res) {
  * @returns void
  */
 export function addEvent(req, res) {
-  if (!req.body.event.eventName || 
-    !req.body.event.address ||
-    !req.body.event.city ||
-    !req.body.event.state ||
-    !req.body.event.zipcode ||
-    !req.body.event.game || 
-    !req.body.event.gameType ||
-    !req.body.event.scheduledDate || 
-    !req.body.event.scheduledTime || 
-    !req.body.event.slots || 
-    !req.body.event.owner
+  if (!req.body.event.eventName || !req.body.event.address || !req.body.event.city || !req.body.event.state || !req.body.event.zipcode || !req.body.event.game || !req.body.event.gameType || !req.body.event.scheduledDate || !req.body.event.scheduledTime || !req.body.event.slots || !req.body.event.owner
   ) {
     res.status(403).end();
   }
