@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 
 // Import Style
 import styles from '../../components/EventListItem/EventListItem.css';
@@ -13,17 +12,42 @@ import { fetchEvent } from '../../EventActions';
 import { getEvent } from '../../EventReducer';
 
 export function EventDetailPage(props) {
+  const numAttendees = props.event.attendees.length;
+  let isFull = false;
+  if (props.event.slots - numAttendees <= 0) {
+    isFull = true;
+  }
+
   return (
     <div>
       <Helmet title={props.event.eventName} />
       <div className={`${styles['single-post']} ${styles['post-detail']}`}>
         <h3 className={styles['post-title']}>{props.event.eventName}</h3>
-        <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.owner}</p>
+        {/* <p className={styles['author-name']}>by {props.event.owner}</p> */}
         <p className={styles['post-desc']}>{props.event.notes}</p>
-        <p className={styles['post-desc']}>0/{props.event.slots}</p>
-        <p className={styles['post-desc']}>{props.event.address}{props.event.city}{props.event.state}{props.event.zipcode}</p>
+        
+        <p className={styles['post-desc']}>
+          {props.event.address}
+        </p>
+        <p className={styles['post-desc']}>
+          {`${props.event.city}, ${props.event.state} ${props.event.zipcode}`}
+        </p>
         <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
         <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
+        <p className={styles['post-desc']}> 
+          {isFull 
+          ? 
+          'SORRY THIS EVENT IS FULL' 
+          : 
+          (numAttendees + ' / ' + props.event.slots)
+          }
+        </p>
+        {isFull 
+          ? 
+          '' 
+          : 
+          <a className="waves-effect waves-light btn" onClick={this.addAttendee}>JOIN</a>
+          }
       </div>
     </div>
   );
