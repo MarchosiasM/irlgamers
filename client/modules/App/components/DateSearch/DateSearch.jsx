@@ -20,8 +20,10 @@ class DateSearch extends React.Component {
             isMounted: false,
             style: {
                 display: 'inline-block'
-            }
+            },
         };
+        // this.dateSearch = this.refs.dateSearch;
+        this.handleDateSearchSubmit = this.handleDateSearchSubmit.bind(this)
     }
 
     componentDidMount() {
@@ -41,16 +43,26 @@ class DateSearch extends React.Component {
         });
     }
 
-    handleDateChange(e){
+    handleDateChange(e){ // This doesn't work because of materialize!
         console.log(e);
         // console.log(e.target.value);
         // this.props.dispatch(findEventsByDate(e.target.value));
     }
 
+    handleDateSearchSubmit(e){
+        console.log( 'submitted! ', e.target);
+        e.preventDefault();
+        console.log( 'dateSearched: ', e.target.dateSearch.value);
+        this.props.dispatch(findEventsByDate(e.target.dateSearch.value));
+    }
+
     render(){
         return (
             <div style={this.state.style}>
-                <input className='datepicker' type='text' value={this.state.value} onChange={this.handleDateChange.bind(this)} />
+                <form onSubmit={this.handleDateSearchSubmit}>
+                    <input className='datepicker' type='text' name="dateSearch" value={this.state.value} />
+                    <button type="submit" >DATE SEARCH</button>
+                </form>
             </div>
         )
     }
