@@ -88,12 +88,11 @@ EventListPage.propTypes = {
     scheduledTime: PropTypes.string.isRequired,
     slots: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,
-    authUser: PropTypes.string.isRequired,
   })).isRequired,
   showAddEvent: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  authUser: PropTypes.string,
-  userEvents: PropTypes.string,
+  authUser: PropTypes.object,
+  userEvents: PropTypes.array,
 };
 
 EventListPage.contextTypes = {

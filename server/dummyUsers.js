@@ -16,7 +16,8 @@ export default function() {
             preferences: ['board games', 'card games', 'paper and pencil games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'janet-hwu',
-            cuid: 'janetisthebestestyay3333'
+            firebase_id: 'q5zH280ek3S0A8XSvb6XEyiPzJ73',
+            cuid: '5b402817fc13ae24f0000000'
         });
         const user2 = new User({
             firstName: 'Roberto',
@@ -26,7 +27,8 @@ export default function() {
             preferences: ['role-playing games', 'strategy games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'roberto-perez',
-            cuid: 'robertrulesamazingyus5555'
+            firebase_id: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
+            cuid: '5b402817fc13ae24f0000001'
         });
         const user3 = new User({
             firstName: 'Kyle',
@@ -36,7 +38,8 @@ export default function() {
             preferences: ['role-playing games', 'card games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'kyle-magee',
-            cuid: 'kylemaniacmagee3333'
+            firebase_id: '4lgdwrkOHucfNIaN8M2kIkluec02',
+            cuid: '5b402817fc13ae24f0000002'
         });
         const user4 = new User({
             firstName: 'Michael',
@@ -46,7 +49,8 @@ export default function() {
             preferences: ['role-playing games', 'paper and pencil games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'michael-malach',
-            cuid: 'michaelismagical1111'
+            firebase_id: 'OJuBVH8XO1OuBWuOI86K2VpdQLb2',
+            cuid: '5b402817fc13ae24f0000003'
         });
         const user5 = new User({
             firstName: 'Jimbob',
@@ -56,7 +60,8 @@ export default function() {
             preferences: ['role-playing games', 'tile-based games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'jimbob-jones',
-            cuid: 'jimbobjumpsforjoy3333'
+            firebase_id: 'jimbobjumpsforjoy3333',
+            cuid: '5b402817fc13ae24f0000004'
         });
         const user6 = new User({
             firstName: 'Mary',
@@ -66,7 +71,8 @@ export default function() {
             preferences: ['board games', 'dice games', 'card games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'mary-hatta',
-            cuid: 'maryhattalittlelamblol7777'
+            firebase_id: 'maryhattalittlelamblol7777',
+            cuid: '5b402817fc13ae24f0000005'
         });
         const user7 = new User({
             firstName: 'William',
@@ -76,7 +82,8 @@ export default function() {
             preferences: ['role-playing games', 'adventure games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'will-shakes',
-            cuid: 'willshakeitlikeyoumeanit5678'
+            firebase_id: 'willshakeitlikeyoumeanit5678',
+            cuid: '5b402817fc13ae24f0000006'
         });
         const user8 = new User({
             firstName: 'June',
@@ -86,7 +93,9 @@ export default function() {
             preferences: ['adventure games', 'tile-based games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'june-sevin',
-            cuid: 'junesevinisnotmybday3333'
+            firebase_id: 'junesevinisnotmybday3333',
+            cuid: '5b402817fc13ae24f0000007'
+            
         });
         const user9 = new User({
             firstName: 'Georgie',
@@ -96,7 +105,8 @@ export default function() {
             preferences: ['role-playing games', 'dice games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'georgie-porgie',
-            cuid: 'puddingandpieyumz2222'
+            firebase_id: 'puddingandpieyumz2222',
+            cuid: '5b402817fc13ae24f0000008'
         });
         const user10 = new User({
             firstName: 'Satan',
@@ -106,7 +116,8 @@ export default function() {
             preferences: ['dice games', 'card games'],
             // eventsSignedUp: [1, 2, 3],
             slug: 'satan-santa',
-            cuid: 'soundsmorelikeabandname3333'
+            firebase_id: 'soundsmorelikeabandname3333',
+            cuid: '5b402817fc13ae24f0000009'
         });
 
         User.create([user1, user2, user3, user4, user5, user6, user7, user8, user9, user10], (error) => {
