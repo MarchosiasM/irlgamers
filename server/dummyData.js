@@ -1,9 +1,10 @@
 import Post from './models/post';
 
 export default function () {
+  console.log("POST SEED TRIGGERED!");
   Post.count().exec((err, count) => {
     if (count > 0) {
-      console.log('NO NEED TO SEED SAMPLE POST DATA....');
+      console.log('NO NEED TO SEED POSTS....');
       return;
     }
 
@@ -44,7 +45,9 @@ export default function () {
 
     Post.create([post1, post2], (error) => {
       if (!error) {
-        console.log('EVENT DUMMY DATA SEEDED!');
+        console.log('POST DUMMY DATA SEEDED!');
+      } else {
+        console.log("STARTING SEEDING POSTS, BUT ERROR: ", error);
       }
     });
   });

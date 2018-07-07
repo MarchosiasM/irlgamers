@@ -1,10 +1,10 @@
 import Event from './models/event';
 
 export default function() {
-    console.log("EVENT SEED FILE TRIGGERED!");
+    console.log("EVENT SEED TRIGGERED!");
     Event.count().exec((err, count) => {
-        if (count > 3) {
-            console.log("NO NEED TO SEED SAMPLE EVENT DATA....");
+        if (count > 0) {
+            console.log("NO NEED TO SEED EVENTS....");
             return;
         }
 
@@ -180,9 +180,10 @@ export default function() {
         });
         
         Event.create([event1, event2, event3, event4, event5, event6, event7, event8, event9, event10], (error) => {
-            console.log("STARTING SEEDING EVENTS, BUT ERROR: ", error);
             if (!error) {
                 console.log('EVENT DUMMY DATA SEEDED!');
+            } else {
+                console.log("STARTING SEEDING EVENTS, BUT ERROR: ", error);
             }
         });
 
