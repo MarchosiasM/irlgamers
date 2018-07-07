@@ -18,7 +18,12 @@ export function addEventRequest(event) {
     return callApi('events', 'post', {
       event: {
         eventName: event.eventName,
+        address: event.address,
+        city: event.city,
+        state: event.state,
+        zipcode: event.zipcode,
         game: event.game,
+        gameType: event.gameType,
         scheduledDate: event.scheduledDate,
         scheduledTime: event.scheduledTime,
         slots: event.slots,
