@@ -6,6 +6,7 @@ import callApi from '../../util/apiCaller';
 
 // Export Constants
 export const FETCH_AUTH_USER = 'FETCH_AUTH_USER';
+export const ADD_USER_EVENTS = 'ADD_USER_EVENTS';
 
 // Export Actions
 
@@ -35,6 +36,8 @@ export function fetchAuthUserRequest() {
     });
   };
 }
+
+
 
 export const signIn = () => (dispatch) => {
   firebase.auth()

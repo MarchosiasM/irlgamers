@@ -30,9 +30,7 @@ const firebaseApp = firebase.initializeApp(config);
 
 export class SignInScreen extends Component {
   // Listen to the Firebase Auth state and set the local state.
-  componentDidMount() {
-    this.props.dispatch(fetchAuthUserRequest());
-  }
+
 
   // Make sure we un-register Firebase observers when the component unmounts.
   componentWillUnmount() {

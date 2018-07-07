@@ -26,11 +26,11 @@ export function getEvents(req, res) {
  * @returns void
  */
 export function getUserEvents(req, res) {
-  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec(( err, event) => {
+  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ event });
+    res.json({ events });
   });
 }
 
@@ -59,7 +59,8 @@ export function findEventsByDate(req, res) {
  * @returns void
  */
 export function addEvent(req, res) {
-  if (!req.body.event.eventName || !req.body.event.game || !req.body.event.scheduledDate || !req.body.event.scheduledTime || !req.body.event.slots || !req.body.event.owner) {
+  if (!req.body.event.eventName || !req.body.event.address || !req.body.event.city || !req.body.event.state || !req.body.event.zipcode || !req.body.event.game || !req.body.event.gameType || !req.body.event.scheduledDate || !req.body.event.scheduledTime || !req.body.event.slots || !req.body.event.owner
+  ) {
     res.status(403).end();
   }
 
@@ -67,7 +68,12 @@ export function addEvent(req, res) {
 
   // Let's sanitize inputs
   newEvent.eventName = sanitizeHtml(newEvent.eventName);
+  newEvent.address = sanitizeHtml(newEvent.address);
+  newEvent.city = sanitizeHtml(newEvent.city);
+  newEvent.state = sanitizeHtml(newEvent.state);
+  newEvent.zipcode = sanitizeHtml(newEvent.zipcode);
   newEvent.game = sanitizeHtml(newEvent.game);
+  newEvent.gameType = sanitizeHtml(newEvent.gameType);
   newEvent.scheduledDate = sanitizeHtml(newEvent.scheduledDate);
   newEvent.scheduledTime = sanitizeHtml(newEvent.scheduledTime);
   newEvent.slots = sanitizeHtml(newEvent.slots);

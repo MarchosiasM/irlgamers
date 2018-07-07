@@ -34,7 +34,7 @@ EventListItem.propTypes = {
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
-    slots: PropTypes.string.isRequired,
+    slots: PropTypes.number.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired, // Not In Use - Rob, will delete after testing.
 };
