@@ -57,7 +57,7 @@ export default function() {
             slug: 'chess-and-cheese',
             cuid: 'chessmaster1234',
             owner: 'q5zH280ek3S0A8XSvb6XEyiPzJ73',
-            attendees: ['']
+            attendees: []
         });
         const event4 = new Event({
             eventName: 'Mahjong Madness',
@@ -74,7 +74,7 @@ export default function() {
             slug: 'mahjong-madness',
             cuid: 'amammamamaamammaaaaahjong',
             owner: 'q5zH280ek3S0A8XSvb6XEyiPzJ73',
-            attendees: ['']
+            attendees: []
         });
         const event5 = new Event({
             eventName: 'Boys Night Out Woooo',
@@ -91,7 +91,7 @@ export default function() {
             slug: 'boys-night-out-woooo',
             cuid: 'boysboysboysboys1234',
             owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
-            attendees: ['']
+            attendees: []
         });
         const event6 = new Event({
             eventName: 'Dudes & Dungeons & Dragons',
@@ -108,7 +108,7 @@ export default function() {
             slug: 'dudes-&-dungeons-&-dragons',
             cuid: 'dndndndndnd1111',
             owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
-            attendees: ['']
+            attendees: []
         });
         const event7 = new Event({
             eventName: 'Tzolkin Night',
@@ -125,7 +125,7 @@ export default function() {
             slug: 'tzolkin-night',
             cuid: 'mayancalendargearhead1234',
             owner: 'Zu00nK1j3jQliNiUnGTQqMNgkEZ2',
-            attendees: ['']
+            attendees: []
         });
         const event8 = new Event({
             eventName: 'Malifaux',
@@ -142,7 +142,7 @@ export default function() {
             slug: 'malifaux',
             cuid: 'malmalmalmalamallaa9999',
             owner: 'Zu00nK1j3jQliNiUnGTQqMNgkEZ2',
-            attendees: ['']
+            attendees: []
         });
         const event9 = new Event({
             eventName: 'Casual Cards',
@@ -159,7 +159,7 @@ export default function() {
             slug: 'casual-cards',
             cuid: 'casualgamerswelcomeherethanks3333',
             owner: 'OJuBVH8XO1OuBWuOI86K2VpdQLb2',
-            attendees: ['']
+            attendees: []
         });
         const event10 = new Event({
             eventName: 'Ultimate Werewolf Party',
@@ -176,7 +176,7 @@ export default function() {
             slug: 'ultimate-werewolf-party',
             cuid: 'arooooooooo0000',
             owner: 'OJuBVH8XO1OuBWuOI86K2VpdQLb2',
-            attendees: ['']
+            attendees: []
         });
         
         Event.create([event1, event2, event3, event4, event5, event6, event7, event8, event9, event10], (error) => {
