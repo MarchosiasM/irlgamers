@@ -58,10 +58,14 @@ class DateSearch extends React.Component {
 
     render(){
         return (
-            <div style={this.state.style}>
+            <div style={this.state.style} className="row">
                 <form onSubmit={this.handleDateSearchSubmit}>
-                    <input className='datepicker' type='text' name="dateSearch" value={this.state.value} />
-                    <button type="submit" >DATE SEARCH</button>
+                    <div className="col s6">
+                        <input className='datepicker' type='text' name="dateSearch" value={this.state.value} />
+                    </div>
+                    <div className="col s6">
+                        <button className="waves-effect waves-light btn" type="submit" >DATE SEARCH</button>
+                    </div>
                 </form>
             </div>
         )

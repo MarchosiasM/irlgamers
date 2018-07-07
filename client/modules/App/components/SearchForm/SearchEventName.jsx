@@ -23,10 +23,11 @@ class SearchBar extends React.Component {
         items={this.props.events}
         shouldItemRender={(item, value) => item.eventName.toLowerCase().indexOf(value.toLowerCase()) > -1}
         getItemValue={item => item.eventName}
+        wrapperProps={{ style: {display: 'block'} }}
         renderItem={(item, highlighted) =>
           <div
             key={item.id}
-            style={{ backgroundColor: highlighted ? '#eee' : 'transparent' }}
+            style={{ backgroundColor: highlighted ? '#eee' : 'transparent', display: 'block' }}
           >
             {item.eventName}
           </div>

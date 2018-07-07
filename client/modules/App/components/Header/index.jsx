@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import SearchBar from './SearchBar/';
-import DateSeach from '../DateSearch/DateSearch';
+import SearchBar from '../SearchForm';
 
 // Import Style
 import styles from './Header.css';
@@ -40,8 +39,7 @@ export function Header(props, context) {
             : null
         }
       </div>
-      <SearchBar />
-      <DateSeach />
+      <SearchForm />
     </div>
   );
 }
