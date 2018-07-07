@@ -1,10 +1,10 @@
 import User from './models/user';
 
 export default function() {
-    console.log("USER SEED FILE TRIGGERED!");
+    console.log("USER SEED TRIGGERED!");
     User.count().exec((err, count) => {
         if (count > 0) {
-            console.log("NO NEED TO SEED SAMPLE USER DATA....");
+            console.log("NO NEED TO SEED USERS....");
             return;
         }
 
@@ -121,9 +121,10 @@ export default function() {
         });
 
         User.create([user1, user2, user3, user4, user5, user6, user7, user8, user9, user10], (error) => {
-            console.log("STARTING SEEDING USERS, BUT ERROR: ", error);
             if (!error) {
                 console.log('USER DUMMY DATA SEEDED!');
+            } else {
+                console.log("STARTING SEEDING USERS, BUT ERROR: ", error);
             }
         });
 
