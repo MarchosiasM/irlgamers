@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
         console.log( 'submitted! ', e.target);
 
         e.preventDefault();
-        search_date = ( e.target.dateSearch.value ) ? e.target.dateSearch.value : '*' ;
+        let search_date = ( e.target.dateSearch.value ) ? e.target.dateSearch.value : '*' ;
         this.props.dispatch( findEventsByNameDate( this.state.search_event_name, search_date ));
     }
     
