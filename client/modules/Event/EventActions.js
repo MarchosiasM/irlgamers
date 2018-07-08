@@ -49,9 +49,9 @@ export function fetchEvents() {
   };
 }
 
-export function findEventsByDate(date) {
+export function findEventsByNameDate(name, date) {
   return (dispatch) => {
-    return callApi(`events/search/${date}`).then((res) => {
+    return callApi(`events/search/${name}/${date}`).then((res) => {
       dispatch(addEvents(res.events));
     });
   };
