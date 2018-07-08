@@ -40,10 +40,18 @@ export function getUserEvents(req, res) {
  * @param res
  * @returns void
  */
-export function findEventsByDate(req, res) {  
-  let search_date = moment( decodeURI( req.params.date ), 'MMM DD, YYYY' ).format('YYYY-MM-DD');;
+export function findEventsByNameDate(req, res) {
+  let search_date = moment( decodeURI( req.params.date ), 'MMM DD, YYYY' );
+  let valid_search_date = (search_date.isValid()) ? new Date(search_date.format('YYYY-MM-DD')) : null;
 
-  Event.find({ scheduledDate: new Date(search_date) }).sort('-scheduledDate').exec((err, events) => {
+  let search_name = decodeURI(req.params.name);
+  let search_params = {};
+
+  if(search_name !== 'null' ) search_params.eventName = new RegExp(search_name, 'i');
+
+  if(valid_search_date !== null ) search_params.scheduledDate = valid_search_date;
+  
+  Event.find(search_params).sort('-scheduledDate').exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
