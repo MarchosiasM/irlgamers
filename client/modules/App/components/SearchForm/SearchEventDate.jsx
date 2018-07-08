@@ -15,12 +15,12 @@ class DateSearch extends React.Component {
 
     componentDidMount() {
         this.setState({isMounted: true}); // eslint-disable-line
-        const options = {
-            onSelect: function(date){
-                console.log(date);
-                this.handleDateChange(date);
-            },
-        }; // Options for the Date and TimePicker go here.
+        // const options = {
+        //     onSelect: function(date){
+        //         console.log(date);
+        //         this.handleDateChange(date);
+        //     },
+        // }; // Options for the Date and TimePicker go here.
         // Still needs some work in rendering in mobile but works.
         M.AutoInit();
         document.addEventListener('DOMContentLoaded', () => {
