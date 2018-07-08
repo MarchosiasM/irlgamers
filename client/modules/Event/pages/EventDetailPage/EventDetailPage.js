@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
@@ -11,7 +11,8 @@ import { fetchEvent } from '../../EventActions';
 // Import Selectors
 import { getEvent } from '../../EventReducer';
 
-export function EventDetailPage(props) {
+// export function EventDetailPage(props) {
+export class EventDetailPage extends Component {
   const numAttendees = props.event.attendees.length;
   let isFull = false;
   if (props.event.slots - numAttendees <= 0) {
