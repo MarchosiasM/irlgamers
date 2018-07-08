@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactAutocomplete from 'react-autocomplete';
-import { getEvents } from '../../../../Event/EventReducer';
-import { fetchEvents } from '../../../../Event/EventActions';
+import { getEvents } from '../../../Event/EventReducer';
+import { fetchEvents } from '../../../Event/EventActions';
 import { connect } from 'react-redux';
 
 class SearchBar extends React.Component {
@@ -10,6 +10,8 @@ class SearchBar extends React.Component {
     this.state = {
       value: '',
     };
+    this.passValueUp = this.props.returnVal;
+    this.passSelectUp = this.props.returnSelect;
   }
 
   componentDidMount() {
@@ -22,7 +24,7 @@ class SearchBar extends React.Component {
       <ReactAutocomplete
         items={this.props.events}
         shouldItemRender={(item, value) => item.eventName.toLowerCase().indexOf(value.toLowerCase()) > -1}
-        getItemValue={item => item.eventName}
+        getItemValue={ item => item.eventName }
         wrapperProps={{ style: {display: 'block'} }}
         renderItem={(item, highlighted) =>
           <div
@@ -32,9 +34,9 @@ class SearchBar extends React.Component {
             {item.eventName}
           </div>
         }
-        value={this.state.value}
-        onChange={e => this.setState({ value: e.target.value })}
-        onSelect={value => this.setState({ value })}
+        value={this.props.value}
+        onChange={this.passValueUp}
+        onSelect={this.passSelectUp}
       />
     );
   }

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import SearchBar from '../SearchForm';
+import SearchForm from '../SearchForm';
 
 // Import Style
 import styles from './Header.css';

@@ -3,27 +3,14 @@ import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 
-// Import Event Actions
-import { findEventsByDate } from '../../../Event/EventActions';
-
-// Import Event Selections
-import { getEvents } from '../../../Event/EventReducer';
-
-let test = function(e) {
-    console.log(e);
-}
-
 class DateSearch extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
             isMounted: false,
-            style: {
-                display: 'inline-block'
-            },
         };
         // this.dateSearch = this.refs.dateSearch;
-        this.handleDateSearchSubmit = this.handleDateSearchSubmit.bind(this)
+        // this.handleDateSearchSubmit = this.handleDateSearchSubmit.bind(this)
     }
 
     componentDidMount() {
@@ -49,53 +36,12 @@ class DateSearch extends React.Component {
         // this.props.dispatch(findEventsByDate(e.target.value));
     }
 
-    handleDateSearchSubmit(e){
-        console.log( 'submitted! ', e.target);
-        e.preventDefault();
-        console.log( 'dateSearched: ', e.target.dateSearch.value);
-        this.props.dispatch(findEventsByDate(e.target.dateSearch.value));
-    }
-
     render(){
         return (
-            <div style={this.state.style} className="row">
-                <form onSubmit={this.handleDateSearchSubmit}>
-                    <div className="col s6">
-                        <input className='datepicker' type='text' name="dateSearch" value={this.state.value} />
-                    </div>
-                    <div className="col s6">
-                        <button className="waves-effect waves-light btn" type="submit" >DATE SEARCH</button>
-                    </div>
-                </form>
-            </div>
+            <input className='datepicker' type='text' name="dateSearch" value={this.state.value} />    
         )
     }
     
 }
 
-DateSearch.need = [() => { return fetchEvents(); }];
-
-// Retrieve data from store as props
-function mapStateToProps(state) {
-    return {
-        events: getEvents(state),
-    };
-}
-
-DateSearch.propTypes = {
-    events: PropTypes.arrayOf(PropTypes.shape({
-        eventName: PropTypes.string.isRequired,
-        game: PropTypes.string.isRequired,
-        scheduledDate: PropTypes.string.isRequired,
-        scheduledTime: PropTypes.string.isRequired,
-        slots: PropTypes.number.isRequired,
-        owner: PropTypes.string.isRequired,
-        authUser: PropTypes.string.isRequired,
-    })).isRequired,
-};
-
-DateSearch.contextTypes = {
-    router: React.PropTypes.object,
-};
-
-export default connect(mapStateToProps)(DateSearch);
+export default DateSearch;
