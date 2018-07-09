@@ -25,7 +25,7 @@ export function EventDetailPage(props) {
         <h3 className={styles['post-title']}>{props.event.eventName}</h3>
         {/* <p className={styles['author-name']}>by {props.event.owner}</p> */}
         <p className={styles['post-desc']}>{props.event.notes}</p>
-        
+
         <p className={styles['post-desc']}>
           {props.event.address}
         </p>
@@ -34,18 +34,18 @@ export function EventDetailPage(props) {
         </p>
         <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
         <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
-        <p className={styles['post-desc']}> 
-          {isFull 
-          ? 
-          'SORRY THIS EVENT IS FULL' 
-          : 
-          (numAttendees + ' / ' + props.event.slots)
+        <p className={styles['post-desc']}>
+          {isFull
+          ?
+          'SORRY THIS EVENT IS FULL'
+          :
+          (`${numAttendees} / ${props.event.slots}`)
           }
         </p>
-        {isFull 
-          ? 
-          '' 
-          : 
+        {isFull
+          ?
+          ''
+          :
           <a className="waves-effect waves-light btn" onClick={this.addAttendee}>JOIN</a>
           }
       </div>
@@ -69,10 +69,10 @@ EventDetailPage.propTypes = {
   event: PropTypes.shape({
     eventName: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
-    gameType: PropTypes.string, 
-    address: PropTypes.string, 
-    city: PropTypes.string, 
-    state: PropTypes.string, 
+    gameType: PropTypes.string,
+    address: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
     zipcode: PropTypes.string,
     scheduledDate: PropTypes.string.isRequired,
     scheduledTime: PropTypes.string.isRequired,
