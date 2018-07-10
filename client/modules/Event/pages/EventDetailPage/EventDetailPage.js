@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-
+import HostEditingInterface from '../../components/HostEditingInterface/';
 
 // Import Style
 import styles from '../../components/EventListItem/EventListItem.css';
@@ -18,10 +18,18 @@ export function EventDetailPage(props) {
   if (props.event.slots - numAttendees <= 0) {
     isFull = true;
   }
+  const addAttendee = (id) => {
+    // Return a function, probably
+  };
+
+  const ifUserOwns = (id) => {
+    return (id === props.user);
+  };
 
   return (
     <div>
       <Helmet title={props.event.eventName} />
+
       <div className={`${styles['single-post']} ${styles['post-detail']}`}>
         <h3 className={styles['post-title']}>{props.event.eventName}</h3>
         {/* <p className={styles['author-name']}>by {props.event.owner}</p> */}
@@ -37,18 +45,20 @@ export function EventDetailPage(props) {
         <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
         <p className={styles['post-desc']}>
           {isFull
-          ?
-          'SORRY THIS EVENT IS FULL'
-          :
-          (`${numAttendees} / ${props.event.slots}`)
+            ?
+            'SORRY THIS EVENT IS FULL'
+            :
+            (`${numAttendees} / ${props.event.slots}`)
           }
         </p>
-        {isFull
+        {ifUserOwns(props.event.owner)
           ?
-          ''
+          <HostEditingInterface />
           :
-          <a className="waves-effect waves-light btn" onClick={this.addAttendee}>JOIN</a>
-          }
+          isFull
+            ? ''
+            :
+            <a className="waves-effect waves-light btn" onClick={addAttendee}>JOIN</a>}
       </div>
     </div>
   );
@@ -63,6 +73,7 @@ EventDetailPage.need = [(params) => {
 function mapStateToProps(state, props) {
   return {
     event: getEvent(state, props.params.cuid),
+    user: state.authUser.data[0].uid,
   };
 }
 
@@ -81,7 +92,7 @@ EventDetailPage.propTypes = {
     owner: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
-    slots: PropTypes.string.isRequired,
+    slots: PropTypes.number.isRequired,
   }),
 };
 
