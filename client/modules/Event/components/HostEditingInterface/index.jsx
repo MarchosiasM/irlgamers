@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import EventEditForm from './EventEditForm/';
+import { deleteEventRequest } from '../../EventActions';
 
 class HostEditingInterface extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false,
       event: this.props.event,
       updating: false,
       editForm: false,
@@ -15,21 +15,30 @@ class HostEditingInterface extends Component {
     this.renderForm = this.renderForm.bind(this);
   }
 
+  deleteCancel = () => {
+    return () => {
+      this.setState({ deleteConfirm: false });
+    };
+  }
+
+  deleteConfirm = () => {
+    return () => {
+      console.log('The delete confirm button works');
+      this.props.dispatch(deleteEventRequest(this.state.event.cuid));
+    };
+  }
+
   deleteEvent = () => {
     return () => {
-      console.log('Returning deletion vibes');
       this.setState({
-        editing: true,
         deleteConfirm: true,
       });
     };
   }
 
   renderForm = () => {
-    console.log('Render form triggered');
     return () => {
       this.setState({
-        editing: true,
         editForm: true,
       });
     };
@@ -38,31 +47,41 @@ class HostEditingInterface extends Component {
   render() {
     return (
       <div>
-        {this.state.editing
-          ?
-          <EventEditForm />
-          :
-          <div>
-            <a className="waves-effect waves-light btn" onClick={this.renderForm()}>Edit</a><a className="waves-effect waves-light btn" onClick={this.deleteEvent()}>Delete</a>
-          </div>
+        {// Fuck you I love nesting ternarys
+          /* eslint-disable no-nested-ternary */
+          this.state.editForm
+            ?
+            <EventEditForm />
+            :
+            this.state.deleteConfirm
+              ?
+              <div>
+                "Delete, are you sure?"
+                <a className="waves-effect waves-light btn" onClick={this.deleteConfirm()}>I'm sure</a>
+                <a className="waves-effect waves-light btn" onClick={this.deleteCancel()}>Nevermind</a>
+              </div>
+              :
+              <div>
+                <a className="waves-effect waves-light btn" onClick={this.renderForm()}>Edit</a><a className="waves-effect waves-light btn" onClick={this.deleteEvent()}>Delete</a>
+              </div>
         }
       </div>
     );
   }
 }
 
-HostEditingInterface.propTypes = {
-  event: PropTypes.arrayOf(PropTypes.shape({
-    eventName: PropTypes.string.isRequired,
-    game: PropTypes.string.isRequired,
-    scheduledDate: PropTypes.string.isRequired,
-    scheduledTime: PropTypes.string.isRequired,
-    notes: PropTypes.string.isRequired,
-    slots: PropTypes.number.isRequired,
-    owner: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    cuid: PropTypes.string.isRequired,
-  })).isRequired,
-};
+// HostEditingInterface.propTypes = {
+//   event: PropTypes.objectOf(PropTypes.shape({
+//     eventName: PropTypes.string.isRequired,
+//     game: PropTypes.string.isRequired,
+//     scheduledDate: PropTypes.string.isRequired,
+//     scheduledTime: PropTypes.string.isRequired,
+//     notes: PropTypes.string.isRequired,
+//     slots: PropTypes.number.isRequired,
+//     owner: PropTypes.string.isRequired,
+//     slug: PropTypes.string.isRequired,
+//     cuid: PropTypes.string.isRequired,
+//   })).isRequired,
+// };
 
 export default HostEditingInterface;

@@ -24,8 +24,8 @@ class SearchBar extends React.Component {
       <ReactAutocomplete
         items={this.props.events}
         shouldItemRender={(item, value) => item.eventName.toLowerCase().indexOf(value.toLowerCase()) > -1}
-        getItemValue={ item => item.eventName }
-        wrapperProps={{ style: {display: 'block'} }}
+        getItemValue={item => item.eventName}
+        wrapperProps={{ style: { display: 'block' } }}
         renderItem={(item, highlighted) =>
           <div
             key={item.id}
