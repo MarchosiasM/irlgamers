@@ -29,7 +29,7 @@ export default (
     <IndexRoute
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
+          cb(null, require('./modules/Event/pages/EventListPage/EventListPage').default);
         });
       }}
     />
@@ -37,7 +37,7 @@ export default (
       path="/posts/:slug-:cuid"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
+          cb(null, require('./modules/Event/pages/EventDetailPage/EventDetailPage').default);
         });
       }}
     />
