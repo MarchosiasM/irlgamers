@@ -13,12 +13,6 @@ import { fetchEvent } from '../../EventActions';
 import { getEvent } from '../../EventReducer';
 
 export function EventDetailPage(props) {
-  // TODO: Refactor this later. Currently this code exists to keep there from being an error
-  // after event deletion (it attempts to do work on null code)
-  if (props.event) {
-    console.log('Found dispatch ', props.dispatch);
-    console.log(props.event);
-  }
 
   const numAttendees = () => {
     return props.event.attendees.length;
@@ -66,11 +60,11 @@ export function EventDetailPage(props) {
               dispatch={props.dispatch}
             />
           :
-          isFUll()
+          isFull()
             ? ''
             :
             <div>
-            (`${numAttendees} / ${props.event.slots}`)
+            {(`${numAttendees()} / ${props.event.slots}`)}
               <a className="waves-effect waves-light btn" onClick={addAttendee}>JOIN</a>
             </div>
           }

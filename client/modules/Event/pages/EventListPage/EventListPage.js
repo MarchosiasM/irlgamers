@@ -14,7 +14,7 @@ import EventCreateWidget from '../../components/EventCreateWidget/EventCreateWid
 // Import Actions
 import { addEventRequest, fetchEvents, deleteEventRequest } from '../../EventActions';
 import { toggleAddEvent } from '../../../App/AppActions';
-import { fetchAuthUserEventsRequest } from '../../../Event/UserEventsActions'
+import { fetchAuthUserEventsRequest } from '../../../Event/UserEventsActions';
 
 // Import Selectors
 import { getShowAddEvent } from '../../../App/AppReducer';
@@ -42,28 +42,26 @@ class EventListPage extends Component {
   };
 
   render() {
-   
     return (
       <div>
+        <SignInScreen />
+          {_.isObject(this.props.authUser) &&
+            <div>
+              <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
+              <h5>Your Events</h5>
+              {/* The below EventList component is being passed the Events that the current logged in user is hosting */}
+              <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.userEvents} />
+              <h5>Events Around You</h5>
+              <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
+            </div>
+          }
 
-      <SignInScreen />
-        {_.isObject(this.props.authUser) &&
-          <div>
-            <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
-            <h3>User Hosted Events Start Here - Robs note for Janet</h3>
-            {/* The below EventList component is being passed the Events that the current logged in user is hosting */}
-            <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.userEvents} />
-            <h3>User Hosted Events Start Here - Robs note for Janet</h3>
-            <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
-          </div>
-        }
-
-        {this.props.authUser === null &&
-          <div>
-            <h1>You Must Sign In to Create an Event</h1>
-            <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
-          </div>
-        }
+          {this.props.authUser === null &&
+            <div>
+              <h1>You Must Sign In to Create an Event</h1>
+              <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
+            </div>
+          }
       </div>
     );
   }

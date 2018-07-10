@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import EventEditForm from './EventEditForm/';
 import { deleteEventRequest } from '../../EventActions';
 
@@ -23,7 +22,6 @@ class HostEditingInterface extends Component {
 
   deleteConfirm = () => {
     return () => {
-      console.log('The delete confirm button works');
       this.props.dispatch(deleteEventRequest(this.state.event.cuid));
     };
   }
