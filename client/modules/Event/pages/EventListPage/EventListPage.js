@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import SignInScreen from '../../../Auth/components/SignInScreen/SignInScreen';
 // import fontawesome from '@fortawesome/fontawesome';
 // import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 // import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee';
@@ -45,6 +46,7 @@ class EventListPage extends Component {
     return (
       <div>
 
+      <SignInScreen />
         {_.isObject(this.props.authUser) &&
           <div>
             <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
