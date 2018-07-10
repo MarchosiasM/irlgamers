@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import EventEditForm from './EventEditForm/';
 
 class HostEditingInterface extends Component {
   constructor(props) {
@@ -8,13 +9,43 @@ class HostEditingInterface extends Component {
       editing: false,
       event: this.props.event,
       updating: false,
+      editForm: false,
+      deleteConfirm: false,
+    };
+    this.renderForm = this.renderForm.bind(this);
+  }
+
+  deleteEvent = () => {
+    return () => {
+      console.log('Returning deletion vibes');
+      this.setState({
+        editing: true,
+        deleteConfirm: true,
+      });
+    };
+  }
+
+  renderForm = () => {
+    console.log('Render form triggered');
+    return () => {
+      this.setState({
+        editing: true,
+        editForm: true,
+      });
     };
   }
 
   render() {
     return (
       <div>
-        <a className="waves-effect waves-light btn">Edit</a>
+        {this.state.editing
+          ?
+          <EventEditForm />
+          :
+          <div>
+            <a className="waves-effect waves-light btn" onClick={this.renderForm()}>Edit</a><a className="waves-effect waves-light btn" onClick={this.deleteEvent()}>Delete</a>
+          </div>
+        }
       </div>
     );
   }
