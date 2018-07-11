@@ -13,11 +13,18 @@ import { fetchEvent } from '../../EventActions';
 import { getEvent } from '../../EventReducer';
 
 export function EventDetailPage(props) {
-  const numAttendees = props.event.attendees.length;
-  let isFull = false;
-  if (props.event.slots - numAttendees <= 0) {
-    isFull = true;
-  }
+
+  const numAttendees = () => {
+    return props.event.attendees.length;
+  };
+
+  const isFull = () => {
+    if (props.event.slots - numAttendees() <= 0) {
+      return true;
+    }
+    return false;
+  };
+
   const addAttendee = (id) => {
     // Return a function, probably
   };
@@ -28,38 +35,45 @@ export function EventDetailPage(props) {
 
   return (
     <div>
-      <Helmet title={props.event.eventName} />
+      {props.event ?
+        <div className={`${styles['single-post']} ${styles['post-detail']}`}>
+          <Helmet title={props.event.eventName} />
+          <h3 className={styles['post-title']}>{props.event.eventName}</h3>
+          {/* <p className={styles['author-name']}>by {props.event.owner}</p> */}
+          <p className={styles['post-desc']}>{props.event.notes}</p>
 
-      <div className={`${styles['single-post']} ${styles['post-detail']}`}>
-        <h3 className={styles['post-title']}>{props.event.eventName}</h3>
-        {/* <p className={styles['author-name']}>by {props.event.owner}</p> */}
-        <p className={styles['post-desc']}>{props.event.notes}</p>
-
-        <p className={styles['post-desc']}>
-          {props.event.address}
-        </p>
-        <p className={styles['post-desc']}>
-          {`${props.event.city}, ${props.event.state} ${props.event.zipcode}`}
-        </p>
-        <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
-        <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
-        <p className={styles['post-desc']}>
-          {isFull
-            ?
-            'SORRY THIS EVENT IS FULL'
-            :
-            (`${numAttendees} / ${props.event.slots}`)
-          }
-        </p>
-        {ifUserOwns(props.event.owner)
+          <p className={styles['post-desc']}>
+            {props.event.address}
+          </p>
+          <p className={styles['post-desc']}>
+            {`${props.event.city}, ${props.event.state} ${props.event.zipcode}`}
+          </p>
+          <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
+          <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
+          <p className={styles['post-desc']}>
+          </p>
+        {
+          ifUserOwns(props.event.owner)
           ?
-          <HostEditingInterface />
+            <HostEditingInterface
+              event={props.event}
+              dispatch={props.dispatch}
+            />
           :
-          isFull
+          isFull()
             ? ''
             :
-            <a className="waves-effect waves-light btn" onClick={addAttendee}>JOIN</a>}
-      </div>
+            <div>
+            {(`${numAttendees()} / ${props.event.slots}`)}
+              <a className="waves-effect waves-light btn" onClick={addAttendee}>JOIN</a>
+            </div>
+          }
+        </div>
+      :
+        <div>
+          Your event no longer exists.
+        </div>
+        }
     </div>
   );
 }

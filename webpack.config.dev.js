@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -23,7 +24,7 @@ module.exports = {
   output: {
     path: __dirname,
     filename: 'app.js',
-    publicPath: 'http://0.0.0.0:8000/',
+    publicPath: ASSET_PATH,
   },
 
   resolve: {
@@ -119,6 +120,9 @@ module.exports = {
         CLIENT: JSON.stringify(true),
         'NODE_ENV': JSON.stringify('development'),
       }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.ASSET_PATH': JSON.stringify('ASSET_PATH')
     }),
   ],
 };

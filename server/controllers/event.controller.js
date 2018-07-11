@@ -42,22 +42,37 @@ export function getUserEvents(req, res) {
  */
 export function findEventsByNameDate(req, res) {
   let search_date = moment( decodeURI( req.params.date ), 'MMM DD, YYYY' );
-  let valid_search_date = (search_date.isValid()) ? new Date(search_date.format('YYYY-MM-DD')) : null;
+  let search_date_formatted = search_date.format('YYYY-MM-DD');
+  // let valid_search_date = (search_date.isValid()) ? new Date(search_date_formatted).toISOString() : null;
 
   let search_name = decodeURI(req.params.name);
   let search_params = {};
-
+  console.log(search_name);
   if(search_name !== 'null' ) search_params.eventName = new RegExp(search_name, 'i');
 
-  if(valid_search_date !== null ) search_params.scheduledDate = valid_search_date;
+  if(search_date.isValid()) search_params.scheduledDate = new Date(search_date_formatted).toISOString();
   
-  Event.find(search_params).sort('-scheduledDate').exec((err, events) => {
-    if (err) {
-      res.status(500).send(err);
+  console.log(search_params);
+
+  Event.find(search_params).sort('-scheduledDate')
+  .then((events) => {
+    if(events.length){
+      res.json({ events });
+      return events.length;
+    }else{
+      return;
     }
-    // res.send(search_date);
-    res.json({ events });
-  });
+  })
+  .then( (event_count) => {
+    if(event_count) return;
+    Event.find().sort('-scheduledDate').then( (events) => {
+      res.json({ events });
+    }).catch(err => res.status(500).send(err));
+  })
+  .catch( err => res.status(500).send(err) );
+
+
+
 }
 
 /**
