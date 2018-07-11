@@ -51,7 +51,8 @@ export function fetchEvents() {
 
 export function findEventsByNameDate(name, date = '*') {
   return (dispatch) => {
-    return callApi(`events/search/${name}/${date}`).then((res) => {
+    return callApi(`events/search/${name}/${date}`)
+    .then((res) => {
       dispatch(addEvents(res.events));
     });
   };
@@ -59,11 +60,13 @@ export function findEventsByNameDate(name, date = '*') {
 
 export function fetchEvent(cuid) {
   return (dispatch) => {
-    return callApi(`events/${cuid}`).then(res => dispatch(addEvent(res.event)));
+    return callApi(`events/${cuid}`)
+    .then(res => dispatch(addEvent(res.event)));
   };
 }
 
 export function deleteEvent(cuid) {
+  console.log('Hitting the delete event action');
   return {
     type: DELETE_EVENT,
     cuid,
@@ -71,7 +74,10 @@ export function deleteEvent(cuid) {
 }
 
 export function deleteEventRequest(cuid) {
+  console.log('The delete request is triggered');
   return (dispatch) => {
-    return callApi(`events/${cuid}`, 'delete').then(() => dispatch(deleteEvent(cuid)));
+    console.log('The deletion is dispatched');
+    return callApi(`events/${cuid}`, 'delete')
+    .then(() => dispatch(deleteEvent(cuid)));
   };
 }
