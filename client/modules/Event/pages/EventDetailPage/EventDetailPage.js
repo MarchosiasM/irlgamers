@@ -13,7 +13,6 @@ import { fetchEvent, passAttendee } from '../../EventActions';
 import { getEvent } from '../../EventReducer';
 
 export function EventDetailPage(props) {
-
   const numAttendees = () => {
     return props.event.attendees.length;
   };
@@ -28,7 +27,7 @@ export function EventDetailPage(props) {
   const addAttendee = (e) => {
     // Return a function, probably
     // console.log(props.event._id, props.user);
-    return props.dispatch( passAttendee( props.event.cuid, props.user ) );
+    return props.dispatch(passAttendee(props.event.cuid, props.user));
   };
 
   const ifUserOwns = (id) => {
@@ -55,6 +54,7 @@ export function EventDetailPage(props) {
           <p className={styles['post-desc']}>
           </p>
         {
+          /* eslint-disable no-nested-ternary */
           ifUserOwns(props.event.owner)
           ?
             <HostEditingInterface

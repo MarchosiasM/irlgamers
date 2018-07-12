@@ -1,38 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getEvent } from '../../../EventReducer';
 
-const EventEditForm = () => (
-  <div className="row">
-    <form className="col s12">
-      <div className="row">
-        <div className="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" className="validate" />
-          <label htmlFor="first_name">First Name</label>
-        </div>
-        <div className="input-field col s6">
-          <input id="last_name" type="text" className="validate" />
-          <label htmlFor="last_name">Last Name</label>
-        </div>
-      </div>
-      <div className="row">
-        <div className="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" className="validate" />
-          <label htmlFor="disabled">Disabled</label>
-        </div>
-      </div>
-      <div className="row">
-        <div className="input-field col s12">
-          <input id="password" type="password" className="validate" />
-          <label htmlFor="password">Password</label>
-        </div>
-      </div>
-      <div className="row">
-        <div className="input-field col s12">
-          <input id="email" type="email" className="validate" />
-          <label htmlFor="email">Email</label>
-        </div>
-      </div>
-    </form>
-  </div>
-);
 
-export default EventEditForm;
+class EventEditForm2 extends Component {
+  constructor() {
+    super();
+    this.state = {
+      event: {},
+      user: '',
+    };
+  }
+
+  render() {
+    return (
+      <div>
+      {console.log(this.state)}
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state, props) {
+  console.log(state);
+  console.log(getEvent(state, props.eventID));
+  return {
+    event: getEvent(state, props.eventID),
+    user: state.authUser.data[0].uid,
+  };
+}
+
+export default connect(mapStateToProps)(EventEditForm2);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import EventEditForm from './EventEditForm/';
-import { deleteEventRequest } from '../../EventActions';
+import { deleteEventRequest, updateEventRequest } from '../../EventActions';
 
+/* eslint-disable react/prop-types */
 class HostEditingInterface extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +13,12 @@ class HostEditingInterface extends Component {
       deleteConfirm: false,
     };
     this.renderForm = this.renderForm.bind(this);
+  }
+
+  updateSubmit = () => {
+    return () => {
+      this.props.dispatch(updateEventRequest(this.state.event.cuid, body));
+    }
   }
 
   deleteCancel = () => {
@@ -49,7 +56,7 @@ class HostEditingInterface extends Component {
           /* eslint-disable no-nested-ternary */
           this.state.editForm
             ?
-            <EventEditForm />
+            <EventEditForm eventID={this.state.event.cuid} />
             :
             this.state.deleteConfirm
               ?
@@ -60,7 +67,18 @@ class HostEditingInterface extends Component {
               </div>
               :
               <div>
-                <a className="waves-effect waves-light btn" onClick={this.renderForm()}>Edit</a><a className="waves-effect waves-light btn" onClick={this.deleteEvent()}>Delete</a>
+                <a
+                  className="waves-effect waves-light btn"
+                  onClick={this.renderForm()}
+                >
+                Edit
+                </a>
+                <a
+                  className="waves-effect waves-light btn"
+                  onClick={this.deleteEvent()}
+                >
+                Delete
+                </a>
               </div>
         }
       </div>
