@@ -127,6 +127,22 @@ export function getEvent(req, res) {
   });
 }
 
+
+export function addAttendee(req, res){
+  // @TODO: prevent same user from signup for the same event!
+  console.log('srv', req.params.event, req.params.attendee);
+  Event.findOneAndUpdate(
+    {'cuid': req.params.event },
+    { $push: { 'attendees': req.params.attendee } }
+  ).exec((err, event) => {
+    if(err){
+      res.status(500).send(err);
+    }else{
+      res.json({ event });
+    }
+  });
+}
+
 /**
  * Delete an event
  * @param req
