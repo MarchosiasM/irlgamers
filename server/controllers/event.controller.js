@@ -161,13 +161,18 @@ export function deleteEvent(req, res) {
 }
 
 export function editEvent(req, res) {
+  // console.log('It hit your route good job');
+  // console.log('Your route received the following req, ', req.body);
+  const { eventName, address, city, state, slots, notes, game, gameType, scheduledDate, scheduledTime } = req.body;
   Event.findOneAndUpdate(
-    { cuid: req.params.uid },
-    { event }
+    { cuid: req.params.cuid },
+    { eventName, address, city, state, slots, notes, game, gameType, scheduledTime, scheduledDate }
   ).exec((err, event) => {
     if (err) {
       res.stats(500).send(err);
     } else {
+      // Note for everyone else: This event returned is the event prior to the update
+      // console.log('Event updated, ', event);
       res.json({ event });
     }
   });

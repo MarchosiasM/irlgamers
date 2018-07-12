@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import HostEditingInterface from '../../components/HostEditingInterface/';
-
+/* eslint-disable react/prop-types */
 // Import Style
 import styles from '../../components/EventListItem/EventListItem.css';
 
@@ -24,7 +24,7 @@ export function EventDetailPage(props) {
     return false;
   };
 
-  const addAttendee = (e) => {
+  const addAttendee = () => {
     // Return a function, probably
     // console.log(props.event._id, props.user);
     return props.dispatch(passAttendee(props.event.cuid, props.user));
@@ -63,7 +63,7 @@ export function EventDetailPage(props) {
             />
           :
           isFull()
-            ? ''
+            ? 'Event is Full'
             :
             <div>
             {(`${numAttendees()} / ${props.event.slots}`)}

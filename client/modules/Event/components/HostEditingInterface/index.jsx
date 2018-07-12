@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EventEditForm from './EventEditForm/';
-import { deleteEventRequest, updateEventRequest } from '../../EventActions';
+import { deleteEventRequest } from '../../EventActions';
 
 /* eslint-disable react/prop-types */
 class HostEditingInterface extends Component {
@@ -13,12 +13,6 @@ class HostEditingInterface extends Component {
       deleteConfirm: false,
     };
     this.renderForm = this.renderForm.bind(this);
-  }
-
-  updateSubmit = () => {
-    return () => {
-      this.props.dispatch(updateEventRequest(this.state.event.cuid, body));
-    }
   }
 
   deleteCancel = () => {
@@ -56,7 +50,7 @@ class HostEditingInterface extends Component {
           /* eslint-disable no-nested-ternary */
           this.state.editForm
             ?
-            <EventEditForm eventID={this.state.event.cuid} />
+            <EventEditForm eventID={this.state.event.cuid} dispatch={this.props.dispatch} />
             :
             this.state.deleteConfirm
               ?

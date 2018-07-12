@@ -86,7 +86,7 @@ export function fetchEvent(cuid) {
 }
 
 export function updateEvent(cuid, newEvent) {
-  console.log('Hitting the update event action');
+  // console.log('Hitting the update event action');
   return {
     type: UPDATE_EVENT,
     cuid,
@@ -95,9 +95,11 @@ export function updateEvent(cuid, newEvent) {
 }
 
 export function updateEventRequest(cuid, body) {
-  console.log('The update request is triggered');
+  // console.log('The update request is triggered');
   return (dispatch) => {
-    console.log('The update is dispatched to the API');
+    // console.log('The update is dispatched to the API');
+    // console.log('CUID', cuid);
+    // console.log('Body', body);
     return callApi(`events/${cuid}`, 'put', body)
     .then(() => dispatch(updateEvent(cuid, body)));
   };
