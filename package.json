@@ -51,6 +51,7 @@
     "materialize-css": "^1.0.0-rc.1",
     "moment": "^2.22.2",
     "mongoose": "^4.4.20",
+    "prop-types": "^15.6.2",
     "react": "^15.1.0",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^15.1.0",

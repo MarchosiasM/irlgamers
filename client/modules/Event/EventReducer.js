@@ -16,6 +16,7 @@ const EventReducer = (state = initialState, action) => {
       };
 
     case DELETE_EVENT:
+      console.log('Hit the deletion reducer');
       return {
         data: state.data.filter(event => event.cuid !== action.cuid),
       };

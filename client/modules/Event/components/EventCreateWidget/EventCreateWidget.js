@@ -40,12 +40,12 @@ export class EventCreateWidget extends Component {
     ) {
       this.props.addEvent(
         eventNameRef.value,
+        gameTypeRef.value,
+        gameRef.value, 
         addressRef.value, 
         cityRef.value, 
         stateRef.value,
         zipcodeRef.value,
-        gameRef.value, 
-        gameTypeRef.value,
         scheduledDateRef.value, 
         scheduledTimeRef.value, 
         slotsRef.value, 
@@ -80,7 +80,7 @@ export class EventCreateWidget extends Component {
             <input placeholder="State" className={styles['form-field']} ref="state" />
             <input placeholder="Zip Code" className={styles['form-field']} ref="zipcode" />
             <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" ref="scheduledDate" />
-            <input placeholder={this.props.intl.messages.selectTime} type="text" className="timepicker" ref="scheduledTime" />
+            <input placeholder="Select Time" type="text" className="timepicker" ref="scheduledTime" />
             <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="slots" />
             <textarea placeholder={this.props.intl.messages.notes} className={styles['form-field']} ref="notes" />
             <a className={styles['post-submit-button']} href="#" onClick={this.addEvent}><FormattedMessage id="submit" /></a>
