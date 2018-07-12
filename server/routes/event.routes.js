@@ -18,6 +18,9 @@ router.route('/events/:cuid').get(EventController.getEvent);
 // Add a new Event
 router.route('/events').post(EventController.addEvent);
 
+// Add a new Event
+router.route('/attendee/:event/:attendee').get(EventController.addAttendee);
+
 // Delete an Event by cuid
 router.route('/events/:cuid').delete(EventController.deleteEvent);
 

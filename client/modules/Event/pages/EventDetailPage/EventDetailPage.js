@@ -7,7 +7,7 @@ import HostEditingInterface from '../../components/HostEditingInterface/';
 import styles from '../../components/EventListItem/EventListItem.css';
 
 // Import Actions
-import { fetchEvent } from '../../EventActions';
+import { fetchEvent, passAttendee } from '../../EventActions';
 
 // Import Selectors
 import { getEvent } from '../../EventReducer';
@@ -25,8 +25,10 @@ export function EventDetailPage(props) {
     return false;
   };
 
-  const addAttendee = (id) => {
+  const addAttendee = (e) => {
     // Return a function, probably
+    // console.log(props.event._id, props.user);
+    return props.dispatch( passAttendee( props.event.cuid, props.user ) );
   };
 
   const ifUserOwns = (id) => {

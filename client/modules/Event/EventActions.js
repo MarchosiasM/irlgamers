@@ -4,6 +4,7 @@ import callApi from '../../util/apiCaller';
 export const ADD_EVENT = 'ADD_EVENT';
 export const ADD_EVENTS = 'ADD_EVENTS';
 export const DELETE_EVENT = 'DELETE_EVENT';
+export const ADD_ATTENDEE = 'ADD_ATTENDEE';
 
 // Export Actions
 export function addEvent(event) {
@@ -39,6 +40,23 @@ export function addEvents(events) {
     type: ADD_EVENTS,
     events,
   };
+}
+
+export function passAttendee(event, user_id) {
+  console.log(event, user_id);
+
+  return (dispatch) => {
+    return callApi(`/attendee/${event}/${user_id}`, 'get').then(res => dispatch(updateAttendee(res.event)));
+  };
+}
+
+export function updateAttendee(event){
+  console.log(event);
+  return {
+    type: ADD_ATTENDEE,
+    event,
+  }
+  // @TODO: pass the attendees into the event state!
 }
 
 export function fetchEvents() {
