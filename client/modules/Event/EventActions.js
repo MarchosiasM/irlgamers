@@ -54,10 +54,11 @@ export function updateAttendee(event) {
 /* eslint-disable camelcase */
 
 export function passAttendee(event, user_id) {
-  console.log(event, user_id);
-
+  // console.log(event, user_id);
   return (dispatch) => {
-    return callApi(`/attendee/${event}/${user_id}`, 'get').then(res => dispatch(updateAttendee(res.event)));
+    return callApi(`/attendee/${event}/${user_id}`, 'get')
+    .then(res => dispatch(updateAttendee(res.event)
+    ));
   };
 }
 

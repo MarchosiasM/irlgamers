@@ -131,7 +131,8 @@ export function addAttendee(req, res) {
   console.log('srv', req.params.event, req.params.attendee);
   Event.findOneAndUpdate(
     { cuid: req.params.event },
-    { $push: { attendees: req.params.attendee } }
+    { $push: { attendees: req.params.attendee } },
+    { new: true },
   ).exec((err, event) => {
     if (err) {
       res.status(500).send(err);

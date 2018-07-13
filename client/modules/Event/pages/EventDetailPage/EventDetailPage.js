@@ -13,12 +13,8 @@ import { fetchEvent, passAttendee } from '../../EventActions';
 import { getEvent } from '../../EventReducer';
 
 export function EventDetailPage(props) {
-  const numAttendees = () => {
-    return props.event.attendees.length;
-  };
-
   const isFull = () => {
-    if (props.event.slots - numAttendees() <= 0) {
+    if (props.event.slots - props.attendees <= 0) {
       return true;
     }
     return false;
@@ -66,7 +62,7 @@ export function EventDetailPage(props) {
             ? 'Event is Full'
             :
             <div>
-            {(`${numAttendees()} / ${props.event.slots}`)}
+            {(`${props.attendees} / ${props.event.slots}`)}
               <a className="waves-effect waves-light btn" onClick={addAttendee}>JOIN</a>
             </div>
           }
@@ -90,6 +86,7 @@ function mapStateToProps(state, props) {
   return {
     event: getEvent(state, props.params.cuid),
     user: state.authUser.data[0].uid,
+    attendees: getEvent(state, props.params.cuid).attendees.length,
   };
 }
 

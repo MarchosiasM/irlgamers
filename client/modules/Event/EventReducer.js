@@ -16,13 +16,14 @@ const EventReducer = (state = initialState, action) => {
       };
 
     case DELETE_EVENT:
-      console.log('Hit the deletion reducer');
+      // console.log('Hit the deletion reducer');
       return {
         data: state.data.filter(event => event.cuid !== action.cuid),
       };
 
     case ADD_ATTENDEE:
-      // console.log('Added Attendee', action.attendees);
+      // console.log('Action passed is ', action);
+      // console.log('Added Attendee', action.event.attendees);
       return {
         data: state.data.map(event => {
           // console.log('cuid to match... ', event.cuid);
