@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import HostEditingInterface from '../../components/HostEditingInterface/';
-
+/* eslint-disable react/prop-types */
 // Import Style
 import styles from '../../components/EventListItem/EventListItem.css';
 
@@ -13,22 +13,17 @@ import { fetchEvent, passAttendee } from '../../EventActions';
 import { getEvent } from '../../EventReducer';
 
 export function EventDetailPage(props) {
-
-  const numAttendees = () => {
-    return props.event.attendees.length;
-  };
-
   const isFull = () => {
-    if (props.event.slots - numAttendees() <= 0) {
+    if (props.event.slots - props.attendees <= 0) {
       return true;
     }
     return false;
   };
 
-  const addAttendee = (e) => {
+  const addAttendee = () => {
     // Return a function, probably
     // console.log(props.event._id, props.user);
-    return props.dispatch( passAttendee( props.event.cuid, props.user ) );
+    return props.dispatch(passAttendee(props.event.cuid, props.user));
   };
 
   const ifUserOwns = (id) => {
@@ -55,6 +50,7 @@ export function EventDetailPage(props) {
           <p className={styles['post-desc']}>
           </p>
         {
+          /* eslint-disable no-nested-ternary */
           ifUserOwns(props.event.owner)
           ?
             <HostEditingInterface
@@ -63,10 +59,10 @@ export function EventDetailPage(props) {
             />
           :
           isFull()
-            ? ''
+            ? 'Event is Full'
             :
             <div>
-            {(`${numAttendees()} / ${props.event.slots}`)}
+            {(`${props.attendees} / ${props.event.slots}`)}
               <a className="waves-effect waves-light btn" onClick={addAttendee}>JOIN</a>
             </div>
           }
@@ -90,6 +86,7 @@ function mapStateToProps(state, props) {
   return {
     event: getEvent(state, props.params.cuid),
     user: state.authUser.data[0].uid,
+    attendees: getEvent(state, props.params.cuid).attendees.length,
   };
 }
 

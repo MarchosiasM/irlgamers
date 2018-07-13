@@ -1,38 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getEvent } from '../../../EventReducer';
+import { updateEventRequest } from '../../../EventActions';
 
-const EventEditForm = () => (
-  <div className="row">
-    <form className="col s12">
-      <div className="row">
-        <div className="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" className="validate" />
-          <label htmlFor="first_name">First Name</label>
-        </div>
-        <div className="input-field col s6">
-          <input id="last_name" type="text" className="validate" />
-          <label htmlFor="last_name">Last Name</label>
-        </div>
-      </div>
-      <div className="row">
-        <div className="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" className="validate" />
-          <label htmlFor="disabled">Disabled</label>
-        </div>
-      </div>
-      <div className="row">
-        <div className="input-field col s12">
-          <input id="password" type="password" className="validate" />
-          <label htmlFor="password">Password</label>
-        </div>
-      </div>
-      <div className="row">
-        <div className="input-field col s12">
-          <input id="email" type="email" className="validate" />
-          <label htmlFor="email">Email</label>
-        </div>
-      </div>
-    </form>
-  </div>
-);
+/* eslint-disable react/prop-types */
 
-export default EventEditForm;
+class EventEditForm2 extends Component {
+  constructor() {
+    super();
+    this.state = {
+      event: {},
+      user: '',
+    };
+  }
+
+  updateSubmit = () => {
+    const body = {
+      ...this.props.event,
+      notes: `updated notes ${Date.now()}`,
+    };
+    // console.log(body);
+    // console.log('Submit Button activated');
+    // console.log('The state at the widget level ', this.props.event);
+    // console.log('CUID sent', this.props.event.cuid);
+    return () => {
+      this.props.dispatch(updateEventRequest(this.props.event.cuid, body));
+    };
+  }
+
+  render() {
+    return (
+      <div>
+    {/* console.log(this.state) */}
+        <a className="waves-effect waves-light btn" onClick={this.updateSubmit()}>Submit an Update</a>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state, props) {
+  console.log('Within your event edit form, state feteched, ', state);
+  console.log('Within your event edit form, you got an event, ', getEvent(state, props.eventID));
+  return {
+    event: getEvent(state, props.eventID),
+    user: state.authUser.data[0].uid,
+  };
+}
+
+export default connect(mapStateToProps)(EventEditForm2);
