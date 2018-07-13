@@ -9,16 +9,36 @@ class EventEditForm2 extends Component {
   constructor() {
     super();
     this.state = {
-      event: {},
+      event: '',
       user: '',
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  updateSubmit = () => {
-    const body = {
-      ...this.props.event,
-      notes: `updated notes ${Date.now()}`,
-    };
+  componentDidMount() {
+    this.setState({ event: this.props.event });
+    console.log('state, ', this.state.event);
+    console.log('props event, ', this.props.event);
+  }
+
+  onFocus = (event) => {
+    event.target.select();
+  }
+
+
+  handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    const newState = Object.assign({}, this.state.event, { [name]: value });
+    this.setState({ event: newState });
+  }
+
+  handleSubmit = () => {
+    const body = Object.assign({}, this.state.event);
+    // console.log(body);
     // console.log(body);
     // console.log('Submit Button activated');
     // console.log('The state at the widget level ', this.props.event);
@@ -31,16 +51,116 @@ class EventEditForm2 extends Component {
   render() {
     return (
       <div>
-    {/* console.log(this.state) */}
-        <a className="waves-effect waves-light btn" onClick={this.updateSubmit()}>Submit an Update</a>
+        <form>
+          <label>Event Name
+            <input
+              name="eventName"
+              defaultValue={this.props.event.eventName}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Notes
+            <input
+              name="notes"
+              defaultValue={this.props.event.notes}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Game
+            <input
+              name="game"
+              defaultValue={this.props.event.game}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Game Type
+            <input
+              name="gameType"
+              defaultValue={this.props.event.gameType}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Address
+            <input
+              name="address"
+              defaultValue={this.props.event.address}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>City
+            <input
+              name="city"
+              defaultValue={this.props.event.city}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>State
+            <input
+              name="state"
+              defaultValue={this.props.event.state}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Zip
+            <input
+              name="zip"
+              defaultValue={this.props.event.zipcode}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Date
+            <input
+              name="date"
+              defaultValue={this.props.event.scheduledDate}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Time
+            <input
+              name="time"
+              defaultValue={this.props.event.scheduledTime}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+          <label>Slots
+            <input
+              name="eventName"
+              defaultValue={this.props.event.slots}
+              type="text"
+              onChange={this.handleChange}
+              onFocus={this.onFocus}
+            />
+          </label>
+        </form>
+        <a className="waves-effect waves-light btn" onClick={this.handleSubmit()}>Submit an Update</a>
       </div>
     );
   }
 }
 
 function mapStateToProps(state, props) {
-  console.log('Within your event edit form, state feteched, ', state);
-  console.log('Within your event edit form, you got an event, ', getEvent(state, props.eventID));
+  // console.log('Within your event edit form, state feteched, ', state);
+  // console.log('Within your event edit form, you got an event, ', getEvent(state, props.eventID));
   return {
     event: getEvent(state, props.eventID),
     user: state.authUser.data[0].uid,
