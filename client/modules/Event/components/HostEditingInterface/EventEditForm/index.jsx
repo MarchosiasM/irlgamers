@@ -16,7 +16,7 @@ class EventEditForm2 extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
+ /* eslint-disable react/no-did-mount-set-state */
   componentDidMount() {
     this.setState({ event: this.props.event });
     console.log('state, ', this.state.event);
@@ -38,11 +38,6 @@ class EventEditForm2 extends Component {
 
   handleSubmit = () => {
     const body = Object.assign({}, this.state.event);
-    // console.log(body);
-    // console.log(body);
-    // console.log('Submit Button activated');
-    // console.log('The state at the widget level ', this.props.event);
-    // console.log('CUID sent', this.props.event.cuid);
     return () => {
       this.props.dispatch(updateEventRequest(this.props.event.cuid, body));
     };
@@ -117,7 +112,7 @@ class EventEditForm2 extends Component {
           </label>
           <label>Zip
             <input
-              name="zip"
+              name="zipcode"
               defaultValue={this.props.event.zipcode}
               type="text"
               onChange={this.handleChange}
@@ -126,7 +121,7 @@ class EventEditForm2 extends Component {
           </label>
           <label>Date
             <input
-              name="date"
+              name="scheduledDate"
               defaultValue={this.props.event.scheduledDate}
               type="text"
               onChange={this.handleChange}
@@ -135,7 +130,7 @@ class EventEditForm2 extends Component {
           </label>
           <label>Time
             <input
-              name="time"
+              name="scheduledTime"
               defaultValue={this.props.event.scheduledTime}
               type="text"
               onChange={this.handleChange}
@@ -144,7 +139,7 @@ class EventEditForm2 extends Component {
           </label>
           <label>Slots
             <input
-              name="eventName"
+              name="slots"
               defaultValue={this.props.event.slots}
               type="text"
               onChange={this.handleChange}
