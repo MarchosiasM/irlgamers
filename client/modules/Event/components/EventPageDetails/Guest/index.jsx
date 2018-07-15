@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EventDetails from '../EventDetails';
 import Join from './Join';
+import MemberActions from './MemberOptions';
 
 /* eslint-disable react/prop-types */
 class Guest extends Component {
@@ -29,6 +30,9 @@ class Guest extends Component {
             />
           </div>
         }
+        <div>
+          <MemberActions />
+        </div>
       </div>
     );
   }

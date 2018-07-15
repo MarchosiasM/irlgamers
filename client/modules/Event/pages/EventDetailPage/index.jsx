@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import Helmet from 'react-helmet';
 import OwnerGuest from '../../components/EventPageDetails/OwnerGuest';
+import NotLoggedIn from '../../components/EventPageDetails/Guest/NotLoggedIn';
 /* eslint-disable react/prop-types */
 // Import Style
 import styles from '../../components/EventListItem/EventListItem.css';
@@ -67,11 +68,20 @@ class EventDetailPage extends Component {
     return (this.props.event.owner === this.props.user);
   };
 
+  handleEdgeCases = () => {
+    if (!this.props.event) {
+      return 'This event no longer exists';
+    }
+    if (this.state.user !== 'false') {
+      return <NotLoggedIn event={this.props.event} styles={styles} />;
+    }
+    return null;
+  }
 
   render() {
     return (
       <div>
-        {this.props.event
+        {(this.props.event & (this.state.user !== 'false'))
           ?
           <OwnerGuest
             owner={this.state.owner}
@@ -83,7 +93,7 @@ class EventDetailPage extends Component {
             member={this.state.member}
           />
           :
-          'This event no longer exists.'
+          this.handleEdgeCases()
         }
       </div>
     );
@@ -99,7 +109,7 @@ EventDetailPage.need = [(params) => {
 function mapStateToProps(state, props) {
   return {
     event: getEvent(state, props.params.cuid),
-    user: state.authUser.data[0].uid,
+    user: state.authUser.data[0] ? state.authUser.data[0].uid : 'false',
     attendees: getEvent(state, props.params.cuid) ? getEvent(state, props.params.cuid).attendees.length : '',
   };
 }
