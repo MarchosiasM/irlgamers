@@ -25,7 +25,6 @@ class EventEditForm extends Component {
     event.target.select();
   }
 
-
   handleChange = (event) => {
     const target = event.target;
     const name = target.name;

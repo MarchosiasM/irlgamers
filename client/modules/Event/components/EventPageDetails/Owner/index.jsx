@@ -70,12 +70,14 @@ class OwnerDetails extends Component {
             This is the owners page.
           </div>
         }
-        <a
-          className="waves-effect waves-light btn"
-          onClick={this.toggleEditingMode()}
-        >
-          Edit
-        </a>
+        {this.state.editing ? '' :
+          <a
+            className="waves-effect waves-light btn"
+            onClick={this.toggleEditingMode()}
+          >
+            Edit
+          </a>
+        }
         <Delete
           deleteToggle={this.deleteToggle}
           deleteMode={this.state.deleteMode}
