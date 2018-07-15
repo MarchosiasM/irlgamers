@@ -1,18 +1,18 @@
 import React from 'react';
-import Owner from '../Owner';
+import Host from '../Host';
 import Guest from '../Guest';
 
 /* eslint-disable react/prop-types */
 /* This component differentiates between the owner of an event and a guest.
   If they're the owner, they're presented with the owner's interface. Guests
   are further differentiated down the line as either members or non-members */
-const OwnerGuest = ({ owner, event, styles, dispatch, addAttendee, isFull, member }) => (
+const HostGuest = ({ host, event, styles, dispatch, addAttendee, isFull, member }) => (
   <div>
     {
-      owner
+      host
         ?
         <div>
-          <Owner
+          <Host
             event={event}
             styles={styles}
             dispatch={dispatch}
@@ -33,4 +33,4 @@ const OwnerGuest = ({ owner, event, styles, dispatch, addAttendee, isFull, membe
   </div>
 );
 
-export default OwnerGuest;
+export default HostGuest;

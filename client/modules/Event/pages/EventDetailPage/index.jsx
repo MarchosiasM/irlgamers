@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import Helmet from 'react-helmet';
-import OwnerGuest from '../../components/EventPageDetails/OwnerGuest';
+import HostGuest from '../../components/EventPageDetails/HostGuest';
 import NotLoggedIn from '../../components/EventPageDetails/Guest/NotLoggedIn';
 /* eslint-disable react/prop-types */
 // Import Style
@@ -12,6 +12,7 @@ import { fetchEvent, passAttendee } from '../../EventActions';
 
 // Import Selectors
 import { getEvent } from '../../EventReducer';
+import { getAuthUser } from '../../../Auth/AuthReducer';
 
 /* This is the base level component for the event details page for users.
   At this level we hand down all the necessary moving parts for differentiation
@@ -22,14 +23,14 @@ class EventDetailPage extends Component {
   constructor() {
     super();
     this.state = {
-      owner: false,
+      host: false,
       member: false,
     };
   }
 
   componentDidMount = () => {
-    this.setState({ owner: this.ifUserOwns() });
-    if (!this.ifUserOwns()) {
+    this.setState({ host: this.ifUserIsHost() });
+    if (!this.ifUserIsHost()) {
       // console.log('Running member check');
       this.runMemberCheck();
     }
@@ -64,15 +65,19 @@ class EventDetailPage extends Component {
     return this.props.dispatch(passAttendee(this.props.event.cuid, this.props.user));
   };
 
-  ifUserOwns = () => {
+  ifUserIsHost = () => {
     return (this.props.event.owner === this.props.user);
   };
 
   handleEdgeCases = () => {
+    console.log('Handling edge cases');
+    console.log('AuthUser?? ', this.props.authUser);
+    console.log('User is, ', this.props.user);
+    console.log('Event is, ', this.props.event);
     if (!this.props.event) {
       return 'This event no longer exists';
     }
-    if (this.state.user !== 'false') {
+    if (this.props.user === undefined) {
       return <NotLoggedIn event={this.props.event} styles={styles} />;
     }
     return null;
@@ -81,10 +86,10 @@ class EventDetailPage extends Component {
   render() {
     return (
       <div>
-        {(this.props.event & (this.state.user !== 'false'))
+        {(this.props.event && (this.props.user !== undefined))
           ?
-          <OwnerGuest
-            owner={this.state.owner}
+          <HostGuest
+            host={this.state.host}
             event={this.props.event}
             styles={styles}
             dispatch={this.props.dispatch}
@@ -109,7 +114,8 @@ EventDetailPage.need = [(params) => {
 function mapStateToProps(state, props) {
   return {
     event: getEvent(state, props.params.cuid),
-    user: state.authUser.data[0] ? state.authUser.data[0].uid : 'false',
+    authUser: getAuthUser(state),
+    user: state.authUser.data[0] ? state.authUser.data[0].uid : undefined,
     attendees: getEvent(state, props.params.cuid) ? getEvent(state, props.params.cuid).attendees.length : '',
   };
 }

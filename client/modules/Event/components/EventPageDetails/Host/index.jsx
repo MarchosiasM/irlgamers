@@ -8,7 +8,7 @@ import Delete from './Delete/';
 
 /* This component renders out all the options for hosts. Hosts
   can delete and edit at the time of writing this comment. */
-class OwnerDetails extends Component {
+class HostDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,4 +88,4 @@ class OwnerDetails extends Component {
   }
 }
 
-export default OwnerDetails;
+export default HostDetails;
