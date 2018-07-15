@@ -17,15 +17,14 @@ class OwnerDetails extends Component {
     };
   }
 
-  setEditingMode = () => {
+  toggleEditingMode = () => {
     return () => {
+      if (this.state.editing) {
+        this.setState({ editing: false });
+        return false;
+      }
       this.setState({ editing: true });
-    };
-  }
-
-  endEditingMode = () => {
-    return () => {
-      this.setState({ editing: false });
+      return true;
     };
   }
 
@@ -59,6 +58,7 @@ class OwnerDetails extends Component {
             <EventEditing
               eventID={this.props.event.cuid}
               dispatch={this.props.dispatch}
+              toggleEditingMode={this.toggleEditingMode}
             />
           </div>
           :
@@ -72,7 +72,7 @@ class OwnerDetails extends Component {
         }
         <a
           className="waves-effect waves-light btn"
-          onClick={this.setEditingMode()}
+          onClick={this.toggleEditingMode()}
         >
           Edit
         </a>

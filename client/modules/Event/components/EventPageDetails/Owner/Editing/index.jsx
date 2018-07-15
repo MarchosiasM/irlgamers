@@ -38,6 +38,7 @@ class EventEditForm extends Component {
     const body = Object.assign({}, this.state.event);
     return () => {
       this.props.dispatch(updateEventRequest(this.props.event.cuid, body));
+      this.props.toggleEditingMode()();
     };
   }
 
