@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getEvent } from '../../../EventReducer';
-import { updateEventRequest } from '../../../EventActions';
+import { getEvent } from '../../../../EventReducer';
+import { updateEventRequest } from '../../../../EventActions';
 
 /* eslint-disable react/prop-types */
 
-class EventEditForm2 extends Component {
+class EventEditForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,8 +19,6 @@ class EventEditForm2 extends Component {
  /* eslint-disable react/no-did-mount-set-state */
   componentDidMount() {
     this.setState({ event: this.props.event });
-    console.log('state, ', this.state.event);
-    console.log('props event, ', this.props.event);
   }
 
   onFocus = (event) => {
@@ -162,4 +160,4 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps)(EventEditForm2);
+export default connect(mapStateToProps)(EventEditForm);
