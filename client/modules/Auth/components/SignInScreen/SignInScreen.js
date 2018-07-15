@@ -54,21 +54,21 @@ export class SignInScreen extends Component {
   };
   render() {
     return (
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <i className={`${styles.logoIcon} material-icons`}>photo</i> My App
-        </div>
-        <div className={styles.caption}>This is a cool demo app
-
-        </div>
-
+      <span className={styles.container}>
+        <span className={styles.logo}>
+          {/* replace below with real logo later */}
+          <i className={`${styles.logoIcon} material-icons`}>extension</i> IRLgamers
+          
+        </span>
+        <a className={styles.button} onClick={() => firebaseApp.auth().signOut()}>Sign-out</a>
+        
         {this.props.authUser ?
-          <div>
-            <div className={styles.signedIn}>
+          <span>
+            <span className={styles.signedIn}>
               Hello {this.props.authUser.displayName}. You are now signed In!
-            </div>
-            <a className={styles.button} onClick={() => firebaseApp.auth().signOut()}>Sign-out</a>
-          </div>
+            </span>
+            
+          </span>
           :
 
 
@@ -79,7 +79,7 @@ export class SignInScreen extends Component {
           />
 
         }
-      </div>
+      </span>
     );
   }
 }

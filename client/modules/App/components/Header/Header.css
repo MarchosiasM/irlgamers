@@ -1,5 +1,6 @@
 .header {
-  background: #eee url('../../header-bk.png') center;
+  /* background: #eee url('../../header-bk.png') center; */
+  background: #000 url('../../images/dice-bk-2.jpg') center;
   background-size: cover;
   border-bottom: 1px solid #ccc;
 }
@@ -34,7 +35,9 @@
 }
 
 .language-switcher {
-  background: rgba(0, 0, 0, 0.1);
+  /* background: rgba(0, 0, 0, 0.1); */
+  background: #9B51E0;
+  background: radial-gradient(circle, #8E2DE2, #4A00E0);
 }
 
 .language-switcher ul {

@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import SearchForm from '../SearchForm';
+import SignInScreen from '../../../Auth/components/SignInScreen/SignInScreen';
 
 // Import Style
 import styles from './Header.css';
@@ -11,12 +12,14 @@ export function Header(props, context) {
 
   return (
     <div className={styles.header}>
+      
       <div className={styles['language-switcher']}>
         <ul>
           <li><FormattedMessage id="switchLanguage" /></li>
           {languageNodes}
         </ul>
       </div>
+      <SignInScreen />
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
           <Link to="/" ><FormattedMessage id="siteTitle" /></Link>
