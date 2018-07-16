@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import styles from './App.css'; // This uses CSS modules.
-import './SignInScreen.css';
+// import './SignInScreen.css';
 
 // Import Actions
 import { fetchAuthUserRequest } from '../../AuthActions';
@@ -55,20 +55,20 @@ export class SignInScreen extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.logo}>
-          <i className={`${styles.logoIcon} material-icons`}>photo</i> My App
-        </div>
-        <div className={styles.caption}>This is a cool demo app
-
-        </div>
+        <span className={styles.logo}>
+          {/* replace this with real logo later */}
+          <i className={`${styles.logoIcon} material-icons`}>extension</i> IRLgamers
+        </span>
 
         {this.props.authUser ?
-          <div>
-            <div className={styles.signedIn}>
-              Hello {this.props.authUser.displayName}. You are now signed In!
-            </div>
-            <a className={styles.button} onClick={() => firebaseApp.auth().signOut()}>Sign-out</a>
-          </div>
+          <span className={styles.floatRight}>
+            <span className={styles.signedIn}>
+              Hi, {firstName(this.props.authUser.displayName)}!
+            </span>
+            <img className={styles.avatar} src={this.props.authUser.photoURL} alt="profile photo" />
+            {/* <a className={styles.button} onClick={() => firebaseApp.auth().signOut()}>Sign-out</a> */}
+            <a className="waves-effect waves-light btn-small" onClick={() => firebaseApp.auth().signOut()}>Sign-out</a>
+          </span>
           :
 
 
@@ -91,6 +91,11 @@ function mapStateToProps(state) {
     // signOut: signOut(state),
     authUser: getAuthUser(state),
   };
+}
+
+function firstName(fullName) {
+  var firstName = fullName.split(' ').slice(0, -1).join(' ');
+  return firstName;
 }
 
 export default connect(mapStateToProps)(SignInScreen);

@@ -1,7 +1,7 @@
 export default {
   locale: 'en',
   messages: {
-    siteTitle: 'Tentative Board Game App',
+    siteTitle: 'Welcome to IRLgamers',
     addPost: 'Add Post',
     addEvent: 'Add Event',
     switchLanguage: 'Switch Language',
