@@ -7,7 +7,7 @@ const DeleteButton = ({ deleteMode, deleteConfirm, deleteToggle }) => (
       deleteMode
         ?
         <div>
-          "Delete, are you sure?"
+            Delete, are you sure?
           <a className="waves-effect waves-light btn" onClick={deleteConfirm()}>
             I'm sure
           </a>

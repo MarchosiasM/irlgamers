@@ -29,7 +29,7 @@ export function Header(props, context) {
           context.router.isActive('/', true)
             ?
             <div>
-            <a className={styles['add-post-button']} href="#" onClick={props.toggleAddEvent}><FormattedMessage id="addEvent" /></a>
+              <a className={styles['add-post-button']} href="#" onClick={props.toggleAddEvent}><FormattedMessage id="addEvent" /></a>
               <Link to="/games/" className={styles['add-post-button']}>Go To Your Events</Link>
             </div>
             : null
