@@ -1,36 +1,48 @@
 .container {
-    position: fixed;
+    /* position: absolute; */
     top: 0;
     left: 0;
-    width: 30%;
+    /* width: 30%; */
     /* height: 30%; */
-    /* width: 100%; */
+    width: 100%;
     /* height: 100%; */
-    background-color: #0288D1;
-    /* background: radial-gradient(circle, #039BE5, #01579b); */
+    background: #9B51E0;
+    background: radial-gradient(circle, #8E2DE2, #4A00E0);
     z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* display: inline; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* text-align: center; */
     color: white;
     flex-direction: column;
     font-family: sans-serif;
+    padding: 8px;
+    content: "";
+    clear: both;
+    display: table;
   }
   .signedIn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* padding-left: 100px; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* float: right; */
+    vertical-align: middle;
     flex-direction: column;
   }
   .logo {
     font-family: 'Amaranth', sans-serif;
     font-size: 200%;
+    /* vertical-align: middle; */
   }
   .logoIcon {
     top: 4px;
     font-size: 32px;
     margin-right: -2px;
+    margin-left: 10%;
     position: relative;
+    /* vertical-align: middle; */
   }
   .caption {
     margin: 20px 0 40px 0;
@@ -57,9 +69,26 @@
   }
   .button {
     cursor: pointer;
-    color: blue;
-    text-decoration: underline;
+    color:#76ff03;
+    vertical-align: middle;
+    /* text-decoration: underline; */
     /* margin-top: 10px; */
-    display: inline;
-    /* float: left; */
+    /* display: inline; */
+    /* float: right; */
+  }
+
+  .floatRight {
+    float: right;
+    margin-right: 10%;
+  }
+
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* border: 2px white solid; */
+    /* box-shadow: 0 0 5px #000; */
+    margin-right: 10px;
+    margin-left: 10px;
   }

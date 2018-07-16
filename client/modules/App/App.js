@@ -50,8 +50,8 @@ export class App extends Component {
         {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
         <div>
           <Helmet
-            title="Tentative Board Game App"
-            titleTemplate="%s - Board Game App"
+            title="IRLgamers"
+            titleTemplate="%s - Board Game Meetup App"
             meta={[
               { charset: 'utf-8' },
               {
