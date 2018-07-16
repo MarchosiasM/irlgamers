@@ -25,11 +25,21 @@ class EventEditForm extends Component {
         scheduledTime: '',
         slots: '',
       },
-      eventNameValid: true,
-      notesValid: true,
-      gameValid: true,
-      zipcodeValid: true,
       formValid: true,
+      validByField: {
+        eventNameValid: true,
+        notesValid: true,
+        gameValid: true,
+        zipcodeValid: true,
+        formValid: true,
+        gameTypeValid: true,
+        addressValid: true,
+        cityValid: true,
+        stateValid: true,
+        scheduledDateValid: true,
+        scheduledTimeValid: true,
+        slotsValid: true,
+      },
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,40 +56,99 @@ class EventEditForm extends Component {
 
   validateField = (fieldName, value) => {
     const fieldValidationErrors = this.state.formErrors;
-    let eventNameValid = this.state.eventNameValid;
-    let zipcodeValid = this.state.zipcodeValid;
-    let notesValid = this.state.notesValid;
-    let gameValid = this.state.notesValid;
+    let {
+      eventNameValid,
+      zipcodeValid,
+      notesValid,
+      gameValid,
+      gameTypeValid,
+      cityValid,
+      stateValid,
+      scheduledDateValid,
+      scheduledTimeValid,
+      slotsValid,
+      addressValid,
+    } = this.state.validByField;
 
     switch (fieldName) {
       case 'eventName':
         eventNameValid = value.length > 5;
-        fieldValidationErrors.eventName = eventNameValid ? '' : ' must be at least 5 characters long.';
+        fieldValidationErrors.eventName = eventNameValid ? '' : 'Your event name should be longer than 5 characters.';
         break;
       case 'notes':
         notesValid = value.length > 10;
-        fieldValidationErrors.notes = notesValid ? '' : ' must have between 10 and 100 characters.';
+        fieldValidationErrors.notes = notesValid ? '' : 'Please add more notes, draw them in!';
         break;
       case 'game':
         gameValid = value.length > 1;
-        fieldValidationErrors.game = gameValid ? '' : ' must have less than 20 characters';
+        fieldValidationErrors.game = gameValid ? '' : 'Game is a requierd field! What are you playing?';
         break;
       case 'zipcode':
         zipcodeValid = value.length === 5;
-        fieldValidationErrors.zipcode = zipcodeValid ? '' : ' is invalid';
+        fieldValidationErrors.zipcode = zipcodeValid ? '' : 'A valid zipcode has five digits.';
+        break;
+      case 'gameType':
+        gameTypeValid = value.length > 5;
+        fieldValidationErrors.gameType = gameTypeValid ? '' : 'What sort of game are you playing?';
+        break;
+      case 'city':
+        cityValid = value.length > 1;
+        fieldValidationErrors.city = cityValid ? '' : 'In what city do you want to assemble your mighty party?';
+        break;
+      case 'state':
+        stateValid = value.length > 1;
+        fieldValidationErrors.state = stateValid ? '' : 'Please enter a valid US State.';
+        break;
+      case 'scheduledDate':
+        scheduledDateValid = true;
+        fieldValidationErrors.scheduledDate = scheduledDateValid ? '' : ' is invalid';
+        break;
+      case 'scheduledTime':
+        scheduledTimeValid = true;
+        fieldValidationErrors.scheduledTime = scheduledTimeValid ? '' : ' is invalid';
+        break;
+      case 'slots':
+        slotsValid = value < 101 && value > 0;
+        fieldValidationErrors.slots = slotsValid ? '' : 'We allow for up to 100 participants, but there must be at least one other for your game!';
+        break;
+      case 'address':
+        addressValid = value > 1;
+        fieldValidationErrors.address = addressValid ? '' : 'Please enter a valid address';
         break;
       default:
         break;
     }
-    this.setState({ formErrors: fieldValidationErrors,
+    this.setState({
+      formErrors: fieldValidationErrors,
       eventNameValid,
-      notesValid,
       zipcodeValid,
+      notesValid,
+      gameValid,
+      gameTypeValid,
+      cityValid,
+      stateValid,
+      scheduledDateValid,
+      scheduledTimeValid,
+      slotsValid,
+      addressValid,
     }, this.validateForm);
   }
 
   validateForm() {
-    this.setState({ formValid: this.state.eventNameValid && this.state.notesValid && this.state.zipcodeValid && this.state.gameValid });
+    this.setState({
+      formValid:
+        this.state.eventNameValid &&
+        this.state.notesValid &&
+        this.state.zipcodeValid &&
+        this.state.gameValid &&
+        this.state.gameTypeValid &&
+        this.state.cityValid &&
+        this.state.stateValid &&
+        this.state.scheduledDateValid &&
+        this.state.scheduledTimeValid &&
+        this.state.slotsValid &&
+        this.state.addressValid,
+    });
   }
 
   handleChange = (event) => {
@@ -135,7 +204,7 @@ class EventEditForm extends Component {
           </label>
           <label>Game Type
             <input
-              max="99999"
+              maxLength="30"
               name="gameType"
               defaultValue={this.props.event.gameType}
               type="text"
@@ -221,8 +290,6 @@ class EventEditForm extends Component {
 }
 
 function mapStateToProps(state, props) {
-  // console.log('Within your event edit form, state feteched, ', state);
-  // console.log('Within your event edit form, you got an event, ', getEvent(state, props.eventID));
   return {
     event: getEvent(state, props.eventID),
     user: state.authUser.data[0].uid,
