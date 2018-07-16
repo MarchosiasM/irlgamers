@@ -169,7 +169,6 @@ class EventEditForm extends Component {
   render() {
     return (
       <div>
-        <FormErrors formErrors={this.state.formErrors} />
         <form onSubmit={this.handleSubmit}>
           <label>Event Name
             <input
@@ -284,6 +283,7 @@ class EventEditForm extends Component {
           </label>
           <input type="submit" value="Submit" className="waves-effect waves-light btn" onClick={this.handleSubmit} disabled={!this.state.formValid} />
         </form>
+        <FormErrors formErrors={this.state.formErrors} />
       </div>
     );
   }
