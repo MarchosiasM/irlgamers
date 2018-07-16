@@ -17,7 +17,7 @@ function EventListItem(props) {
       <p className={styles['post-desc']}>{props.event.game}</p>
       <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
       <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
-      <p className={styles['post-desc']}>0/{props.event.slots}</p>
+      <p className={styles['post-desc']}>{props.event.attendees.length}/{props.event.slots}</p>
       <p className={styles['post-desc']}>{props.event.notes}</p>
       <hr className={styles.divider} />
     </div>
