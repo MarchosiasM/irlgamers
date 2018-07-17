@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import FormErrors from './FormErrors';
-import { getEvent } from '../../../../EventReducer';
-import { updateEventRequest } from '../../../../EventActions';
+import FormErrors from '../FormErrors';
 
 /* eslint-disable react/prop-types */
 
-class EventEditForm extends Component {
-  constructor() {
-    super();
+class EventForm extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       event: '',
-      user: '',
       formErrors: {
         eventName: '',
         notes: '',
@@ -25,29 +21,28 @@ class EventEditForm extends Component {
         scheduledTime: '',
         slots: '',
       },
-      formValid: true,
-      validByField: {
-        eventNameValid: true,
-        notesValid: true,
-        gameValid: true,
-        zipcodeValid: true,
-        formValid: true,
-        gameTypeValid: true,
-        addressValid: true,
-        cityValid: true,
-        stateValid: true,
-        scheduledDateValid: true,
-        scheduledTimeValid: true,
-        slotsValid: true,
-      },
+      formValid: '',
+      validByField: '',
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
   /* eslint-disable react/no-did-mount-set-state */
   componentDidMount() {
-    this.setState({ event: this.props.event });
+    this.setState({
+      event: this.props.event,
+      validByField: this.props.initialState,
+      formValid: this.props.formValidInitialize,
+    });
+    // const options = ''; // Options for the Date and TimePicker go here.
+    // Still needs some work in rendering in mobile but works.
+    // M.AutoInit();
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const elems = document.querySelectorAll('.datepicker');
+    //   const instances = M.Datepicker.init(elems, options);
+    // });
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const elems = document.querySelectorAll('.timepicker');
+    //   const instances = M.Timepicker.init(elems, options);
+    // });
   }
 
   onFocus = (event) => {
@@ -112,7 +107,7 @@ class EventEditForm extends Component {
         fieldValidationErrors.slots = slotsValid ? '' : 'We allow for up to 100 participants, but there must be at least one other for your game!';
         break;
       case 'address':
-        addressValid = value > 1;
+        addressValid = value.length > 1;
         fieldValidationErrors.address = addressValid ? '' : 'Please enter a valid address';
         break;
       default:
@@ -162,8 +157,9 @@ class EventEditForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const body = Object.assign({}, this.state.event);
-    this.props.dispatch(updateEventRequest(this.props.event.cuid, body));
-    this.props.toggleEditingMode()();
+    // Here's where we can insert some differentiation in how each
+    // parent handles their submission of the form.
+    this.props.parentSubmissionHandler(body);
   }
 
   render() {
@@ -193,7 +189,7 @@ class EventEditForm extends Component {
           </label>
           <label>Game
             <input
-              maxLength="15"
+              maxLength="30"
               name="game"
               defaultValue={this.props.event.game}
               type="text"
@@ -254,7 +250,7 @@ class EventEditForm extends Component {
           </label>
           <label>Date
             <input
-              min={Date.now()}
+              className="datepicker"
               name="scheduledDate"
               defaultValue={this.props.event.scheduledDate}
               type="date"
@@ -264,6 +260,7 @@ class EventEditForm extends Component {
           </label>
           <label>Time
             <input
+              className="timepicker"
               name="scheduledTime"
               defaultValue={this.props.event.scheduledTime}
               type="time"
@@ -289,11 +286,4 @@ class EventEditForm extends Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  return {
-    event: getEvent(state, props.eventID),
-    user: state.authUser.data[0].uid,
-  };
-}
-
-export default connect(mapStateToProps)(EventEditForm);
+export default EventForm;

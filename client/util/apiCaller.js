@@ -6,7 +6,7 @@ export const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV ==
   '/api';
 
 export default function callApi(endpoint, method = 'get', body) {
-  // console.log('Call API is called, ', `${API_URL}/${endpoint}`, ' as an endpoint, ', method, ' as a method, ', body, ' as a body element');
+  console.log('Call API is called, ', `${API_URL}/${endpoint}`, ' as an endpoint, ', method, ' as a method, ', body, ' as a body element');
   return fetch(`${API_URL}/${endpoint}`, {
     headers: { 'content-type': 'application/json' },
     method,
