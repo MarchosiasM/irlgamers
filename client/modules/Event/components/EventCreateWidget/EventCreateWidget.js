@@ -1,99 +1,109 @@
-import React, { Component, PropTypes } from 'react';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
-import _ from 'lodash';
+import React, { Component } from 'react';
+import EventForm from '../EventPageDetails/Host/FormEditWrap/EventForm/EventForm';
 
-// Import Style
-import styles from './EventCreateWidget.css';
-
-
-export class EventCreateWidget extends Component {
-  componentDidMount() {
-    const options = ''; // Options for the Date and TimePicker go here.
-    // Still needs some work in rendering in mobile but works.
-    M.AutoInit();
-    document.addEventListener('DOMContentLoaded', () => {
-      const elems = document.querySelectorAll('.datepicker');
-      const instances = M.Datepicker.init(elems, options);
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-      const elems = document.querySelectorAll('.timepicker');
-      const instances = M.Timepicker.init(elems, options);
-    });
+/* eslint-disable react/prop-types */
+export class FormCreateWrap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formValid: false,
+      validByField: {
+        eventNameValid: true,
+        notesValid: true,
+        gameValid: true,
+        zipcodeValid: true,
+        formValid: true,
+        gameTypeValid: true,
+        addressValid: true,
+        cityValid: true,
+        stateValid: true,
+        scheduledDateValid: true,
+        scheduledTimeValid: true,
+        slotsValid: true,
+      },
+    };
   }
 
-  addEvent = () => {
-    const eventNameRef = this.refs.eventName;
-    const addressRef = this.refs.address;
-    const cityRef = this.refs.city;
-    const stateRef = this.refs.state;
-    const zipcodeRef = this.refs.zipcode;
-    const gameRef = this.refs.game;
-    const gameTypeRef = this.refs.gameType;
-    const scheduledDateRef = this.refs.scheduledDate;
-    const scheduledTimeRef = this.refs.scheduledTime;
-    const slotsRef = this.refs.slots;
-    const notesRef = this.refs.notes;
-    const ownerRef = this.props.authUser.uid;
-    if (eventNameRef.value && addressRef.value && cityRef.value && stateRef.value && zipcodeRef.value && gameRef.value && gameTypeRef.value && scheduledDateRef.value && scheduledTimeRef.value && slotsRef.value && ownerRef
+  componentDidMount() {
+  }
+
+  parentSubmissionHandler = (createdEvent) => {
+    console.log('Created event is, ', createdEvent);
+    if (
+      createdEvent.eventName &&
+      createdEvent.gameType &&
+      createdEvent.game &&
+      createdEvent.address &&
+      createdEvent.city &&
+      createdEvent.state &&
+      createdEvent.zipcode &&
+      createdEvent.scheduledDate &&
+      createdEvent.scheduledTime &&
+      createdEvent.slots &&
+      createdEvent.notes
     ) {
+      console.log('Created event is, ', createdEvent);
       this.props.addEvent(
-        eventNameRef.value,
-        gameTypeRef.value,
-        gameRef.value, 
-        addressRef.value, 
-        cityRef.value, 
-        stateRef.value,
-        zipcodeRef.value,
-        scheduledDateRef.value, 
-        scheduledTimeRef.value, 
-        slotsRef.value, 
-        notesRef.value, 
-        ownerRef);
-      eventNameRef.value = addressRef.value = cityRef.value = stateRef.value = zipcodeRef.value = gameRef.value = gameTypeRef.value = scheduledDateRef.value = scheduledTimeRef.value = slotsRef.value = notesRef.value = '';
+        createdEvent.eventName,
+        createdEvent.gameType,
+        createdEvent.game,
+        createdEvent.address,
+        createdEvent.city,
+        createdEvent.state,
+        createdEvent.zipcode,
+        createdEvent.scheduledDate,
+        createdEvent.scheduledTime,
+        createdEvent.slots,
+        createdEvent.notes,
+        this.props.authUser.uid,
+      );
     }
-  };
+  }
 
   render() {
-    const cls = `${styles.form} ${(this.props.showAddEvent ? styles.appear : '')}`;
+    const initializedEvent = {
+      owner: this.props.authUser.uid,
+      eventName: '',
+      address: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      game: '',
+      gameType: '',
+      scheduledDate: '',
+      scheduledTime: '',
+      notes: '',
+      cuid: '',
+      slots: '',
+      attendees: [],
+    };
+
     return (
-
-
-      <div className={cls}>
-
+      <div>
         {this.props.authUser === null &&
           <div>
             <h1>You Must Sign In to Create an Event</h1>
           </div>
         }
-
-
-        {_.isObject(this.props.authUser) &&
-          <div className={styles['form-content']}>
-            <h2 className={styles['form-title']}><FormattedMessage id="createNewEvent" />{this.props.authUser.uid}</h2>
-            <input placeholder={this.props.intl.messages.eventName} className={styles['form-field']} ref="eventName" />
-            <input placeholder="Game Type" className={styles['form-field']} ref="gameType" />
-            <input placeholder="Game" className={styles['form-field']} ref="game" />
-            <input placeholder="Street Address" className={styles['form-field']} ref="address" />
-            <input placeholder="City" className={styles['form-field']} ref="city" />
-            <input placeholder="State" className={styles['form-field']} ref="state" />
-            <input placeholder="Zip Code" className={styles['form-field']} ref="zipcode" />
-            <input placeholder={this.props.intl.messages.selectDate} type="text" className="datepicker" ref="scheduledDate" />
-            <input placeholder="Select Time" type="text" className="timepicker" ref="scheduledTime" />
-            <input placeholder={this.props.intl.messages.slots} className={styles['form-field']} ref="slots" />
-            <textarea placeholder={this.props.intl.messages.notes} className={styles['form-field']} ref="notes" />
-            <a className={styles['post-submit-button']} href="#" onClick={this.addEvent}><FormattedMessage id="submit" /></a>
-          </div>
+        {this.props.showAddEvent ?
+          <EventForm
+            parentSubmissionHandler={this.parentSubmissionHandler}
+            event={initializedEvent}
+            initialState={this.state.validByField}
+            formValidInitialize={false}
+          />
+          :
+          ''
         }
-
       </div>
     );
   }
 }
 
-EventCreateWidget.propTypes = {
-  addEvent: PropTypes.func.isRequired,
-  showAddEvent: PropTypes.bool.isRequired,
-  intl: intlShape.isRequired,
-};
+// FormCreateWrap.propTypes = {
+//   addEvent: PropTypes.func.isRequired,
+//   showAddEvent: PropTypes.bool.isRequired,
+//   intl: intlShape.isRequired,
+// };
 
-export default injectIntl(EventCreateWidget);
+export default FormCreateWrap;
