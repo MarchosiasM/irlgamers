@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import SearchForm from '../SearchForm';
+import SearchForm from '../SearchForm/SearchForm';
 import SignInScreen from '../../../Auth/components/SignInScreen/SignInScreen';
 
 // Import Style

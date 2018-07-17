@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import EventDetails from '../EventDetails';
-import FormEditWrap from './FormEditWrap/';
+import FormEditWrap from './FormEditWrap/FormEditWrap';
 import { deleteEventRequest } from '../../../EventActions';
-import Delete from './Delete/';
-import Attendees from './Attendees';
+import Delete from './Delete/Delete';
+import Attendees from './Attendees/Attendees';
 
 /* eslint-disable react/prop-types */
 

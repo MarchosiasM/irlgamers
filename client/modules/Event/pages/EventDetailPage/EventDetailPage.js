@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import Helmet from 'react-helmet';
-import HostGuest from '../../components/EventPageDetails/HostGuest';
-import NotLoggedIn from '../../components/EventPageDetails/Guest/NotLoggedIn';
+import HostGuest from '../../components/EventPageDetails/HostGuest/HostGuest';
+import NotLoggedIn from '../../components/EventPageDetails/Guest/NotLoggedIn/NotLoggedIn';
 /* eslint-disable react/prop-types */
 // Import Style
 import styles from '../../components/EventListItem/EventListItem.css';
