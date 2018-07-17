@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EventDetails from '../EventDetails';
-import EventEditing from './Editing/';
+import FormEditWrap from './FormEditWrap/';
 import { deleteEventRequest } from '../../../EventActions';
 import Delete from './Delete/';
 
@@ -55,7 +55,7 @@ class HostDetails extends Component {
         {(this.state.editing)
           ?
           <div>
-            <EventEditing
+            <FormEditWrap
               eventID={this.props.event.cuid}
               dispatch={this.props.dispatch}
               toggleEditingMode={this.toggleEditingMode}

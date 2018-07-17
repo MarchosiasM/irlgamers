@@ -1,5 +1,3 @@
-/*eslint-disable*/
-// Someone else wrote this, let them deal with it
 import React, { Component, PropTypes } from 'react';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import _ from 'lodash';
