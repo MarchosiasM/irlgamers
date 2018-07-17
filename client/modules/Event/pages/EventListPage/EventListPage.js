@@ -9,7 +9,7 @@ import _ from 'lodash';
 
 // Import Components
 import EventList from '../../components/EventList';
-import EventCreateWidget from '../../components/EventCreateWidget/EventCreateWidget';
+import FormCreateWrap from '../../components/EventCreateWidget/FormCreateWrap';
 
 // Import Actions
 import { addEventRequest, fetchEvents, deleteEventRequest } from '../../EventActions';
@@ -47,7 +47,7 @@ class EventListPage extends Component {
         {/* <SignInScreen /> */}
           {_.isObject(this.props.authUser) &&
             <div>
-              <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
+              <FormCreateWrap addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
               <h5>Your Events</h5>
               {/* The below EventList component is being passed the Events that the current logged in user is hosting */}
               <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.userEvents} />
