@@ -23,7 +23,7 @@ import { getEvents } from '../../EventReducer';
 import { getAuthUser } from '../../../Auth/AuthReducer';
 import { getUserEvents } from '../../../Event/UserEventsReducer';
 
-class EventListPage extends Component {
+class UserEventPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchEvents());
     this.props.dispatch(fetchAuthUserEventsRequest());
@@ -49,8 +49,10 @@ class EventListPage extends Component {
         {_.isObject(this.props.authUser) &&
           <div>
             <EventCreateWidget addEvent={this.handleAddEvent} showAddEvent={this.props.showAddEvent} authUser={this.props.authUser} />
-            <h5>Events Around You</h5>
-            <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.events} />
+            <div>
+              <h5>Your Events</h5>
+              <EventList handleDeleteEvent={this.handleDeleteEvent} events={this.props.userEvents} />
+            </div>
           </div>
         }
 
@@ -66,7 +68,7 @@ class EventListPage extends Component {
 }
 
 // Actions required to provide data for this component to render in sever side.
-EventListPage.need = [() => { return fetchEvents(); }];
+UserEventPage.need = [() => { return fetchEvents(); }];
 
 // Retrieve data from store as props
 function mapStateToProps(state, props) {
@@ -78,7 +80,7 @@ function mapStateToProps(state, props) {
   };
 }
 
-EventListPage.propTypes = {
+UserEventPage.propTypes = {
   events: PropTypes.arrayOf(PropTypes.shape({
     eventName: PropTypes.string.isRequired,
     game: PropTypes.string.isRequired,
@@ -93,8 +95,8 @@ EventListPage.propTypes = {
   userEvents: PropTypes.array,
 };
 
-EventListPage.contextTypes = {
+UserEventPage.contextTypes = {
   router: React.PropTypes.object,
 };
 
-export default connect(mapStateToProps)(EventListPage);
+export default connect(mapStateToProps)(UserEventPage);
