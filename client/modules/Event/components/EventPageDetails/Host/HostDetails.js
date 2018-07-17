@@ -68,7 +68,6 @@ class HostDetails extends Component {
               event={this.props.event}
               styles={this.props.styles}
             />
-            This is the owners page.
           </div>
         }
         {this.state.editing ? '' :

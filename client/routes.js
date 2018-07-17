@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Event/pages/EventListPage/EventListPage');
-  require('./modules/Event/pages/EventDetailPage/EventDetailPage');
+  require('./modules/Event/pages/UserEventPage/UserEventPage');
 }
 
 // react-router setup with code-splitting
@@ -45,7 +45,7 @@ export default (
       path="/games/"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Event/pages/EventListPage/EventListPage').default);
+          cb(null, require('./modules/Event/pages/UserEventPage/UserEventPage').default);
         });
       }}
     />
