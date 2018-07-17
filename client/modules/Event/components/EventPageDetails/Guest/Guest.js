@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EventDetails from '../EventDetails';
-import Join from './Join';
-import MemberActions from './MemberOptions';
+import Join from './Join/Join';
+import MemberActions from './MemberOptions/MemberActions';
 
 /* eslint-disable react/prop-types */
 class Guest extends Component {
