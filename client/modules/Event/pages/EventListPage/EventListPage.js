@@ -9,7 +9,7 @@ import _ from 'lodash';
 
 // Import Components
 import EventList from '../../components/EventList';
-import EventCreateWidget from '../../components/EventCreateWidget/';
+import EventCreateWidget from '../../components/EventCreateWidget/EventCreateWidget';
 
 // Import Actions
 import { addEventRequest, fetchEvents, deleteEventRequest } from '../../EventActions';

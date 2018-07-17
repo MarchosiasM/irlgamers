@@ -1,6 +1,6 @@
 import React from 'react';
-import Host from '../Host';
-import Guest from '../Guest';
+import Host from '../Host/HostDetails';
+import Guest from '../Guest/Guest';
 
 /* eslint-disable react/prop-types */
 /* This component differentiates between the owner of an event and a guest.
