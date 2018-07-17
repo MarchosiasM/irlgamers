@@ -3,6 +3,7 @@ import EventDetails from '../EventDetails';
 import FormEditWrap from './FormEditWrap/';
 import { deleteEventRequest } from '../../../EventActions';
 import Delete from './Delete/';
+import Attendees from './Attendees';
 
 /* eslint-disable react/prop-types */
 
@@ -83,6 +84,7 @@ class HostDetails extends Component {
           deleteMode={this.state.deleteMode}
           deleteConfirm={this.deleteConfirm}
         />
+        <Attendees attendees={this.props.event.attendees} />
       </div>
     );
   }
