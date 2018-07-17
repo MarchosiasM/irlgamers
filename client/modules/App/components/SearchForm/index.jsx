@@ -12,13 +12,18 @@ import { findEventsByNameDate } from '../../../Event/EventActions';
 // Import Event Selections
 import { getEvents } from '../../../Event/EventReducer';
 
+// Import Style
+import styles from './SearchForm.css';
+
 class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isMounted: false,
       style: {
-        maxWidth: 768,
+        // maxWidth: 768
+        zIndex: 2000,
+        position: 'relative'
       },
       search_event_name: '',
     };
@@ -63,7 +68,11 @@ class SearchForm extends Component {
     return (
       <div style={this.state.style} className="row">
         <form onSubmit={this.handleSearchSubmit}>
-          <div className="col s9">
+          <div 
+            // style={styles.acWrapper}
+            className={`s5 col ${styles.acWrapper}`}
+            
+            >
             <SearchEventName returnVal={this.returnValueUp} returnSelect={this.returnSelectUp} value={this.state.search_event_name} />
           </div>
           {/* <div className="col s3"> */}

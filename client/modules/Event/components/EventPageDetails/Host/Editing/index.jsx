@@ -112,7 +112,7 @@ class EventEditForm extends Component {
         fieldValidationErrors.slots = slotsValid ? '' : 'We allow for up to 100 participants, but there must be at least one other for your game!';
         break;
       case 'address':
-        addressValid = value > 1;
+        addressValid = value.length > 1;
         fieldValidationErrors.address = addressValid ? '' : 'Please enter a valid address';
         break;
       default:

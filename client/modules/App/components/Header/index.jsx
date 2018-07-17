@@ -19,29 +19,29 @@ export function Header(props, context) {
           {languageNodes}
         </ul>
       </div>
+      
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
           <Link to="/" ><FormattedMessage id="siteTitle" /></Link>
-
-
         </h1>
+        <SearchForm />
         {
           context.router.isActive('/', true)
             ?
             <div>
-              <a className={styles['add-post-button']} href="#" onClick={props.toggleAddEvent}><FormattedMessage id="addEvent" /></a>
-              <Link to="/games/" className={styles['add-post-button']}>Go To Your Events</Link>
+              <a className={`waves-effect waves-dark btn ${styles['add-post-button']}`} href="#" onClick={props.toggleAddEvent}><FormattedMessage id="addEvent" /></a>
+              <Link to="/games/" className={`waves-effect waves-dark btn ${styles['add-post-button']}`}>Go To Your Events</Link>
             </div>
             : null
         }
         {
           context.router.isActive('/games', true)
             ?
-            <a className={styles['add-post-button']} href="#" onClick={props.toggleAddEvent}><FormattedMessage id="addEvent" /></a>
+            <a className={`waves-effect waves-dark btn ${styles['add-post-button']}`} href="#" onClick={props.toggleAddEvent}><FormattedMessage id="addEvent" /></a>
             : null
         }
       </div>
-      <SearchForm />
+      
     </div>
   );
 }
