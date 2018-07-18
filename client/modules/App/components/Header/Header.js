@@ -19,7 +19,7 @@ export function Header(props, context) {
           {languageNodes}
         </ul>
       </div>
-      
+
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
           <Link to="/" ><FormattedMessage id="siteTitle" /></Link>
@@ -41,7 +41,7 @@ export function Header(props, context) {
             : null
         }
       </div>
-      
+
     </div>
   );
 }

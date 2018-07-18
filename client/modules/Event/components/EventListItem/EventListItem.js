@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
-
 // Import Style
 import styles from './EventListItem.css';
 
+/* eslint-disable react/prop-types */
 function EventListItem(props) {
   return (
     <div className={styles['single-post']}>
@@ -13,7 +12,9 @@ function EventListItem(props) {
           {props.event.eventName}
         </Link>
       </h3>
-      <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.ownerName}</p>
+      <Link to={`/user/${props.event.owner}`} >
+        <p className={styles['author-name']}> by {props.event.ownerName}</p>
+      </Link>
       <p className={styles['post-desc']}>{props.event.game}</p>
       <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
       <p className={styles['post-desc']}>{props.event.scheduledTime}</p>

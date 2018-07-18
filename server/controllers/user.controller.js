@@ -41,7 +41,7 @@ export function addUser(req, res) {
   newUser.cuid = cuid();
   newUser.save((err, saved) => {
     if (err) {
-      return res.status(500).send(err);
+      res.status(500).send(err);
     }
     res.json({ user: saved });
   });

@@ -35,6 +35,29 @@ export function getUserEvents(req, res) {
 }
 
 /**
+ * Get a Users Events
+ * @param req
+ * @param res
+ * @returns void
+ */
+
+// Authors notes: This is functionally identical to getUserEvents at the time
+// of writing this. Since the end points of both routes are different I thought
+// better of adding more load to the former, just in case we ended up altering
+// future functionality for either this one, which is currently used by the
+// user's details page.
+export function getEventsByUser(req, res) {
+  Event.find({ owner: req.params.cuid })
+    .sort('-scheduledDate')
+    .exec((err, events) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ events });
+    });
+}
+
+/**
  * Search events by date
  * @param req
  * @param res
@@ -56,21 +79,21 @@ export function findEventsByNameDate(req, res) {
   console.log(search_params);
 
   Event.find(search_params).sort('-scheduledDate')
-  .then((events) => {
-    if (events.length) {
-      res.json({ events });
-      return events.length;
-    }
-    return null;
-  })
-  .then((event_count) => {
-    if (event_count) return;
-    Event.find().sort('-scheduledDate').then((events) => {
-      res.json({ events });
+    .then((events) => {
+      if (events.length) {
+        res.json({ events });
+        return events.length;
+      }
+      return null;
+    })
+    .then((event_count) => {
+      if (event_count) return;
+      Event.find().sort('-scheduledDate').then((events) => {
+        res.json({ events });
+      })
+        .catch(err => res.status(500).send(err));
     })
     .catch(err => res.status(500).send(err));
-  })
-  .catch(err => res.status(500).send(err));
 }
 
 /**
@@ -151,15 +174,15 @@ export function addAttendee(req, res) {
  */
 export function deleteEvent(req, res) {
   Event.findOne({ cuid: req.params.cuid })
-  .exec((err, event) => {
-    if (err) {
-      res.status(500).send(err);
-    }
+    .exec((err, event) => {
+      if (err) {
+        res.status(500).send(err);
+      }
 
-    event.remove(() => {
-      res.status(200).end();
+      event.remove(() => {
+        res.status(200).end();
+      });
     });
-  });
 }
 
 export function editEvent(req, res) {

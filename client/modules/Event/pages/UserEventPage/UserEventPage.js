@@ -70,6 +70,8 @@ class UserEventPage extends Component {
 // Actions required to provide data for this component to render in sever side.
 UserEventPage.need = [() => { return fetchEvents(); }];
 
+
+/* eslint-disable no-unused-vars */
 // Retrieve data from store as props
 function mapStateToProps(state, props) {
   return {

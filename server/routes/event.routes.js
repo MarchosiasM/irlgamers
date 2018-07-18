@@ -27,4 +27,7 @@ router.route('/events/:cuid').put(EventController.editEvent);
 // Delete an Event by cuid
 router.route('/events/:cuid').delete(EventController.deleteEvent);
 
+// Get a user's events by cuid
+router.route('/geteventsbyuser/:cuid').get(EventController.getEventsByUser);
+
 export default router;
