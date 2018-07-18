@@ -19,7 +19,7 @@ router.route('/events/:cuid').get(EventController.getEvent);
 router.route('/events').post(EventController.addEvent);
 
 // Add a new attendee
-router.route('/attendee/:event/:attendee').get(EventController.addAttendee);
+router.route('/attendee/:event/:attendee/:attendeeName').get(EventController.addAttendee);
 
 // Edit an event
 router.route('/events/:cuid').put(EventController.editEvent);
