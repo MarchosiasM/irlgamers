@@ -62,7 +62,7 @@ class EventDetailPage extends Component {
 
   addAttendee = () => {
     this.setState({ member: true });
-    return this.props.dispatch(passAttendee(this.props.event.cuid, this.props.user));
+    return this.props.dispatch(passAttendee(this.props.event.cuid, this.props.user, this.props.userName));
   };
 
   ifUserIsHost = () => {
@@ -116,6 +116,7 @@ function mapStateToProps(state, props) {
     event: getEvent(state, props.params.cuid),
     authUser: getAuthUser(state),
     user: state.authUser.data[0] ? state.authUser.data[0].uid : undefined,
+    userName: state.authUser.data[0] ? state.authUser.data[0].displayName : undefined,
     attendees: getEvent(state, props.params.cuid) ? getEvent(state, props.params.cuid).attendees.length : '',
   };
 }

@@ -83,7 +83,8 @@ class HostDetails extends Component {
           deleteMode={this.state.deleteMode}
           deleteConfirm={this.deleteConfirm}
         />
-        <Attendees attendees={this.props.event.attendees} />
+        {console.log(this.props.event.attendeeNames)}
+        <Attendees attendees={this.props.event.attendeeNames} />
       </div>
     );
   }
