@@ -13,7 +13,7 @@ function EventListItem(props) {
           {props.event.eventName}
         </Link>
       </h3>
-      <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.owner}</p>
+      <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.ownerName}</p>
       <p className={styles['post-desc']}>{props.event.game}</p>
       <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
       <p className={styles['post-desc']}>{props.event.scheduledTime}</p>

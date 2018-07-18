@@ -80,7 +80,7 @@ export function findEventsByNameDate(req, res) {
  * @returns void
  */
 export function addEvent(req, res) {
-  if (!req.body.event.eventName || !req.body.event.address || !req.body.event.city || !req.body.event.state || !req.body.event.zipcode || !req.body.event.game || !req.body.event.gameType || !req.body.event.scheduledDate || !req.body.event.scheduledTime || !req.body.event.slots || !req.body.event.owner
+  if (!req.body.event.eventName || !req.body.event.address || !req.body.event.city || !req.body.event.state || !req.body.event.zipcode || !req.body.event.game || !req.body.event.gameType || !req.body.event.scheduledDate || !req.body.event.scheduledTime || !req.body.event.slots || !req.body.event.owner || !req.body.event.ownerName
   ) {
     res.status(403).end();
   }
@@ -100,6 +100,7 @@ export function addEvent(req, res) {
   newEvent.slots = sanitizeHtml(newEvent.slots);
   newEvent.notes = sanitizeHtml(newEvent.notes);
   newEvent.owner = sanitizeHtml(newEvent.owner);
+  newEvent.ownerName = sanitizeHtml(newEvent.ownerName);
   newEvent.slug = slug(newEvent.eventName.toLowerCase(), { lowercase: true });
   newEvent.cuid = cuid();
   newEvent.save((err, saved) => {

@@ -10,7 +10,7 @@ const eventSchema = new Schema({
   zipcode: {type: 'String', required: true },
   game: { type: 'String', required: true },
   gameType: { type: 'String', required: true },
-  scheduledDate: { type: 'String', required: true },
+  scheduledDate: { type: 'Date', required: true },
   scheduledTime: { type: 'String', required: true },
   slots: { type: 'Number', required: true },
   notes: { type: 'String', required: false },
@@ -19,7 +19,9 @@ const eventSchema = new Schema({
   cuid: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },
   owner: { type: 'String', required: true }, 
-  attendees: [String], 
+  ownerName: { type: 'String', required: true},
+  attendees: [String],
+  attendeeNames: [String], 
 });
 
 export default mongoose.model('Event', eventSchema);

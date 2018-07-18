@@ -23,7 +23,9 @@ export default function() {
             slug: 'catan-tournament',
             cuid: 'catanyanyanyan',
             owner: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
-            attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2', 'j59i2RAn6HVkwqHzcErWdU3xEzN2']
+            ownerName: 'Roberto Perez',
+            attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2', 'j59i2RAn6HVkwqHzcErWdU3xEzN2'],
+            attendeeNames: ['Kyle McGee', 'Michael Malach', 'Roberto Perez']
         });
         const event2 = new Event({
             eventName: 'Texas Holdem in Bama',
@@ -40,7 +42,9 @@ export default function() {
             slug: 'texas-holdem-in-bama',
             cuid: 'holdemupandkeepemup',
             owner: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
-            attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2' ]
+            ownerName: 'Roberto Perez',
+            attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2' ],
+            attendeeNames: ['Kyle McGee', 'Michael Malach']
         });
         const event3 = new Event({
             eventName: 'Chess and Cheese',
@@ -57,7 +61,9 @@ export default function() {
             slug: 'chess-and-cheese',
             cuid: 'chessmaster1234',
             owner: 'q5zH280ek3S0A8XSvb6XEyiPzJ73',
-            attendees: []
+            ownerName: 'Janet Hwu',
+            attendees: [],
+            attendeeNames: []
         });
         const event4 = new Event({
             eventName: 'Mahjong Madness',
@@ -74,7 +80,9 @@ export default function() {
             slug: 'mahjong-madness',
             cuid: 'amammamamaamammaaaaahjong',
             owner: 'q5zH280ek3S0A8XSvb6XEyiPzJ73',
-            attendees: []
+            ownerName: 'Janet Hwu',
+            attendees: [],
+            attendeeNames: []
         });
         const event5 = new Event({
             eventName: 'Boys Night Out Woooo',
@@ -91,7 +99,9 @@ export default function() {
             slug: 'boys-night-out-woooo',
             cuid: 'boysboysboysboys1234',
             owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
-            attendees: []
+            ownerName: 'Kyle McGee',
+            attendees: [],
+            attendeeNames: []
         });
         const event6 = new Event({
             eventName: 'Dudes & Dungeons & Dragons',
@@ -108,7 +118,9 @@ export default function() {
             slug: 'dudes-&-dungeons-&-dragons',
             cuid: 'dndndndndnd1111',
             owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
-            attendees: []
+            ownerName: 'Kyle McGee',
+            attendees: [],
+            attendeeNames: []
         });
         const event7 = new Event({
             eventName: 'Tzolkin Night',
@@ -125,7 +137,9 @@ export default function() {
             slug: 'tzolkin-night',
             cuid: 'mayancalendargearhead1234',
             owner: 'Zu00nK1j3jQliNiUnGTQqMNgkEZ2',
-            attendees: []
+            ownerName: 'Michael Malach',
+            attendees: [],
+            attendeeNames: []
         });
         const event8 = new Event({
             eventName: 'Malifaux',
@@ -142,7 +156,9 @@ export default function() {
             slug: 'malifaux',
             cuid: 'malmalmalmalamallaa9999',
             owner: 'Zu00nK1j3jQliNiUnGTQqMNgkEZ2',
-            attendees: []
+            ownerName: 'Michael Malach',
+            attendees: [],
+            attendeeNames: []
         });
         const event9 = new Event({
             eventName: 'Casual Cards',
@@ -159,7 +175,9 @@ export default function() {
             slug: 'casual-cards',
             cuid: 'casualgamerswelcomeherethanks3333',
             owner: 'OJuBVH8XO1OuBWuOI86K2VpdQLb2',
-            attendees: []
+            ownerName: 'Michael Malach',
+            attendees: [],
+            attendeeNames: []
         });
         const event10 = new Event({
             eventName: 'Ultimate Werewolf Party',
@@ -176,7 +194,9 @@ export default function() {
             slug: 'ultimate-werewolf-party',
             cuid: 'arooooooooo0000',
             owner: 'OJuBVH8XO1OuBWuOI86K2VpdQLb2',
-            attendees: []
+            ownerName: 'Michael Malach',
+            attendees: [],
+            attendeeNames: []
         });
         
         Event.create([event1, event2, event3, event4, event5, event6, event7, event8, event9, event10], (error) => {
