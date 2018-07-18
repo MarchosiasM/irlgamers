@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment'
 
 /* eslint-disable react/prop-types */
 /* This is a very basic component that simply takes the event details
@@ -22,7 +23,7 @@ const EventDetails = ({ event, styles }) => (
         {`${event.city}, ${event.state} ${event.zipcode}`}
       </p>
       <p className={styles['post-desc']}>
-        {event.scheduledDate}
+        {moment(event.scheduledDate).format("MMM Do YY")}
       </p>
       <p className={styles['post-desc']}>
         {event.scheduledTime}

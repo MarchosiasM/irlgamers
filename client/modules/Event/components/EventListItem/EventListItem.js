@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
+import moment from 'moment'
 
 // Import Style
 import styles from './EventListItem.css';
@@ -15,7 +16,7 @@ function EventListItem(props) {
       </h3>
       <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.ownerName}</p>
       <p className={styles['post-desc']}>{props.event.game}</p>
-      <p className={styles['post-desc']}>{props.event.scheduledDate}</p>
+      <p className={styles['post-desc']}>{moment(props.event.scheduledDate).format("MMM Do YYYY")}</p>
       <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
       <p className={styles['post-desc']}>{props.event.attendees.length}/{props.event.slots}</p>
       <p className={styles['post-desc']}>{props.event.notes}</p>
