@@ -31,6 +31,7 @@ export function addEventRequest(event) {
         slots: event.slots,
         notes: event.notes,
         owner: event.owner,
+        ownerName: event.ownerName,
       },
     }).then(res => dispatch(addEvent(res.event)));
   };

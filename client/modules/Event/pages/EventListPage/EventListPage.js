@@ -35,10 +35,10 @@ class EventListPage extends Component {
     }
   };
 
-  handleAddEvent = (eventName, gameType, game, address, city, state, zipcode, scheduledDate, scheduledTime, slots, notes, owner) => {
+  handleAddEvent = (eventName, gameType, game, address, city, state, zipcode, scheduledDate, scheduledTime, slots, notes, owner, ownerName) => {
     this.props.dispatch(toggleAddEvent());
     this.props.dispatch(addEventRequest({
-      eventName, gameType, game, address, city, state, zipcode, scheduledDate, scheduledTime, slots, notes, owner,
+      eventName, gameType, game, address, city, state, zipcode, scheduledDate, scheduledTime, slots, notes, owner, ownerName,
     }));
   };
 

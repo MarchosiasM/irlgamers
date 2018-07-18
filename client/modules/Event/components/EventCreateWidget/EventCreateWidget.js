@@ -56,6 +56,7 @@ export class FormCreateWrap extends Component {
         createdEvent.slots,
         createdEvent.notes,
         this.props.authUser.uid,
+        this.props.authUser.displayName
       );
     }
   }
@@ -63,6 +64,7 @@ export class FormCreateWrap extends Component {
   render() {
     const initializedEvent = {
       owner: this.props.authUser.uid,
+      ownerName: this.props.authUser.displayName,
       eventName: '',
       address: '',
       city: '',
