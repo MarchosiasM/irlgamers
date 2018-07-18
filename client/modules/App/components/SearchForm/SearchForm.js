@@ -106,7 +106,7 @@ SearchForm.propTypes = {
     scheduledTime: PropTypes.string.isRequired,
     slots: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,
-    authUser: PropTypes.string.isRequired,
+    authUser: PropTypes.string,
   })).isRequired,
 };
 
