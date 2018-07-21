@@ -29,18 +29,9 @@ class UserProfilePage extends Component {
   }
 
   render() {
-    console.log(this.props.profileData);
     return (
       <div>
-        {this.state.usersEvents
-          ?
-          'I\'ll display events now'
-          :
-          'No events yet'}
-        <br />
-        'Here be the user's profile page.'
-        <br />
-        {this.props.params.ownerid}
+      See the events this user has hosted:
         {this.props.profileData ?
           <EventList
             events={this.props.profileData}
