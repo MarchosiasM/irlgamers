@@ -1,37 +1,53 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
-// Import Components
-import EventList from '../../components/EventList';
-import EventCreateWidget from '../../components/EventCreateWidget/EventCreateWidget';
-
+import EventList from '../../components/EventList/EventList';
 /* eslint-disable react/prop-types */
 // Import Actions
-import { addEventRequest, fetchEvents, deleteEventRequest } from '../../EventActions';
-import { toggleAddEvent } from '../../../App/AppActions';
-import { fetchAuthUserEventsRequest } from '../../../Event/UserEventsActions';
+import { fetchEvents } from '../../EventActions';
+
+import { fetchProfileDetails } from '../../../Event/UserEventsActions';
 
 // Import Selectors
 import { getShowAddEvent } from '../../../App/AppReducer';
-import { getEvents } from '../../EventReducer';
-import { getAuthUser } from '../../../Auth/AuthReducer';
 import {
   getUserEvents,
-  getEventsByUser,
+  getProfileData,
 } from '../../../Event/UserEventsReducer';
 
 
 class UserProfilePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      usersEvents: false,
+    };
+  }
+
   componentDidMount() {
-    this.props.dispatch(fetchEvents());
-    this.props.dispatch(fetchAuthUserEventsRequest());
+    this.props.dispatch(fetchProfileDetails(this.props.params.ownerid));
   }
 
   render() {
+    console.log(this.props.profileData);
     return (
       <div>
-      'Here be the user's profile page.'
+        {this.state.usersEvents
+          ?
+          'I\'ll display events now'
+          :
+          'No events yet'}
+        <br />
+        'Here be the user's profile page.'
+        <br />
+        {this.props.params.ownerid}
+        {this.props.profileData ?
+          <EventList
+            events={this.props.profileData}
+          />
+          :
+          ''
+        }
       </div>
     );
   }
@@ -44,9 +60,8 @@ UserProfilePage.need = [() => { return fetchEvents(); }];
 function mapStateToProps(state, props) {
   return {
     showAddEvent: getShowAddEvent(state),
-    events: getEvents(state),
-    authUser: getAuthUser(state),
     userEvents: getUserEvents(state),
+    profileData: getProfileData(state),
   };
 }
 

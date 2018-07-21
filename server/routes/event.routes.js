@@ -9,6 +9,9 @@ router.route('/events').get(EventController.getEvents);
 // Get all Events for this user only
 router.route('/myevents/:cuid').get(EventController.getUserEvents);
 
+// Get user events by firebase id
+router.route('/userevents/:firebaseID').get(EventController.getUserEventsByID);
+
 // Search Events by name &/or date
 router.route('/events/search/:name/:date').get(EventController.findEventsByNameDate);
 

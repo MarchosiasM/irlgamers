@@ -35,6 +35,21 @@ export function getUserEvents(req, res) {
 }
 
 /**
+ * Get a Users Events
+ * @param req
+ * @param res
+ * @returns void
+ */
+export function getUserEventsByID(req, res) {
+  Event.find({ owner: req.params.firebaseID }).sort('-scheduledDate').exec((err, events) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ events });
+  });
+}
+
+/**
  * Search events by date
  * @param req
  * @param res
