@@ -7,6 +7,7 @@ import callApi from '../../util/apiCaller';
 // Export Constants
 
 export const ADD_USER_EVENTS = 'ADD_USER_EVENTS';
+export const FETCH_USER_EVENTS = 'FETCH_USER_EVENTS';
 
 // Adds user events to state
 export function addUserEvents(events) {
@@ -27,5 +28,23 @@ export function addUserEvents(events) {
           dispatch(addUserEvents(null));
         }
       })
+    }
+  }
+
+  export function fetchUserEvents(events) {
+    return {
+      type: FETCH_USER_EVENTS,
+      events,
+    }
+  }
+
+  export function fetchProfileDetails(id) {
+    return (dispatch) => {
+      if (id) {
+        return callApi(`userevents/${id}`)
+        .then(res => dispatch(fetchUserEvents(res.events)))
+      } else {
+        dispatch(fetchUserEvents(null));
+      }
     }
   }

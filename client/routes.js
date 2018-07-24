@@ -20,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Event/pages/EventListPage/EventListPage');
   require('./modules/Event/pages/UserEventPage/UserEventPage');
+  require('./modules/Event/pages/UserProfilePage/UserProfilePage');
 }
 
 // react-router setup with code-splitting
@@ -54,6 +55,14 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Event/pages/EventDetailPage/EventDetailPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/profile/:ownerid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Event/pages/UserProfilePage/UserProfilePage').default);
         });
       }}
     />

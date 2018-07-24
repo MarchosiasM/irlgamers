@@ -70,10 +70,6 @@ class EventDetailPage extends Component {
   };
 
   handleEdgeCases = () => {
-    console.log('Handling edge cases');
-    console.log('AuthUser?? ', this.props.authUser);
-    console.log('User is, ', this.props.user);
-    console.log('Event is, ', this.props.event);
     if (!this.props.event) {
       return 'This event no longer exists';
     }

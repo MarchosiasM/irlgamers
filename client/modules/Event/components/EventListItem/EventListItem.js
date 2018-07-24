@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
-import moment from 'moment'
+import moment from 'moment';
 
 // Import Style
 import styles from './EventListItem.css';
@@ -14,9 +13,14 @@ function EventListItem(props) {
           {props.event.eventName}
         </Link>
       </h3>
-      <p className={styles['author-name']}><FormattedMessage id="by" /> {props.event.ownerName}</p>
+      <p className={styles['author-name']}>
+      {' by '}
+        <Link to={`/profile/${props.event.owner}`}>
+          {props.event.ownerName}
+        </Link>
+      </p>
       <p className={styles['post-desc']}>{props.event.game}</p>
-      <p className={styles['post-desc']}>{moment(props.event.scheduledDate).format("MMM Do YYYY")}</p>
+      <p className={styles['post-desc']}>{moment(props.event.scheduledDate).format('MMM Do YYYY')}</p>
       <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
       <p className={styles['post-desc']}>{props.event.attendees.length}/{props.event.slots}</p>
       <p className={styles['post-desc']}>{props.event.notes}</p>
@@ -36,6 +40,8 @@ EventListItem.propTypes = {
     cuid: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
     slots: PropTypes.number.isRequired,
+    ownerName: PropTypes.string.isRequired,
+    attendees: PropTypes.array.required,
   }).isRequired,
   onDelete: PropTypes.func.isRequired, // Not In Use - Rob, will delete after testing.
 };
