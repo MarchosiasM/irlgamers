@@ -6,6 +6,7 @@ import moment from 'moment';
 import styles from './EventListItem.css';
 
 function EventListItem(props) {
+  let nextDay = moment(props.event.scheduledDate).add(1, 'days').calendar()
   return (
     <div className={styles['single-post']}>
       <h3 className={styles['post-title']}>
@@ -20,7 +21,7 @@ function EventListItem(props) {
         </Link>
       </p>
       <p className={styles['post-desc']}>{props.event.game}</p>
-      <p className={styles['post-desc']}>{moment(props.event.scheduledDate).format('MMM Do YYYY')}</p>
+      <p className={styles['post-desc']}>{moment(nextDay).format('MMM Do YY')}</p>
       <p className={styles['post-desc']}>{props.event.scheduledTime}</p>
       <p className={styles['post-desc']}>{props.event.attendees.length}/{props.event.slots}</p>
       <p className={styles['post-desc']}>{props.event.notes}</p>
