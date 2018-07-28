@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FormErrors from '../FormErrors/FormErrors';
-import moment from 'moment'
+import moment from 'moment';
 
 /* eslint-disable react/prop-types */
 
@@ -165,7 +165,7 @@ class EventForm extends Component {
 
 
   render() {
-    let dateCorrection = moment(this.props.event.scheduledDate).add(1, 'days').calendar()
+    let dateCorrection = moment(this.props.event.scheduledDate).add(1, 'days').calendar();
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -202,6 +202,7 @@ class EventForm extends Component {
           </label>
           <label>Game Type
             <input
+              list="gameTypes"
               maxLength="30"
               name="gameType"
               defaultValue={this.props.event.gameType}
@@ -209,6 +210,13 @@ class EventForm extends Component {
               onChange={this.handleChange}
               onFocus={this.onFocus}
             />
+            <datalist id="gameTypes">
+              <option value="Card Games" />
+              <option value="Board Games" />
+              <option value="Pen and Paper RPG" />
+              <option value="Video Games" />
+              <option value="Information Games" />
+            </datalist>
           </label>
           <label>Address
             <input
@@ -255,7 +263,7 @@ class EventForm extends Component {
             <input
               className="datepicker"
               name="scheduledDate"
-              defaultValue={moment(dateCorrection).format("YYYY-MM-DD")}
+              defaultValue={moment(dateCorrection).format('YYYY-MM-DD')}
               type="date"
               onChange={this.handleChange}
               onFocus={this.onFocus}
@@ -265,7 +273,7 @@ class EventForm extends Component {
             <input
               className="timepicker"
               name="scheduledTime"
-              defaultValue={moment(this.props.event.scheduledTime, ["h:mm A"]).format("HH:mm")}
+              defaultValue={moment(this.props.event.scheduledTime, ['h:mm A']).format('HH:mm')}
               type="time"
               onChange={this.handleChange}
               onFocus={this.onFocus}
