@@ -420,7 +420,7 @@ export default function() {
             slots: 1,
             notes: 'I will own all of you!',
             slug: 'lets-gather-for-magic-the-gathering',
-            cuid: 'arooooooooo00002244',
+            cuid: 'arooooooooo00003344',
             owner: '1ASDVH8XO1OuBWuOI86K2VpdQLb2',
             ownerName: 'JimJeffr22',
             attendees: [],
