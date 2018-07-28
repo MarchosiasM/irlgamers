@@ -11,7 +11,8 @@ import moment from 'moment';
  * @returns void
  */
 export function getEvents(req, res) {
-  Event.find().sort('-scheduledDate').exec((err, events) => {
+  Event.find({ scheduledDate: { $gte: moment() } }).sort({ scheduledDate: 1, scheduledTime: 1 }).exec((err, events) => {
+    console.log('Today\'s date, ', moment());
     if (err) {
       res.status(500).send(err);
     }
@@ -26,7 +27,7 @@ export function getEvents(req, res) {
  * @returns void
  */
 export function getUserEvents(req, res) {
-  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec((err, events) => {
+  Event.find({ owner: req.params.cuid }).sort('scheduledDate').exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -41,7 +42,7 @@ export function getUserEvents(req, res) {
  * @returns void
  */
 export function getUserEventsByID(req, res) {
-  Event.find({ owner: req.params.firebaseID }).sort('-scheduledDate').exec((err, events) => {
+  Event.find({ owner: req.params.firebaseID }).sort('scheduledDate').exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -70,7 +71,7 @@ export function findEventsByNameDate(req, res) {
 
   console.log(search_params);
 
-  Event.find(search_params).sort('-scheduledDate')
+  Event.find(search_params).sort('scheduledDate')
   .then((events) => {
     if (events.length) {
       res.json({ events });
@@ -80,7 +81,7 @@ export function findEventsByNameDate(req, res) {
   })
   .then((event_count) => {
     if (event_count) return;
-    Event.find().sort('-scheduledDate').then((events) => {
+    Event.find().sort('scheduledDate').then((events) => {
       res.json({ events });
     })
     .catch(err => res.status(500).send(err));
