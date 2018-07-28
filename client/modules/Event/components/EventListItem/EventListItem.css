@@ -23,7 +23,7 @@
   }
   
   .post-desc{
-    font-size: 14px;
+    font-size: 16px;
     color: #888;
     margin-bottom: 8px;
   }
@@ -57,11 +57,44 @@
     color: #555;
   }
 
+  /* Custom styles */
+
+  .link {
+    color: #8E2DE2;
+  }
+
+  .link2 {
+    color: #8E2DE2!important;
+    font-weight: bold;
+  }
+
   .card-title-banner {
     display: block;
     width: 100%;
     margin: 0;
-    padding: 20px;
+    /* padding: 10px; */
     background: rgba(0, 0, 0, 0.5);
+  }
+
+  .event-name {
+    color: white;
+  }
+
+  .game-name {
+    font-size: 0.6em;
+    float: right;
+    margin-top: 10px;
+  }
+
+  .attendee-count {
+    color: #00bfa5;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .seat-count {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #00bfa5;
   }
   
