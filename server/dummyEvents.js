@@ -25,7 +25,7 @@ export default function() {
             owner: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
             ownerName: 'Roberto Perez',
             attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2', 'j59i2RAn6HVkwqHzcErWdU3xEzN2'],
-            attendeeNames: ['Kyle McGee', 'Michael Malach', 'Roberto Perez']
+            attendeeNames: ['Kyle Magee', 'Michael Malach', 'Roberto Perez']
         });
         const event2 = new Event({
             eventName: 'Texas Holdem in Bama',
@@ -44,7 +44,7 @@ export default function() {
             owner: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
             ownerName: 'Roberto Perez',
             attendees: ['4lgdwrkOHucfNIaN8M2kIkluec02', 'OJuBVH8XO1OuBWuOI86K2VpdQLb2' ],
-            attendeeNames: ['Kyle McGee', 'Michael Malach']
+            attendeeNames: ['Kyle Magee', 'Michael Malach']
         });
         const event3 = new Event({
             eventName: 'Chess and Cheese',
@@ -99,7 +99,7 @@ export default function() {
             slug: 'boys-night-out-woooo',
             cuid: 'boysboysboysboys1234',
             owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
-            ownerName: 'Kyle McGee',
+            ownerName: 'Kyle Magee',
             attendees: [],
             attendeeNames: []
         });
@@ -118,7 +118,7 @@ export default function() {
             slug: 'dudes-&-dungeons-&-dragons',
             cuid: 'dndndndndnd1111',
             owner: '4lgdwrkOHucfNIaN8M2kIkluec02',
-            ownerName: 'Kyle McGee',
+            ownerName: 'Kyle Magee',
             attendees: [],
             attendeeNames: []
         });
@@ -198,8 +198,295 @@ export default function() {
             attendees: [],
             attendeeNames: []
         });
+        const event11 = new Event({
+            eventName: 'Fun Fun Fun in La Mesa',
+            address: '896 Grim Avenue',
+            city: 'La Mesa',
+            state: 'CA',
+            zipcode: '92041',
+            game: 'Ticket to Ride',
+            gameType: 'Board Game',
+            scheduledDate: '2018-10-10',
+            scheduledTime: '07:15 PM',
+            slots: 5,
+            notes: 'Gonna be fun! Be on Time!',
+            slug: 'fun-fun-fun-in-la-mesa',
+            cuid: 'arooooooooo00001133',
+            owner: '5KBfuWpInPbSRDbT5mgewMsFhB22',
+            ownerName: 'Nicole Sevillano',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event12 = new Event({
+            eventName: 'Kids Candy Land Playdate',
+            address: '521 Coleman Avenue',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92101',
+            game: 'Candy Land Day Date',
+            gameType: 'Childrens Game',
+            scheduledDate: '2018-09-8',
+            scheduledTime: '10:30 AM',
+            slots: 5,
+            notes: 'Prefer children from 5 to 9 Years of Age, My son Tim is hosting',
+            slug: 'kids-candy-land-playdate',
+            cuid: 'arooooooooo00001122',
+            owner: '1JuVHS8XO1OuBWuOI86K2VpdQLb2',
+            ownerName: 'Marissa Styles',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event13 = new Event({
+            eventName: 'I love space games!',
+            address: '988 Hamill Avenue',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92123',
+            game: 'Terraforming Mars',
+            gameType: 'Strategy',
+            scheduledDate: '2018-11-11',
+            scheduledTime: '05:30 PM',
+            slots: 5,
+            notes: 'Could always use more snacks. Game starts promptly at the scheduled time',
+            slug: 'i-love-space-games',
+            cuid: 'arooooooooo00001144',
+            owner: '8M1yrtBcLmd6s8tWBFJ7hxRqrJG2',
+            ownerName: 'Daniel Straw',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event14 = new Event({
+            eventName: 'Old School Gaming Night',
+            address: '134 Poplar Avenue',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92103',
+            game: 'Stratego',
+            gameType: 'Strategy',
+            scheduledDate: '2018-08-4',
+            scheduledTime: '06:15 PM',
+            slots: 3,
+            notes: 'If you have any other game you want to bring, please do so!',
+            slug: 'old-school-gaming-night',
+            cuid: 'arooooooooo00001155',
+            owner: '8sBRvJTphZSeUzBBBrgBDkSHnal2',
+            ownerName: 'Brian Santos',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event15 = new Event({
+            eventName: 'Axis and Allies Time',
+            address: '3298 Holden Street',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92010',
+            game: 'Axis and Allies',
+            gameType: 'Strategy',
+            scheduledDate: '2018-08-11',
+            scheduledTime: '07:30 PM',
+            slots: 4,
+            notes: "Only nice players, dont be a Nazi!",
+            slug: 'axis-and-allies-time',
+            cuid: 'arooooooooo00001166',
+            owner: 'FifDn3rlv6Vx3G0NfloAvhQWRYp2',
+            ownerName: 'Andrew Buckley',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event16 = new Event({
+            eventName: 'Warhammer 40K Match Night',
+            address: '4101 Parkway Street',
+            city: 'Encinitas',
+            state: 'CA',
+            zipcode: '92024',
+            game: 'Warhammer 40000',
+            gameType: 'Tabletop',
+            scheduledDate: '2018-08-14',
+            scheduledTime: '06:00 PM',
+            slots: 5,
+            notes: 'Will have three tables available, BYOB',
+            slug: 'warhammer-40k-match-night',
+            cuid: 'arooooooooo00001177',
+            owner: 'GLyEpmFFc3UxMLsY4G84QebEZFz1',
+            ownerName: 'Ryan Palermo',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event17 = new Event({
+            eventName: 'LAN Party Time - Divinity Original Sin 2',
+            address: '4994 Pike Street',
+            city: 'Del Mar',
+            state: 'CA',
+            zipcode: '92014',
+            game: 'Divinity Origin Sin 2',
+            gameType: 'Video Game',
+            scheduledDate: '2018-09-9',
+            scheduledTime: '05:00 PM',
+            slots: 4,
+            notes: 'I like to tank. Obs bring your own laptop.',
+            slug: 'lan-party-time-divinity-original-sin-2',
+            cuid: 'arooooooooo00001188',
+            owner: 'QKTbGYUxPLSQAFQ7JcEBN4b4uNi1',
+            ownerName: 'Justin Buckley',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event18 = new Event({
+            eventName: 'Shuffleboard in my Backyard',
+            address: '3831 1st Ave',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92103',
+            game: 'Shuffleboard',
+            gameType: 'Outdoor',
+            scheduledDate: '2018-09-10',
+            scheduledTime: '11:30 AM',
+            slots: 5,
+            notes: 'Just moved to San Diego, looking to make some new friends.',
+            slug: 'shuffleboard-in-my-backyard',
+            cuid: 'arooooooooo00001199',
+            owner: 'XeLmDMkehTSJTILYCZLCJsxKNOy1',
+            ownerName: 'Michael Mansi',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event19 = new Event({
+            eventName: 'Looking for a fun time in PB?',
+            address: '4303 Gresham St',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92109',
+            game: 'Race for the Galaxy',
+            gameType: 'Tabletop Game',
+            scheduledDate: '2018-09-01',
+            scheduledTime: '04:30 PM',
+            slots: 3,
+            notes: 'I just realized my post title is super creepy. But anyway it will be fun, sign up!',
+            slug: 'looking-for-a-fun-time-in-pb',
+            cuid: 'arooooooooo00002211',
+            owner: 'j59i2RAn6HVkwqHzcErWdU3xEzN2',
+            ownerName: 'Roberto Perez',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event20 = new Event({
+            eventName: 'Ever play RoboRally?',
+            address: '7389 Rancho Catalina Trail',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92127',
+            game: 'RoboRally',
+            gameType: 'Board Game',
+            scheduledDate: '2018-08-15',
+            scheduledTime: '02:30 PM',
+            slots: 6,
+            notes: 'I have loved this game since forever, hope you do too!',
+            slug: 'ever-play-roborally',
+            cuid: 'arooooooooo00002244',
+            owner: 'xaB0yFLVDQdHAWZoKH0npo6Yph53',
+            ownerName: 'Steven Mezzacappa',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event21 = new Event({
+            eventName: 'Fortnite Tournament',
+            address: '3830 Elijah Ct',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92130',
+            game: 'Fortnite',
+            gameType: 'Video Games',
+            scheduledDate: '2018-09-21',
+            scheduledTime: '05:30 PM',
+            slots: 20,
+            notes: 'I have a projector in my backyard we can display, I plan on having like 30 people over.',
+            slug: 'fortnite-tournament',
+            cuid: 'arooooooooo00002233',
+            owner: 'eDo8bQGRE7d6HCpsyZiUSjp5zh93',
+            ownerName: 'Lauren Cotto',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event22 = new Event({
+            eventName: 'Lets Gather for Magic The Gathering',
+            address: '1665 Sandos St',
+            city: 'El Cajon',
+            state: 'CA',
+            zipcode: '92019',
+            game: 'Magic: The Gathering',
+            gameType: 'Card Games',
+            scheduledDate: '2018-08-03',
+            scheduledTime: '05:30 PM',
+            slots: 1,
+            notes: 'I will own all of you!',
+            slug: 'lets-gather-for-magic-the-gathering',
+            cuid: 'arooooooooo00002244',
+            owner: '1ASDVH8XO1OuBWuOI86K2VpdQLb2',
+            ownerName: 'JimJeffr22',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event23 = new Event({
+            eventName: 'Gin Rummy Night at Fredericka Manor',
+            address: '183 3rd Ave',
+            city: 'Chula Vista',
+            state: 'CA',
+            zipcode: '91910',
+            game: 'Gin Rummy',
+            gameType: 'Card Games',
+            scheduledDate: '2018-08-10',
+            scheduledTime: '02:30 PM',
+            slots: 5,
+            notes: 'I am posting this for some of our residents that would like other players to come. All ages welcome.',
+            slug: 'gin-rummy-night-at-fredericka-manor',
+            cuid: 'arooooooooo00002255',
+            owner: '2ASDVH8XO1OuBWuOI86K2VpdQLb2',
+            ownerName: 'KaleSalad121',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event24 = new Event({
+            eventName: 'Poker Night in El Cajon',
+            address: '1338 Bermuda Ln',
+            city: 'El Cajon',
+            state: 'CA',
+            zipcode: '92021',
+            game: 'Poker',
+            gameType: 'Card Games',
+            scheduledDate: '2018-08-11',
+            scheduledTime: '08:20 PM',
+            slots: 5,
+            notes: 'We are not playing for real money.',
+            slug: 'poker-night-in-el-cajon',
+            cuid: 'arooooooooo00002266',
+            owner: 'AHS12BVH8SX1OuBWuOI86K2VpdQLb2',
+            ownerName: 'PokerGuy84',
+            attendees: [],
+            attendeeNames: []
+        });
+        const event25 = new Event({
+            eventName: 'Ga Ga for Jenga',
+            address: '9130 Ellingham St',
+            city: 'San Diego',
+            state: 'CA',
+            zipcode: '92129',
+            game: 'Jenga',
+            gameType: 'Outdoor Games',
+            scheduledDate: '2018-08-06',
+            scheduledTime: '05:30 PM',
+            slots: 4,
+            notes: 'Just looking to make more friends. Everyone is welcome!',
+            slug: 'ga-ga-for-jenga',
+            cuid: 'arooooooooo00002277',
+            owner: 'LMK99908020WuOI86K2VpdQLb2',
+            ownerName: 'LadyGaGa Smith',
+            attendees: [],
+            attendeeNames: []
+        })
+
         
-        Event.create([event1, event2, event3, event4, event5, event6, event7, event8, event9, event10], (error) => {
+        Event.create([event1, event2, event3, event4, event5, event6, event7, event8, event9, event10, event11, event12, event13, event14, event15, event16,
+            event17, event18, event19, event20, event21, event22, event23, event24, event25], (error) => {
             if (!error) {
                 console.log('EVENT DUMMY DATA SEEDED!');
             } else {
