@@ -4,6 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import styles from './App.css'; // This uses CSS modules.
+import { Link } from 'react-router'
 // import './SignInScreen.css';
 
 // Import Actions
@@ -57,7 +58,9 @@ export class SignInScreen extends Component {
       <div className={styles.container}>
         <span className={styles.logo}>
           {/* replace this with real logo later */}
+          <Link to="/" alt="Home Screen" className={styles.homelink}>
           <i className={`${styles.logoIcon} material-icons`}>extension</i> IRLgamers
+          </Link>
         </span>
 
         {this.props.authUser ?

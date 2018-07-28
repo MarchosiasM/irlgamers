@@ -92,3 +92,11 @@
     margin-right: 10px;
     margin-left: 10px;
   }
+
+  .homelink {
+    color: white;
+  }
+
+  .homelink:hover {
+    color: white;
+  }
