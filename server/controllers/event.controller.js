@@ -11,7 +11,7 @@ import moment from 'moment';
  * @returns void
  */
 export function getEvents(req, res) {
-  Event.find().sort('-scheduledDate').exec((err, events) => {
+  Event.find({ scheduledDate: { $gte: moment() } }).sort({ scheduledDate: 1, scheduledTime: 1 }).exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -26,7 +26,7 @@ export function getEvents(req, res) {
  * @returns void
  */
 export function getUserEvents(req, res) {
-  Event.find({ owner: req.params.cuid }).sort('-scheduledDate').exec((err, events) => {
+  Event.find({ owner: req.params.cuid }).sort('scheduledDate').exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -41,7 +41,7 @@ export function getUserEvents(req, res) {
  * @returns void
  */
 export function getUserEventsByID(req, res) {
-  Event.find({ owner: req.params.firebaseID }).sort('-scheduledDate').exec((err, events) => {
+  Event.find({ owner: req.params.firebaseID }).sort('scheduledDate').exec((err, events) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -70,7 +70,7 @@ export function findEventsByNameDate(req, res) {
 
   console.log(search_params);
 
-  Event.find(search_params).sort('-scheduledDate')
+  Event.find(search_params).sort('scheduledDate')
   .then((events) => {
     if (events.length) {
       res.json({ events });
@@ -80,7 +80,7 @@ export function findEventsByNameDate(req, res) {
   })
   .then((event_count) => {
     if (event_count) return;
-    Event.find().sort('-scheduledDate').then((events) => {
+    Event.find().sort('scheduledDate').then((events) => {
       res.json({ events });
     })
     .catch(err => res.status(500).send(err));
@@ -196,4 +196,34 @@ export function editEvent(req, res) {
       res.json({ event });
     }
   });
+}
+
+
+export function findEventsByGameType(req, res) {
+  // let valid_search_date = (search_date.isValid()) ? new Date(search_date_formatted).toISOString() : null;
+
+  const search_name = decodeURI(req.params.gameType);
+  const search_params = {};
+  console.log(search_name);
+  if (search_name !== 'null') search_params.gameType = new RegExp(search_name, 'i');
+
+  console.log(search_params);
+
+  Event.find(search_params).sort('scheduledDate')
+  .then((events) => {
+    if (events.length) {
+      console.log('Hitting your findEventsByGameType controller, ', events);
+      res.json({ events });
+      return events.length;
+    }
+    return null;
+  })
+  .then((event_count) => {
+    if (event_count) return;
+    Event.find().sort('scheduledDate').then((events) => {
+      res.json({ events });
+    })
+    .catch(err => res.status(500).send(err));
+  })
+  .catch(err => res.status(500).send(err));
 }

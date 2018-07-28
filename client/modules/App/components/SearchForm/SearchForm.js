@@ -7,7 +7,7 @@ import SearchEventName from './SearchEventName';
 // import SearchEventDate from './SearchEventDate';
 
 // Import Event Actions
-import { findEventsByNameDate } from '../../../Event/EventActions';
+import { findEventsByNameDate, findEventsByGameType } from '../../../Event/EventActions';
 
 // Import Event Selections
 import { getEvents } from '../../../Event/EventReducer';
@@ -23,9 +23,9 @@ class SearchForm extends Component {
       style: {
         // maxWidth: 768
         zIndex: 2000,
-        position: 'relative'
+        position: 'relative',
       },
-      search_event_name: '',
+      search_event_type: '',
     };
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.returnValueUp = this.returnValueUp.bind(this);
@@ -39,28 +39,28 @@ class SearchForm extends Component {
 
   handleSearchSubmit(e) {
     // console.log('dateSearched: ', e.target.dateSearch.value);
-    console.log('nameSearched: ', this.state.search_event_name);
+    console.log('nameSearched: ', this.state.search_event_type);
     console.log('submitted! ', e.target);
 
     e.preventDefault();
     // let search_date = (e.target.dateSearch.value) ? e.target.dateSearch.value : '*';
-    let search_name = (this.state.search_event_name && this.state.search_event_name !== '') ? this.state.search_event_name : 'null';
+    const search_name = (this.state.search_event_type && this.state.search_event_type !== '') ? this.state.search_event_type : 'null';
     // this.props.dispatch(findEventsByNameDate( search_name, search_date ));
-    this.props.dispatch(findEventsByNameDate(search_name));
+    this.props.dispatch(findEventsByGameType(search_name));
   }
 
   returnValueUp(e) {
     console.log(e.target.value);
-    this.setState({ search_event_name: e.target.value });
+    this.setState({ search_event_type: e.target.value });
   }
 
   returnSelectUp(value) {
     console.log(value);
-    this.setState({ search_event_name: value });
+    this.setState({ search_event_type: value });
   }
 
   clearSearch(e) {
-    this.setState({ search_event_name: '' });
+    this.setState({ search_event_type: '' });
     e.target.submit();
   }
 
@@ -68,12 +68,11 @@ class SearchForm extends Component {
     return (
       <div style={this.state.style} className="row">
         <form onSubmit={this.handleSearchSubmit}>
-          <div 
+          <div
             // style={styles.acWrapper}
             className={`s5 col ${styles.acWrapper}`}
-            
-            >
-            <SearchEventName returnVal={this.returnValueUp} returnSelect={this.returnSelectUp} value={this.state.search_event_name} />
+          >
+            <SearchEventName returnVal={this.returnValueUp} returnSelect={this.returnSelectUp} value={this.state.search_event_type} />
           </div>
           {/* <div className="col s3"> */}
           {/* <SearchEventDate returnVal={this.returnValueUp} /> */}

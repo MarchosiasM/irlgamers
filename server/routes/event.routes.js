@@ -30,4 +30,7 @@ router.route('/events/:cuid').put(EventController.editEvent);
 // Delete an Event by cuid
 router.route('/events/:cuid').delete(EventController.deleteEvent);
 
+// Find events by gameType
+router.route('/events/search/:gameType').get(EventController.findEventsByGameType);
+
 export default router;

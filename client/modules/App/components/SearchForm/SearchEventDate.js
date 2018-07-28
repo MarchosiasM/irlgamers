@@ -7,7 +7,7 @@ class DateSearch extends Component {
       isMounted: false,
     };
   }
-
+  /* global M */
   componentDidMount() {
     this.setState({ isMounted: true }); // eslint-disable-line
     M.AutoInit();
