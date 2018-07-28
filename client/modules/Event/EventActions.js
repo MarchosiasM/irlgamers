@@ -80,6 +80,15 @@ export function findEventsByNameDate(name, date = '*') {
   };
 }
 
+export function findEventsByGameType(gameType) {
+  return (dispatch) => {
+    return callApi(`events/search/${gameType}`)
+    .then((res) => {
+      dispatch(addEvents(res.events));
+    });
+  };
+}
+
 export function fetchEvent(cuid) {
   return (dispatch) => {
     return callApi(`events/${cuid}`)
