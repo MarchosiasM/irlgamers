@@ -14,7 +14,7 @@ function EventListItem(props) {
           <div className="card">
             <div className="card-image">
               <img src="http://atomicgametheory.com/wp-content/uploads/catan.jpg" />
-              <span className="card-title">
+              <span className={`card-title`}>
                 {props.event.eventName}
               </span>
             </div>
