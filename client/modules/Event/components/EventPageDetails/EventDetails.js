@@ -7,7 +7,9 @@ import moment from 'moment'
   guest view and the host view. Beyond rendering out the details of
   the event, it has no specific logic */
 
-const EventDetails = ({ event, styles }) => (
+const EventDetails = ({ event, styles }) => {
+  let nextDay = moment(event.scheduledDate).add(1, 'days').calendar()
+return (
   <div>
     <div className={`${styles['single-post']} ${styles['post-detail']}`}>
       <h3 className={styles['post-title']}>
@@ -23,7 +25,7 @@ const EventDetails = ({ event, styles }) => (
         {`${event.city}, ${event.state} ${event.zipcode}`}
       </p>
       <p className={styles['post-desc']}>
-        {moment(event.scheduledDate).format("MMM Do YY")}
+        {moment(nextDay).format("MMM Do YY")}
       </p>
       <p className={styles['post-desc']}>
         {event.scheduledTime}
@@ -33,5 +35,5 @@ const EventDetails = ({ event, styles }) => (
     </div>
   </div>
 );
-
+}
 export default EventDetails;
