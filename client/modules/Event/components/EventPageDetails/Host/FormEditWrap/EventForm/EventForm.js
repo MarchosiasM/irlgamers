@@ -165,7 +165,7 @@ class EventForm extends Component {
 
 
   render() {
-    let dateCorrection = moment(this.props.event.scheduledDate).add(1, 'days').calendar();
+    const dateCorrection = moment(this.props.event.scheduledDate).add(1, 'days').calendar();
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -211,11 +211,18 @@ class EventForm extends Component {
               onFocus={this.onFocus}
             />
             <datalist id="gameTypes">
-              <option value="Card Games" />
-              <option value="Board Games" />
-              <option value="Pen and Paper RPG" />
-              <option value="Video Games" />
-              <option value="Information Games" />
+              <option value="Card Game" />
+              <option value="Board Game" />
+              <option value="Pen and Paper" />
+              <option value="Video Game" />
+              <option value="Information Game" />
+              <option value="Outdoor" />
+              <option value="Tile-based Game" />
+              <option value="Strategy Game" />
+              <option value="Role-Playing Game" />
+              <option value="Dice Game" />
+              <option value="Adventure Game" />
+              <option value="Drinking Game" />
             </datalist>
           </label>
           <label>Address
