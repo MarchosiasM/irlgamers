@@ -5,16 +5,20 @@ import EventListItem from '../EventListItem/EventListItem';
 
 const EventList = (props) => (
   <div className="listView">
-    {
-      props.events.map(event => (
-        <EventListItem
-          event={event}
-          key={event.cuid}
-          onDelete={() => props.handleDeleteEvent(event.cuid)}
-        />
-      ))
-    }
-  </div>
+    
+        {
+          props.events.map(event => (
+
+            <EventListItem
+              event={event}
+              key={event.cuid}
+              onDelete={() => props.handleDeleteEvent(event.cuid)}
+            />
+
+          ))
+        }
+      </div>
+   
 );
 
 EventList.propTypes = {

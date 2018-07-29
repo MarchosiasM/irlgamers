@@ -10,9 +10,9 @@ function EventListItem(props) {
   let nextDay = moment(props.event.scheduledDate).add(1, 'days').calendar()
   return (
       
-      <div className="row">
-        <div className="col s12 m6">
-          <div className="card">
+      
+       
+          <div className="card large">
             <div className="card-image">
               <img src={makeImageLink(props.event.gameType)} />
               <span className={`card-title ${styles['card-title-banner']}`}>
@@ -37,8 +37,8 @@ function EventListItem(props) {
               </Link>
             </div>
           </div>
-        </div>
-      </div>
+        
+      
   );
 }
 
