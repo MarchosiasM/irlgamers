@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
+import images from './stockimages.js';
 
 // Import Style
 import styles from './EventListItem.css';
@@ -13,7 +14,7 @@ function EventListItem(props) {
         <div className="col s12 m6">
           <div className="card">
             <div className="card-image">
-              <img src="http://atomicgametheory.com/wp-content/uploads/catan.jpg" />
+              <img src={images[Math.floor(Math.random() * images.length)].image} />
               <span className={`card-title ${styles['card-title-banner']}`}>
                 <span className={styles['event-name']}>{props.event.eventName}</span>
                 <span className={styles['game-name']}><em>{props.event.game}</em></span>
