@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
+import images from './stockimages.js';
 
 // Import Style
 import styles from './EventListItem.css';
@@ -13,7 +14,7 @@ function EventListItem(props) {
         <div className="col s12 m6">
           <div className="card">
             <div className="card-image">
-              <img src="http://atomicgametheory.com/wp-content/uploads/catan.jpg" />
+              <img src={makeImageLink(props.event.gameType)} />
               <span className={`card-title ${styles['card-title-banner']}`}>
                 <span className={styles['event-name']}>{props.event.eventName}</span>
                 <span className={styles['game-name']}><em>{props.event.game}</em></span>
@@ -57,5 +58,91 @@ EventListItem.propTypes = {
   }).isRequired,
   onDelete: PropTypes.func.isRequired, // Not In Use - Rob, will delete after testing.
 };
+
+
+function makeImageLink(str) {
+
+  const str2 = str.toLowerCase();
+
+  if (str2.match("adventure")) {
+    console.log('str', str);
+    console.log('match', str2.match("adventure"));
+    return images[0].image;
+  }
+
+  if (str2.match("board")) {
+    console.log('str', str);
+    console.log('match', str2.match("board"));
+    return images[Math.floor(Math.random() * 3) + 1].image;
+  }
+
+  if (str2.match("card")) {
+    console.log('str', str);
+    console.log('match', str2.match("card"));
+    return images[Math.floor(Math.random() * 3) + 4].image;
+  }
+
+  if (str2.match("dice")) {
+    console.log('str', str);
+    console.log('match', str2.match("dice"));
+    return images[7].image;
+  }
+
+  if (str2.match("drink")) {
+    console.log('str', str);
+    console.log('match', str2.match("drink"));
+    return images[8].image;
+  }
+
+  if (str2.match("information")) {
+    console.log('str', str);
+    console.log('match', str2.match("information"));
+    return images[9].image;
+  }
+
+  if (str2.match("outdoor")) {
+    console.log('str', str);
+    console.log('match', str2.match("outdoor"));
+    return images[10].image;
+  }
+
+  if (str2.match("party")) {
+    console.log('str', str);
+    console.log('match', str2.match("party"));
+    return images[11].image;
+  }
+
+  if (str2.match("pen and paper")) {
+    console.log('str', str);
+    console.log('match', str2.match("pen and paper"));
+    return images[Math.floor(Math.random() * 2) + 12].image;
+  }
+
+  if (str2.match("role-playing")) {
+    console.log('str', str);
+    console.log('match', str2.match("role-playing"));
+    return images[14].image;
+  }
+
+  if (str2.match("strategy")) {
+    console.log('str', str);
+    console.log('match', str2.match("strategy"));
+    return images[Math.floor(Math.random() * 2) + 15].image;
+  }
+
+  if (str2.match("tile")) {
+    console.log('str', str);
+    console.log('match', str2.match("tile"));
+    return images[17].image;
+  }
+
+  if (str2.match("video")) {
+    console.log('str', str);
+    console.log('match', str2.match("video"));
+    return images[Math.floor(Math.random() * 2) + 18].image;
+  }
+
+  return images[Math.floor(Math.random() * images.length)].image;
+}
 
 export default EventListItem;
