@@ -7,11 +7,11 @@ import images from './stockImages.js';
 import styles from './EventListItem.css';
 
 function EventListItem(props) {
-  let nextDay = moment(props.event.scheduledDate).add(1, 'days').calendar()
+  let nextDay = moment(props.event.scheduledDate).add(1, 'days').calendar();
   return (
-      
-      
-       
+
+
+
           <div className="card large">
             <div className="card-image">
               <img src={makeImageLink(props.event.gameType)} />
@@ -27,7 +27,7 @@ function EventListItem(props) {
                   {props.event.ownerName}
                 </Link>
               </div>
-              <div className={styles['post-desc']}>{moment(nextDay).format('MMM Do YY')}  |   {props.event.scheduledTime}</div>
+              <div className={styles['post-desc']}>{moment(nextDay).format('MMM Do YY')}  |    {props.event.scheduledTime}</div>
               <div className={styles['post-desc']}><span className={styles['attendee-count']}>{props.event.attendees.length}</span> of <span className={styles['seat-count']}>{props.event.slots}</span> seats filled</div>
               <div className={styles['post-desc']}><em>{props.event.notes}</em></div>
             </div>
@@ -37,8 +37,8 @@ function EventListItem(props) {
               </Link>
             </div>
           </div>
-        
-      
+
+
   );
 }
 
@@ -61,84 +61,83 @@ EventListItem.propTypes = {
 
 
 function makeImageLink(str) {
-
   const str2 = str.toLowerCase();
 
-  if (str2.match("adventure")) {
-    console.log('str', str);
-    console.log('match', str2.match("adventure"));
+  if (str2.match('adventure')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("adventure"));
     return images[0].image;
   }
 
-  if (str2.match("board")) {
-    console.log('str', str);
-    console.log('match', str2.match("board"));
+  if (str2.match('board')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("board"));
     return images[Math.floor(Math.random() * 3) + 1].image;
   }
 
-  if (str2.match("card")) {
-    console.log('str', str);
-    console.log('match', str2.match("card"));
+  if (str2.match('card')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("card"));
     return images[Math.floor(Math.random() * 3) + 4].image;
   }
 
-  if (str2.match("dice")) {
-    console.log('str', str);
-    console.log('match', str2.match("dice"));
+  if (str2.match('dice')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("dice"));
     return images[7].image;
   }
 
-  if (str2.match("drink")) {
-    console.log('str', str);
-    console.log('match', str2.match("drink"));
+  if (str2.match('drink')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("drink"));
     return images[8].image;
   }
 
-  if (str2.match("information")) {
+  if (str2.match('information')) {
     console.log('str', str);
-    console.log('match', str2.match("information"));
+    console.log('match', str2.match('information'));
     return images[9].image;
   }
 
-  if (str2.match("outdoor")) {
-    console.log('str', str);
-    console.log('match', str2.match("outdoor"));
+  if (str2.match('outdoor')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("outdoor"));
     return images[10].image;
   }
 
-  if (str2.match("party")) {
-    console.log('str', str);
-    console.log('match', str2.match("party"));
-    return images[11].image;
+  if (str2.match('party')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("party"));
+    // return images[11].image;
   }
 
-  if (str2.match("pen and paper")) {
-    console.log('str', str);
-    console.log('match', str2.match("pen and paper"));
+  if (str2.match('pen and paper')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("pen and paper"));
     return images[Math.floor(Math.random() * 2) + 12].image;
   }
 
-  if (str2.match("role-playing")) {
-    console.log('str', str);
-    console.log('match', str2.match("role-playing"));
+  if (str2.match('role-playing')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("role-playing"));
     return images[14].image;
   }
 
-  if (str2.match("strategy")) {
-    console.log('str', str);
-    console.log('match', str2.match("strategy"));
+  if (str2.match('strategy')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("strategy"));
     return images[Math.floor(Math.random() * 2) + 15].image;
   }
 
-  if (str2.match("tile")) {
-    console.log('str', str);
-    console.log('match', str2.match("tile"));
+  if (str2.match('tile')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("tile"));
     return images[17].image;
   }
 
-  if (str2.match("video")) {
-    console.log('str', str);
-    console.log('match', str2.match("video"));
+  if (str2.match('video')) {
+    // console.log('str', str);
+    // console.log('match', str2.match("video"));
     return images[Math.floor(Math.random() * 2) + 18].image;
   }
 

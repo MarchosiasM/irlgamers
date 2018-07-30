@@ -7,7 +7,7 @@ import SearchEventName from './SearchEventName';
 // import SearchEventDate from './SearchEventDate';
 
 // Import Event Actions
-import { findEventsByNameDate, findEventsByGameType } from '../../../Event/EventActions';
+import { findEventsByGameType } from '../../../Event/EventActions';
 
 // Import Event Selections
 import { getEvents } from '../../../Event/EventReducer';
@@ -72,7 +72,12 @@ class SearchForm extends Component {
             // style={styles.acWrapper}
             className={`s5 col ${styles.acWrapper}`}
           >
-            <SearchEventName returnVal={this.returnValueUp} returnSelect={this.returnSelectUp} value={this.state.search_event_type} />
+            <SearchEventName
+              returnVal={this.returnValueUp}
+              returnSelect={this.returnSelectUp}
+              value={this.state.search_event_type}
+              handleSubmit={this.handleSearchSubmit}
+            />
           </div>
           {/* <div className="col s3"> */}
           {/* <SearchEventDate returnVal={this.returnValueUp} /> */}
