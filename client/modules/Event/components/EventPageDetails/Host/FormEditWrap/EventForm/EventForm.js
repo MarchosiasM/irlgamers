@@ -213,10 +213,10 @@ class EventForm extends Component {
             <datalist id="gameTypes">
               <option value="Card Game" />
               <option value="Board Game" />
-              <option value="Pen and Paper" />
+              <option value="Pen and Paper Game" />
               <option value="Video Game" />
               <option value="Information Game" />
-              <option value="Outdoor" />
+              <option value="Outdoor Game" />
               <option value="Tile-based Game" />
               <option value="Strategy Game" />
               <option value="Role-Playing Game" />
