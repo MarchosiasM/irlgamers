@@ -11,7 +11,6 @@ import Footer from './components/Footer/Footer';
 
 // Import Actions
 import { toggleAddPost, toggleAddEvent } from './AppActions';
-import { switchLanguage } from '../../modules/Intl/IntlActions';
 import { fetchAuthUserRequest } from '../../modules/Auth/AuthActions';
 
 // Import Selectors
@@ -65,7 +64,6 @@ export class App extends Component {
             ]}
           />
           <Header
-            switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
             intl={this.props.intl}
             toggleAddPost={this.toggleAddPostSection}
             toggleAddEvent={this.toggleAddEventSection}
