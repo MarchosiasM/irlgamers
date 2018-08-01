@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import Helmet from 'react-helmet';
 import HostGuest from '../../components/EventPageDetails/HostGuest/HostGuest';
+import EventChat from '../../components/EventChat/EventChat'
 import NotLoggedIn from '../../components/EventPageDetails/Guest/NotLoggedIn/NotLoggedIn';
 /* eslint-disable react/prop-types */
 // Import Style
@@ -84,15 +85,18 @@ class EventDetailPage extends Component {
       <div>
         {(this.props.event && (this.props.user !== undefined))
           ?
-          <HostGuest
-            host={this.state.host}
-            event={this.props.event}
-            styles={styles}
-            dispatch={this.props.dispatch}
-            addAttendee={this.addAttendee}
-            isFull={this.isFull()}
-            member={this.state.member}
-          />
+          <div>
+            <HostGuest
+              host={this.state.host}
+              event={this.props.event}
+              styles={styles}
+              dispatch={this.props.dispatch}
+              addAttendee={this.addAttendee}
+              isFull={this.isFull()}
+              member={this.state.member}
+            />
+            <EventChat />
+          </div>
           :
           this.handleEdgeCases()
         }
