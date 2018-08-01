@@ -19,8 +19,8 @@ import fr from 'react-intl/locale-data/fr';
 import frData from './localizationData/fr';
 
 export const enabledLanguages = [
-  'en',
-  'fr',
+  // 'en',
+  // 'fr',
 ];
 
 // this object will have language-specific data added to it which will be placed in the state when that language is active

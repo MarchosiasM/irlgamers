@@ -4,7 +4,7 @@ export default {
     siteTitle: 'Welcome to IRLgamers',
     addPost: 'Add Post',
     addEvent: 'Add Event',
-    switchLanguage: 'Switch Language',
+    switchLanguage: ' ',
     twitterMessage: 'We are on Twitter',
     by: 'By',
     deletePost: 'Delete Post',
