@@ -4,6 +4,12 @@ import FormEditWrap from './FormEditWrap/FormEditWrap';
 import { deleteEventRequest } from '../../../EventActions';
 import Delete from './Delete/Delete';
 import Attendees from './Attendees/Attendees';
+import styles from './HostDetails.css'
+
+//CustomCSS
+let buttonpad = {
+  margin: 5 
+}
 
 /* eslint-disable react/prop-types */
 
@@ -53,6 +59,19 @@ class HostDetails extends Component {
   render() {
     return (
       <div>
+      <div className="row">
+      <div className="section">
+          <div className={`${styles['single-post']} ${styles['post-detail']}`}>
+            <h3 className={styles['post-title']}>
+              {this.props.event.eventName}
+            </h3>
+            <p className={`${styles['post-subtitle']}`}>
+            {this.props.event.game} Hosted by {this.props.event.ownerName}
+            </p>
+            <div className="divider"></div>
+          </div>
+        </div>
+
         {(this.state.editing)
           ?
           <div>
@@ -63,17 +82,26 @@ class HostDetails extends Component {
             />
           </div>
           :
-          <div>
+          <div className="col s12 m6">
             <EventDetails
               event={this.props.event}
               styles={this.props.styles}
             />
           </div>
         }
+        <div className="col s12 m6">
+        <div className={styles['attendee-header']}>
+          <Attendees attendees={this.props.event.attendeeNames} attendeeuid={this.props.event.attendees} />
+          </div>
+          </div>
+          </div>
+          <div className="row">
+          <div className="col s12 m6">
         {this.state.editing ? '' :
           <a
             className="waves-effect waves-light btn"
             onClick={this.toggleEditingMode()}
+            style={buttonpad}
           >
             Edit
           </a>
@@ -84,7 +112,9 @@ class HostDetails extends Component {
           deleteConfirm={this.deleteConfirm}
         />
         {console.log(this.props.event.attendeeNames)}
-        <Attendees attendees={this.props.event.attendeeNames} />
+        </div>
+        
+      </div>
       </div>
     );
   }
