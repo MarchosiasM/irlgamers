@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventDetails from '../EventDetails';
 import Join from './Join/Join';
 import MemberActions from './MemberOptions/MemberActions';
+import styles from '../Host/HostDetails.css'
 
 /* eslint-disable react/prop-types */
 class Guest extends Component {
@@ -16,6 +17,18 @@ class Guest extends Component {
   render() {
     return (
       <div>
+          <div className="section">
+          <div className={`${styles['single-post']} ${styles['post-detail']}`}>
+            <h3 className={styles['post-title']}>
+              {this.props.event.eventName}
+            </h3>
+            <p className={`${styles['post-subtitle']}`}>
+            {this.props.event.game} Hosted by {this.props.event.ownerName}
+            </p>
+            <div className="divider"></div>
+          </div>
+        </div>
+        
         <EventDetails event={this.props.event} styles={this.props.styles} />
         {this.props.member
           ?

@@ -1,5 +1,8 @@
 import React from 'react';
 import moment from 'moment'
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import {faMapMarkerAlt, faClock, faCalendarAlt, faStickyNote}  from '@fortawesome/fontawesome-free-solid/'
 
 /* eslint-disable react/prop-types */
 /* This is a very basic component that simply takes the event details
@@ -9,31 +12,38 @@ import moment from 'moment'
 
 const EventDetails = ({ event, styles }) => {
   let nextDay = moment(event.scheduledDate).add(1, 'days').calendar()
-return (
-  <div>
-    <div className={`${styles['single-post']} ${styles['post-detail']}`}>
-      <h3 className={styles['post-title']}>
-        {event.eventName}
-      </h3>
-      <p className={styles['post-desc']}>
-        {event.notes}
-      </p>
-      <p className={styles['post-desc']}>
-        {event.address}
-      </p>
-      <p className={styles['post-desc']}>
-        {`${event.city}, ${event.state} ${event.zipcode}`}
-      </p>
-      <p className={styles['post-desc']}>
-        {moment(nextDay).format("MMM Do YY")}
-      </p>
-      <p className={styles['post-desc']}>
-        {event.scheduledTime}
-      </p>
-      <p className={styles['post-desc']}>
-      </p>
+  return (
+    <div>
+      
+      
+
+      
+      <div className="col s12 m6">
+     
+        <p className={styles['post-desc']}>
+        <FontAwesomeIcon icon={faCalendarAlt} color="black" /><span className={styles['span-padding']}> {moment(nextDay).format("MMM Do YY")} </span>
+        </p>
+        <p className={styles['post-desc']}>
+        <FontAwesomeIcon icon={faClock} color="black" /><span className={styles['span-padding']}>{event.scheduledTime}</span>
+        </p>
+
+        
+        <p className={styles['post-desc']}>
+          <FontAwesomeIcon icon={faMapMarkerAlt} color="black" /><span className={styles['span-padding']}> {event.address}</span>
+        </p>
+        <p className={styles['post-desc-address']} >
+        <span className={styles['span-padding']}> {`${event.city}, ${event.state} ${event.zipcode}`}</span>
+        </p>
+       
+        <p className={styles['post-desc']}>
+        </p>
+        <p className={styles['post-desc']}>
+        <FontAwesomeIcon icon={faStickyNote} color="black" /><span className={styles['span-padding']}>&quot;{event.notes}&quot;</span>
+        </p>
+      </div>
     </div>
-  </div>
-);
+
+    
+  );
 }
 export default EventDetails;

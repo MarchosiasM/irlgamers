@@ -1,0 +1,37 @@
+.attendee-header {
+    margin: 0 0;
+    padding: 0;
+    border-radius: 2px;
+  }
+
+  .single-post {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 2px;
+  }
+
+  .post-title{
+    font-size: 28px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    color: #616161;
+  }
+
+  .post-detail .post-title{
+    font-size: 42px;
+    color: #454545;
+  }
+
+  .post-subtitle{
+    font-size: 16px;
+    color: #454545;
+    padding-left: 10px;
+  }
+
+  .divider{
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    width: 250px;
+    margin: 32px auto 0;
+  }
