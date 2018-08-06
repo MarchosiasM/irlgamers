@@ -12,7 +12,7 @@ import styles from '../../components/EventListItem/EventListItem.css';
 import { fetchEvent, passAttendee } from '../../EventActions';
 
 // Import Selectors
-import { getEvent } from '../../EventReducer';
+import { getEvent, isMember, isHost } from '../../EventReducer';
 import { getAuthUser } from '../../../Auth/AuthReducer';
 
 /* This is the base level component for the event details page for users.
@@ -26,29 +26,12 @@ class EventDetailPage extends Component {
     this.state = {
       host: false,
       member: false,
+      loggedin: false,
     };
   }
 
   componentDidMount = () => {
-    this.setState({ host: this.ifUserIsHost() });
-    if (!this.ifUserIsHost()) {
-      // console.log('Running member check');
-      this.runMemberCheck();
-    }
-  }
-
-  runMemberCheck = () => {
-    // console.log('Attendees length, ', this.props.attendees);
-    for (let i = 0; i < this.props.attendees; i += 1) {
-      // console.log('Current user ID, ', this.props.user);
-      // console.log('Attendees ID, ', this.props.event.attendees[i]);
-      if (this.props.user === this.props.event.attendees[i]) {
-        this.setState({ member: true });
-        return true;
-      }
-    }
-    // console.log('Ending member check with false');
-    return false;
+  
   }
 
   isFull = () => {
@@ -63,18 +46,15 @@ class EventDetailPage extends Component {
 
   addAttendee = () => {
     this.setState({ member: true });
-    return this.props.dispatch(passAttendee(this.props.event.cuid, this.props.user, this.props.userName));
-  };
-
-  ifUserIsHost = () => {
-    return (this.props.event.owner === this.props.user);
+    console.log(this.props.user);
+    return this.props.dispatch(passAttendee(this.props.event.cuid, this.props.user.uid, this.props.user.displayName));
   };
 
   handleEdgeCases = () => {
     if (!this.props.event) {
       return 'This event no longer exists';
     }
-    if (this.props.user === undefined) {
+    if (this.props.user === null) {
       return <NotLoggedIn event={this.props.event} styles={styles} />;
     }
     return null;
@@ -83,17 +63,22 @@ class EventDetailPage extends Component {
   render() {
     return (
       <div>
-        {(this.props.event && (this.props.user !== undefined))
+        {(this.props.event && (this.props.user !== null))
           ?
           <div>
+            {/* {(this.props.user)? this.props.user.email : 'test@test.com'} */}
+            {/* {console.log('wtf user', this.props.user)} */}
+            {/* {console.log('wtf member', this.props.member)} */}
+            {/* {(this.props.member > -1)? this.props.member : ' not a member?'} */}
+            {/* {(this.props.host)? this.props.host : ' not the host?'} */}
             <HostGuest
-              host={this.state.host}
+              host={this.props.host}
               event={this.props.event}
               styles={styles}
               dispatch={this.props.dispatch}
               addAttendee={this.addAttendee}
               isFull={this.isFull()}
-              member={this.state.member}
+              member={this.props.member}
             />
             <EventChat />
           </div>
@@ -112,11 +97,12 @@ EventDetailPage.need = [(params) => {
 
 // Retrieve data from store as props
 function mapStateToProps(state, props) {
+  console.log(state)
   return {
     event: getEvent(state, props.params.cuid),
-    authUser: getAuthUser(state),
-    user: state.authUser.data[0] ? state.authUser.data[0].uid : undefined,
-    userName: state.authUser.data[0] ? state.authUser.data[0].displayName : undefined,
+    user: getAuthUser(state),
+    member: isMember(state, props.params.cuid, getAuthUser(state)),
+    host: isHost(state, props.params.cuid, getAuthUser(state)),
     attendees: getEvent(state, props.params.cuid) ? getEvent(state, props.params.cuid).attendees.length : '',
   };
 }

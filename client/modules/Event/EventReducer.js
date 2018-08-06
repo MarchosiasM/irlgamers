@@ -58,5 +58,11 @@ export const getEvents = state => state.events.data;
 // Get Event by cuid
 export const getEvent = (state, cuid) => state.events.data.filter(event => event.cuid === cuid)[0];
 
+// is the current user a member of 
+export const isMember = (state, cuid, user) => state.events.data.filter(event => event.cuid === cuid)[0].attendees.indexOf((user)? user.uid : null);
+
+export const isHost = (state, cuid, user) => state.events.data.filter(event => event.cuid === cuid)[0].owner === ((user)? user.uid : null);
+
+
 // Export Reducer
 export default EventReducer;

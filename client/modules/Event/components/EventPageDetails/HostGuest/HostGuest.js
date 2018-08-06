@@ -20,6 +20,7 @@ const HostGuest = ({ host, event, styles, dispatch, addAttendee, isFull, member 
         </div>
         :
         <div>
+          
           <Guest
             event={event}
             addAttendee={addAttendee}
