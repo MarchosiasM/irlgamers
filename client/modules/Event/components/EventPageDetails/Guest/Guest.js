@@ -30,7 +30,8 @@ class Guest extends Component {
         </div>
         
         <EventDetails event={this.props.event} styles={this.props.styles} />
-        {this.props.member
+        {console.log('less than zero ', this.props.member)}
+        {(this.props.member > -1)
           ?
           'You are signed up for this event!'
           :

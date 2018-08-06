@@ -6,10 +6,10 @@ invitation to log in to see more options */
 /* eslint-disable react/prop-types */
 const NotLoggedIn = ({ event, styles }) => (
   <div>
-    <EventDetails event={event} styles={styles} />
-    <p>
-      Please log in to interact with other members!
-    </p>
+    {/* <EventDetails event={event} styles={styles} /> */}
+    <h4>
+      <a href="#root">Please log in to interact with other members!</a>
+    </h4>
   </div>
 );
 
