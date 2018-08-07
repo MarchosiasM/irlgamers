@@ -7,7 +7,7 @@ import images from './stockImages.js';
 import styles from './EventListItem.css';
 
 function EventListItem(props) {
-  let nextDay = moment(props.event.scheduledDate).add(1, 'days').calendar();
+  let nextDay = moment(props.event.scheduledDate).add(1, 'days').format('MMM Do YY');
   return (
 
 
@@ -27,7 +27,7 @@ function EventListItem(props) {
                   {props.event.ownerName}
                 </Link>
               </div>
-              <div className={styles['post-desc']}>{moment(nextDay).format('MMM Do YY')}  |    {props.event.scheduledTime}</div>
+              <div className={styles['post-desc']}>{nextDay}  |    {props.event.scheduledTime}</div>
               <div className={styles['post-desc']}><span className={styles['attendee-count']}>{props.event.attendees.length}</span> of <span className={styles['seat-count']}>{props.event.slots}</span> seats filled</div>
               <div className={styles['post-desc']}><em>{props.event.notes}</em></div>
             </div>
