@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import Helmet from 'react-helmet';
 import HostGuest from '../../components/EventPageDetails/HostGuest/HostGuest';
-import EventChat from '../../components/EventChat/EventChat'
 import NotLoggedIn from '../../components/EventPageDetails/Guest/NotLoggedIn/NotLoggedIn';
 /* eslint-disable react/prop-types */
 // Import Style
@@ -46,7 +45,7 @@ class EventDetailPage extends Component {
 
   addAttendee = () => {
     this.setState({ member: true });
-    console.log(this.props.user);
+    // console.log(this.props.user);
     return this.props.dispatch(passAttendee(this.props.event.cuid, this.props.user.uid, this.props.user.displayName));
   };
 
@@ -80,7 +79,7 @@ class EventDetailPage extends Component {
               isFull={this.isFull()}
               member={this.props.member}
             />
-            <EventChat />
+            
           </div>
           :
           this.handleEdgeCases()
@@ -97,7 +96,7 @@ EventDetailPage.need = [(params) => {
 
 // Retrieve data from store as props
 function mapStateToProps(state, props) {
-  console.log(state)
+  // console.log(state)
   return {
     event: getEvent(state, props.params.cuid),
     user: getAuthUser(state),
