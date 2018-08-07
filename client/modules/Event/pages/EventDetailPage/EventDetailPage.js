@@ -61,7 +61,7 @@ class EventDetailPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.DetailPage}>
         {(this.props.event && (this.props.user !== null))
           ?
           <div>
