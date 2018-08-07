@@ -11,7 +11,7 @@ import {faMapMarkerAlt, faClock, faCalendarAlt, faStickyNote}  from '@fortawesom
   the event, it has no specific logic */
 
 const EventDetails = ({ event, styles }) => {
-  let nextDay = moment(event.scheduledDate).add(1, 'days').calendar()
+  let nextDay = moment(event.scheduledDate).add(1, 'days').format("MMM Do YY");
   return (
     <div>
       
@@ -21,7 +21,7 @@ const EventDetails = ({ event, styles }) => {
       <div className="col s12 m6">
      
         <p className={styles['post-desc']}>
-        <FontAwesomeIcon icon={faCalendarAlt} color="black" /><span className={styles['span-padding']}> {moment(nextDay).format("MMM Do YY")} </span>
+        <FontAwesomeIcon icon={faCalendarAlt} color="black" /><span className={styles['span-padding']}> {nextDay} </span>
         </p>
         <p className={styles['post-desc']}>
         <FontAwesomeIcon icon={faClock} color="black" /><span className={styles['span-padding']}>{event.scheduledTime}</span>
